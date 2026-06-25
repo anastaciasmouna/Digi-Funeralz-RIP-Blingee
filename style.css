@@ -1523,3 +1523,156 @@ html.entered-funeral-state .funeral-page {
     height: 115px !important;
   }
 }
+
+/* ===================================================== */
+/* FINAL MEMORY EDITOR PATCH */
+/* columns up + draggable/resize/rotate/layer editor */
+/* ===================================================== */
+
+/* bring the two side gif columns up */
+.gif-side {
+  top: 72vh !important;
+  bottom: 70vh !important;
+}
+
+/* message preview can now let gifs go outside the box */
+.memory-preview-card {
+  overflow: visible !important;
+}
+
+/* posted memory notes can also let decorative gifs spill out */
+.memory-note {
+  overflow: visible !important;
+}
+
+/* the draggable gif box */
+.gif-transform-box {
+  position: absolute !important;
+  left: 45px;
+  top: 20px;
+
+  width: 90px;
+  height: 90px;
+
+  z-index: 5;
+  cursor: move;
+
+  border: 1px dashed rgba(0, 0, 0, 0.5);
+  transform-origin: center center;
+}
+
+/* selected gif fills the transform box */
+.chosen-message-gif-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
+/* resize handle bottom right */
+.gif-resize-handle {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+
+  width: 16px;
+  height: 16px;
+
+  background: #ff00bf;
+  border: 2px solid white;
+  box-shadow: 0 0 6px black;
+
+  cursor: nwse-resize;
+  z-index: 20;
+}
+
+/* rotate handle top right */
+.gif-rotate-handle {
+  position: absolute;
+  right: -10px;
+  top: -28px;
+
+  width: 18px;
+  height: 18px;
+
+  background: #ffcc00;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 6px black;
+
+  cursor: grab;
+  z-index: 21;
+}
+
+.gif-rotate-handle::after {
+  content: "↻";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -54%);
+
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+}
+
+/* layer buttons */
+.layer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  margin: 14px auto 24px auto;
+}
+
+.layer-choice {
+  border: 2px solid #333;
+  background: #fff8d8;
+  color: #201018;
+
+  padding: 8px 14px;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.layer-choice.selected {
+  background: #ff00bf;
+  color: #fff8d8;
+
+  box-shadow:
+    0 0 10px white,
+    0 0 20px #ff00bf,
+    0 0 30px #ffcc00;
+}
+
+/* posted message visual can allow spillover too */
+.memory-note-visual {
+  overflow: visible !important;
+}
+
+/* make posted gif positioning absolute and transformable */
+.memory-note-gif {
+  position: absolute !important;
+  object-fit: contain !important;
+  z-index: 3;
+}
+
+/* candle layer */
+.memory-note-candle {
+  z-index: 2;
+}
+
+/* if gif is sent behind */
+.memory-note.gif-behind .memory-note-gif {
+  z-index: 1;
+}
+
+.memory-note.gif-behind .memory-note-candle {
+  z-index: 3;
+}

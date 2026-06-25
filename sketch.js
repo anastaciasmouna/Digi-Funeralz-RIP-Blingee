@@ -109,12 +109,14 @@ window.addEventListener("DOMContentLoaded", () => {
   const messageGifButtons = document.querySelectorAll(".message-gif-choice");
   const bgButtons = document.querySelectorAll(".message-bg-choice");
   const fontButtons = document.querySelectorAll(".font-choice");
+  const layerButtons = document.querySelectorAll(".layer-choice");
 
   const chosenCandleImg = document.querySelector(".chosen-candle-img");
   const chosenMessageGifImg = document.querySelector(".chosen-message-gif-img");
   const previewCard = document.querySelector(".memory-preview-card");
   const transformBox = document.querySelector(".gif-transform-box");
   const resizeHandle = document.querySelector(".gif-resize-handle");
+  const rotateHandle = document.querySelector(".gif-rotate-handle");
 
   const messageInput = document.querySelector(".memory-message-input");
   const postButton = document.querySelector(".post-memory-button");
@@ -128,11 +130,13 @@ window.addEventListener("DOMContentLoaded", () => {
     !messageGifButtons.length ||
     !bgButtons.length ||
     !fontButtons.length ||
+    !layerButtons.length ||
     !chosenCandleImg ||
     !chosenMessageGifImg ||
     !previewCard ||
     !transformBox ||
     !resizeHandle ||
+    !rotateHandle ||
     !messageInput ||
     !postButton ||
     !clearButton ||
@@ -146,10 +150,12 @@ window.addEventListener("DOMContentLoaded", () => {
   let selectedMessageGif = "imgs/messagegif1.gif";
   let selectedBg = "imgs/background1.gif";
   let selectedFont = "'Apple Chancery', cursive";
+  let selectedLayer = "front";
 
   let gifX = 45;
   let gifY = 20;
   let gifSize = 90;
+  let gifRotate = 0;
 
   const colours = [
     "#fff8d8",
@@ -185,7 +191,15 @@ window.addEventListener("DOMContentLoaded", () => {
     transformBox.style.top = `${gifY}px`;
     transformBox.style.width = `${gifSize}px`;
     transformBox.style.height = `${gifSize}px`;
-    transformBox.style.transform = "none";
+    transformBox.style.transform = `rotate(${gifRotate}deg)`;
+
+    if (selectedLayer === "behind") {
+      transformBox.style.zIndex = "1";
+      chosenCandleImg.style.zIndex = "4";
+    } else {
+      transformBox.style.zIndex = "5";
+      chosenCandleImg.style.zIndex = "1";
+    }
   }
 
   function renderMessages() {
@@ -197,6 +211,11 @@ window.addEventListener("DOMContentLoaded", () => {
     messages.forEach((message, index) => {
       const note = document.createElement("div");
       note.className = "memory-note";
+
+      if (message.layer === "behind") {
+        note.classList.add("gif-behind");
+      }
+
       note.style.background = message.colour;
       note.style.fontFamily = message.font;
 
@@ -221,7 +240,7 @@ window.addEventListener("DOMContentLoaded", () => {
       messageGif.style.top = `${message.gifY || 0}px`;
       messageGif.style.width = `${message.gifSize || 70}px`;
       messageGif.style.height = `${message.gifSize || 70}px`;
-      messageGif.style.transform = "none";
+      messageGif.style.transform = `rotate(${message.gifRotate || 0}deg)`;
 
       const text = document.createElement("p");
       text.textContent = message.text;
@@ -260,17 +279,17 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-bgButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    bgButtons.forEach((btn) => btn.classList.remove("selected"));
+  bgButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      bgButtons.forEach((btn) => btn.classList.remove("selected"));
 
-    button.classList.add("selected");
-    selectedBg = button.dataset.bg;
+      button.classList.add("selected");
+      selectedBg = button.dataset.bg;
 
-    previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
-    messageInput.style.setProperty("--message-bg", `url("${selectedBg}")`);
+      previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
+      messageInput.style.setProperty("--message-bg", `url("${selectedBg}")`);
+    });
   });
-});
 
   fontButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -283,17 +302,30 @@ bgButtons.forEach((button) => {
     });
   });
 
-  // drag the GIF box
+  layerButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      layerButtons.forEach((btn) => btn.classList.remove("selected"));
+
+      button.classList.add("selected");
+      selectedLayer = button.dataset.layer;
+
+      updateTransformBox();
+    });
+  });
+
   let dragging = false;
   let resizing = false;
+  let rotating = false;
+
   let startMouseX = 0;
   let startMouseY = 0;
   let startX = 0;
   let startY = 0;
   let startSize = 90;
+  let startRotate = 0;
 
   transformBox.addEventListener("mousedown", (event) => {
-    if (event.target === resizeHandle) {
+    if (event.target === resizeHandle || event.target === rotateHandle) {
       return;
     }
 
@@ -316,13 +348,23 @@ bgButtons.forEach((button) => {
     event.stopPropagation();
   });
 
+  rotateHandle.addEventListener("mousedown", (event) => {
+    rotating = true;
+    startMouseX = event.clientX;
+    startRotate = gifRotate;
+
+    event.preventDefault();
+    event.stopPropagation();
+  });
+
   window.addEventListener("mousemove", (event) => {
     if (dragging) {
       gifX = startX + (event.clientX - startMouseX);
       gifY = startY + (event.clientY - startMouseY);
 
-      gifX = Math.max(0, Math.min(180 - gifSize, gifX));
-      gifY = Math.max(0, Math.min(180 - gifSize, gifY));
+      // allow it to go outside the preview card
+      gifX = Math.max(-90, Math.min(180, gifX));
+      gifY = Math.max(-90, Math.min(180, gifY));
 
       updateTransformBox();
     }
@@ -333,9 +375,14 @@ bgButtons.forEach((button) => {
         event.clientY - startMouseY
       );
 
-      gifSize = Math.max(35, Math.min(160, startSize + movement));
-      gifX = Math.max(0, Math.min(180 - gifSize, gifX));
-      gifY = Math.max(0, Math.min(180 - gifSize, gifY));
+      gifSize = Math.max(35, Math.min(220, startSize + movement));
+
+      updateTransformBox();
+    }
+
+    if (rotating) {
+      gifRotate = startRotate + (event.clientX - startMouseX);
+      gifRotate = Math.max(-180, Math.min(180, gifRotate));
 
       updateTransformBox();
     }
@@ -344,6 +391,7 @@ bgButtons.forEach((button) => {
   window.addEventListener("mouseup", () => {
     dragging = false;
     resizing = false;
+    rotating = false;
   });
 
   postButton.addEventListener("click", () => {
@@ -362,9 +410,11 @@ bgButtons.forEach((button) => {
       messageGif: selectedMessageGif,
       background: selectedBg,
       font: selectedFont,
+      layer: selectedLayer,
       gifX,
       gifY,
       gifSize,
+      gifRotate,
       colour: colours[messages.length % colours.length],
     });
 
@@ -389,6 +439,7 @@ bgButtons.forEach((button) => {
   messageGifButtons[0].classList.add("selected");
   bgButtons[0].classList.add("selected");
   fontButtons[0].classList.add("selected");
+  layerButtons[0].classList.add("selected");
 
   previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
   messageInput.style.setProperty("--message-bg", `url("${selectedBg}")`);
