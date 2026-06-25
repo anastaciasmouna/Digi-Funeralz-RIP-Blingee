@@ -851,3 +851,209 @@ html.entered-funeral-state .funeral-page {
     left: 0;
   }
 }
+/* ===================================================== */
+/* MEMORY MESSAGE SECTION */
+/* ===================================================== */
+
+.memory-section {
+  position: relative;
+  z-index: 260;
+
+  width: clamp(360px, 62vw, 900px);
+  margin: 24vh auto 0 auto;
+  padding: clamp(24px, 3vw, 42px);
+
+  background: #e56ad1;
+  border: 2px solid #333;
+
+  text-align: center;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: #201018;
+
+  box-shadow:
+    0 0 12px white,
+    0 0 28px rgba(255, 0, 191, 0.8);
+}
+
+.memory-section h2 {
+  font-size: clamp(26px, 3vw, 54px);
+  line-height: 0.95;
+  margin-bottom: 16px;
+}
+
+.memory-section p {
+  font-size: clamp(15px, 1.2vw, 22px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+
+.candle-picker {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 24px auto;
+  max-width: 620px;
+}
+
+.candle-choice {
+  border: 2px solid #333;
+  background: #fff8d8;
+  padding: 10px;
+  cursor: pointer;
+
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.candle-choice img {
+  width: 100%;
+  max-width: 90px;
+  height: 90px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.candle-choice.selected {
+  background: #ff00bf;
+  box-shadow:
+    0 0 12px white,
+    0 0 24px #ff00bf,
+    0 0 38px #ffcc00;
+  transform: scale(1.05);
+}
+
+.message-form {
+  margin-top: 24px;
+}
+
+.selected-candle-preview {
+  margin-bottom: 14px;
+}
+
+.selected-candle-preview p {
+  margin-bottom: 8px;
+}
+
+.chosen-candle-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.memory-message-input {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+
+  padding: 16px;
+
+  background: #fff8d8;
+  border: 2px solid #333;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 18px;
+  color: #201018;
+}
+
+.post-memory-button {
+  margin-top: 16px;
+  padding: 12px 28px;
+
+  border: 2px solid #7a3c18;
+  background: #ff00bf;
+  color: #fff8d8;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+
+  text-shadow:
+    0 0 3px #7a3c18,
+    0 0 8px #7a3c18;
+
+  box-shadow:
+    0 0 10px white,
+    0 0 22px #ff00bf,
+    0 0 38px #ffcc00;
+}
+
+.post-memory-button:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================================== */
+/* MEMORY MESSAGES ON SIDES */
+/* ===================================================== */
+
+.memory-wall {
+  position: absolute;
+  top: 120vh;
+  width: clamp(130px, 15vw, 240px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+
+  pointer-events: none;
+  z-index: 255;
+}
+
+.memory-wall-left {
+  left: clamp(12px, 2vw, 36px);
+}
+
+.memory-wall-right {
+  right: clamp(12px, 2vw, 36px);
+}
+
+.memory-note {
+  width: 100%;
+  padding: 12px;
+
+  background: #fff8d8;
+  border: 2px solid #333;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: #201018;
+  font-size: clamp(12px, 1vw, 16px);
+  line-height: 1.15;
+  font-weight: 700;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px rgba(255, 0, 191, 0.7);
+
+  transform: rotate(-4deg);
+}
+
+.memory-wall-right .memory-note {
+  transform: rotate(4deg);
+}
+
+.memory-note img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 8px auto;
+}
+
+.memory-note p {
+  margin: 0;
+  word-break: break-word;
+}
+
+/* hide memory wall on tiny screens */
+@media (max-width: 800px) {
+  .memory-wall {
+    display: none;
+  }
+
+  .candle-picker {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

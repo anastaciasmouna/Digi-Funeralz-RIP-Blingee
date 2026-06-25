@@ -163,7 +163,9 @@
         <img class="memorial-gif memorial-heart6" src="imgs/heart6.gif" loading="lazy" alt="" />
         <img class="memorial-gif memorial-loveyou2" src="imgs/loveyou2.gif" loading="lazy" alt="" />
       </div>
-
+<!-- MEMORY MESSAGE WALL -->
+<div class="memory-wall memory-wall-left" aria-hidden="true"></div>
+<div class="memory-wall memory-wall-right" aria-hidden="true"></div>
       <!-- WHO WAS BLINGEE -->
       <section class="eulogy-box">
         <p>
@@ -311,15 +313,15 @@
 
       <!-- MIA SECTION -->
       <section class="mia-section">
-        <h2>Fond Memories of Blingee</h2>
+        <h2>Eulogy</h2>
 
         <p>
-          M.I.A.’s 2010 music video for <em>XXXO</em> lives close to Blingee’s
-          visual world.
+         Born in 2003, I unfortuanetly didn't use or even knew of Blingee.com in it's prime. However, M.I.A.’s 2010 music video for <em>XXXO</em> was one place where Blingee-visuals reached me.
         </p>
 
         <p>
-          The lyrics “If you like what you see, you can download and install”
+          The music video vi M.I.A framed by a series of Blingee-style gifs. 
+          Although M.I.A has never revealed why she chose to visualise her song in this way. M Known as a artist who about spoke about revolutions and The lyrics “If you like what you see, you can download and install”
           and “you want me to be somebody who I’m really not” feel especially
           interesting alongside the blingy, internet-heavy imagery.
         </p>
@@ -338,6 +340,66 @@
           </video>
         </div>
       </section>
+
+      <!-- LEAVE A MESSAGE SECTION -->
+<section class="memory-section">
+  <h2>Please leave a message in memory of Blingee</h2>
+
+  <p>
+    Choose a candle, write your message, and leave it glowing on the page.
+  </p>
+
+  <div class="candle-picker">
+    <button class="candle-choice" type="button" data-candle="imgs/candle1.png">
+      <img src="imgs/candle1.png" alt="Candle 1" />
+    </button>
+
+    <button class="candle-choice" type="button" data-candle="imgs/candle2.png">
+      <img src="imgs/candle2.png" alt="Candle 2" />
+    </button>
+
+    <button class="candle-choice" type="button" data-candle="imgs/candle3.png">
+      <img src="imgs/candle3.png" alt="Candle 3" />
+    </button>
+
+    <button class="candle-choice" type="button" data-candle="imgs/candle4.png">
+      <img src="imgs/candle4.png" alt="Candle 4" />
+    </button>
+
+    <button class="candle-choice" type="button" data-candle="imgs/candle5.png">
+      <img src="imgs/candle5.png" alt="Candle 5" />
+    </button>
+
+    <button class="candle-choice" type="button" data-candle="imgs/candle6.png">
+      <img src="imgs/candle6.png" alt="Candle 6" />
+    </button>
+
+    <button class="candle-choice" type="button" data-candle="imgs/candle7.png">
+      <img src="imgs/candle7.png" alt="Candle 7" />
+    </button>
+
+    <button class="candle-choice" type="button" data-candle="imgs/candle8.png">
+      <img src="imgs/candle8.png" alt="Candle 8" />
+    </button>
+  </div>
+
+  <div class="message-form">
+    <div class="selected-candle-preview">
+      <p>Selected candle:</p>
+      <img class="chosen-candle-img" src="imgs/candle1.png" alt="Selected candle" />
+    </div>
+
+    <textarea
+      class="memory-message-input"
+      maxlength="120"
+      placeholder="Type your message to Blingee..."
+    ></textarea>
+
+    <button class="post-memory-button" type="button">
+      Post message
+    </button>
+  </div>
+</section>
 
       <!-- POP UP BOX -->
       <div class="cu-popup">

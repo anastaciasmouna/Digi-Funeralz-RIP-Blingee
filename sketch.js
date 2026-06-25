@@ -82,3 +82,122 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// =====================================================
+// BLINGEE MEMORY MESSAGE STATION
+// Saves messages on this browser/computer using localStorage
+// =====================================================
+
+window.addEventListener("DOMContentLoaded", () => {
+  const candleButtons = document.querySelectorAll(".candle-choice");
+  const chosenCandleImg = document.querySelector(".chosen-candle-img");
+  const messageInput = document.querySelector(".memory-message-input");
+  const postButton = document.querySelector(".post-memory-button");
+  const memoryWallLeft = document.querySelector(".memory-wall-left");
+  const memoryWallRight = document.querySelector(".memory-wall-right");
+
+  if (
+    !candleButtons.length ||
+    !chosenCandleImg ||
+    !messageInput ||
+    !postButton ||
+    !memoryWallLeft ||
+    !memoryWallRight
+  ) {
+    return;
+  }
+
+  let selectedCandle = "imgs/candle1.png";
+
+  const colours = [
+    "#fff8d8",
+    "#ffd6f3",
+    "#d8f7ff",
+    "#e3ffd8",
+    "#fff0b8",
+    "#ead8ff",
+    "#ffd8d8",
+    "#d8ffe9",
+  ];
+
+  function getSavedMessages() {
+    const saved = localStorage.getItem("blingeeMemoryMessages");
+
+    if (!saved) {
+      return [];
+    }
+
+    try {
+      return JSON.parse(saved);
+    } catch {
+      return [];
+    }
+  }
+
+  function saveMessages(messages) {
+    localStorage.setItem("blingeeMemoryMessages", JSON.stringify(messages));
+  }
+
+  function renderMessages() {
+    const messages = getSavedMessages();
+
+    memoryWallLeft.innerHTML = "";
+    memoryWallRight.innerHTML = "";
+
+    messages.forEach((message, index) => {
+      const note = document.createElement("div");
+      note.className = "memory-note";
+      note.style.background = message.colour;
+
+      const candle = document.createElement("img");
+      candle.src = message.candle;
+      candle.alt = "";
+
+      const text = document.createElement("p");
+      text.textContent = message.text;
+
+      note.appendChild(candle);
+      note.appendChild(text);
+
+      if (index % 2 === 0) {
+        memoryWallLeft.appendChild(note);
+      } else {
+        memoryWallRight.appendChild(note);
+      }
+    });
+  }
+
+  candleButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      candleButtons.forEach((btn) => btn.classList.remove("selected"));
+
+      button.classList.add("selected");
+      selectedCandle = button.dataset.candle;
+      chosenCandleImg.src = selectedCandle;
+    });
+  });
+
+  postButton.addEventListener("click", () => {
+    const text = messageInput.value.trim();
+
+    if (!text) {
+      messageInput.focus();
+      return;
+    }
+
+    const messages = getSavedMessages();
+
+    messages.push({
+      text,
+      candle: selectedCandle,
+      colour: colours[messages.length % colours.length],
+    });
+
+    saveMessages(messages);
+    renderMessages();
+
+    messageInput.value = "";
+  });
+
+  candleButtons[0].classList.add("selected");
+  renderMessages();
+});
