@@ -1488,3 +1488,30 @@ body.entered-funeral .funeral-page {
   margin-top: 22vh !important;
   margin-bottom: 24vh !important;
 }
+
+/* ===================================================== */
+/* FIX END POPUP CLICKING */
+/* ===================================================== */
+
+.cu-popup {
+  z-index: 9998 !important;
+  pointer-events: auto !important;
+}
+
+.cu {
+  position: relative !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.cuok,
+.X {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.cuok img,
+.X img {
+  pointer-events: none !important;
+}
