@@ -100,6 +100,7 @@ body.entered-funeral .landing-page {
 
 canvas {
   display: block;
+  pointer-events: none !important;
 }
 
 body > canvas {
@@ -107,6 +108,7 @@ body > canvas {
   top: 0 !important;
   left: 0 !important;
   z-index: 100 !important;
+  pointer-events: none !important;
 }
 
 body.entered-funeral > canvas {
@@ -207,7 +209,7 @@ body.entered-funeral > canvas {
   position: relative;
   width: 100vw;
 
-  min-height: 1100vh;
+  min-height: 1120vh;
   overflow-x: hidden;
   overflow-y: visible;
 
@@ -216,7 +218,8 @@ body.entered-funeral > canvas {
   background-size: auto;
   background-position: top left;
 
-  padding-top: 84vh;
+  /* content begins AFTER hero */
+  padding-top: 118vh;
   padding-bottom: 240vh;
 }
 
@@ -264,7 +267,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 8. MAIN HERO IMAGE LAYERS */
+/* 8. HERO IMAGE LAYERS */
 /* ===================================================== */
 
 .hero-stack {
@@ -277,7 +280,14 @@ body.entered-funeral .funeral-page {
   aspect-ratio: 1300 / 720;
 
   z-index: 260;
-  pointer-events: none;
+  pointer-events: none !important;
+}
+
+.hero-stack *,
+.rainbow-title,
+.coffin,
+.subtitle {
+  pointer-events: none !important;
 }
 
 .rainbow-title {
@@ -290,7 +300,6 @@ body.entered-funeral .funeral-page {
 
   transform: translateX(-50%);
   z-index: 261;
-  pointer-events: none;
 }
 
 .coffin {
@@ -303,7 +312,6 @@ body.entered-funeral .funeral-page {
 
   transform: translateX(-50%);
   z-index: 262;
-  pointer-events: none;
 }
 
 .subtitle {
@@ -318,7 +326,6 @@ body.entered-funeral .funeral-page {
   transform: translateX(-50%);
   z-index: 263;
   opacity: 0.9;
-  pointer-events: none;
 }
 
 
@@ -328,10 +335,14 @@ body.entered-funeral .funeral-page {
 
 .pearl-border {
   position: absolute;
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 5;
   display: flex;
   overflow: hidden;
+}
+
+.pearl-border * {
+  pointer-events: none !important;
 }
 
 .pearl-border img {
@@ -403,7 +414,7 @@ body.entered-funeral .funeral-page {
   width: 75px;
   height: auto;
   z-index: 270;
-  pointer-events: none;
+  pointer-events: none !important;
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
 }
 
@@ -449,8 +460,12 @@ body.entered-funeral .funeral-page {
   align-items: center;
   gap: 8vh;
 
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 245;
+}
+
+.gif-side * {
+  pointer-events: none !important;
 }
 
 .gif-left {
@@ -470,7 +485,6 @@ body.entered-funeral .funeral-page {
   height: auto !important;
 
   object-fit: contain;
-  pointer-events: none;
 
   filter:
     drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))
@@ -515,14 +529,13 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 12. PINK TEXT BOXES - SMALLER */
+/* 12. SMALLER PINK TEXT BOXES */
 /* ===================================================== */
 
 .eulogy-box,
 .diagram-section,
 .gif-gallery-section,
-.mia-section,
-.memory-section {
+.mia-section {
   position: relative;
   z-index: 230;
 
@@ -539,13 +552,13 @@ body.entered-funeral .funeral-page {
 }
 
 .eulogy-box {
-  margin: 22vh auto 0 auto;
+  margin: 0 auto 0 auto;
   width: clamp(340px, 38vw, 470px);
   padding: 24px 28px;
 }
 
-.eulogy-box:first-of-type {
-  margin-top: 36vh;
+.eulogy-box + .eulogy-box {
+  margin-top: 22vh;
 }
 
 .diagram-section {
@@ -566,18 +579,10 @@ body.entered-funeral .funeral-page {
   padding: 24px;
 }
 
-.memory-section {
-  z-index: 260;
-  width: clamp(360px, 54vw, 760px);
-  margin: 24vh auto 90vh auto;
-  padding: 28px;
-}
-
 .eulogy-box p,
 .diagram-section p,
 .gif-gallery-section p,
-.mia-section p,
-.memory-section p {
+.mia-section p {
   color: #201018;
   font-size: clamp(14px, 1vw, 18px);
   line-height: 1.15;
@@ -588,22 +593,10 @@ body.entered-funeral .funeral-page {
 .eulogy-box h3,
 .diagram-section h2,
 .gif-gallery-section h2,
-.mia-section h2,
-.memory-section h2 {
+.mia-section h2 {
   font-size: clamp(22px, 2vw, 38px);
   line-height: 1;
   margin-bottom: 14px;
-  color: #201018;
-}
-
-.memory-section h2 {
-  font-size: clamp(28px, 3vw, 50px);
-}
-
-.memory-section h3 {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: clamp(17px, 1.5vw, 24px);
-  margin: 26px 0 12px 0;
   color: #201018;
 }
 
@@ -617,7 +610,9 @@ body.entered-funeral .funeral-page {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  top: 120px;
+  top: 0;
+  margin-top: 20vh;
+  margin-bottom: 24vh;
   z-index: 231;
 }
 
@@ -701,8 +696,12 @@ body.entered-funeral .funeral-page {
   flex-direction: column;
   gap: 90px;
 
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 255;
+}
+
+.memory-wall * {
+  pointer-events: none !important;
 }
 
 .memory-wall-left {
@@ -799,7 +798,129 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 17. MEMORY STATION MENUS */
+/* 17. MEMORY SECTION - CLICKABLE */
+/* ===================================================== */
+
+.memory-section {
+  position: relative !important;
+  z-index: 9990 !important;
+  isolation: isolate;
+
+  width: clamp(360px, 54vw, 760px);
+  margin: 24vh auto 90vh auto;
+  padding: 28px;
+
+  background: #e56ad1;
+  border: 2px solid #333;
+
+  text-align: center;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: #201018;
+
+  pointer-events: auto !important;
+
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.7),
+    0 0 22px rgba(255, 0, 191, 0.45);
+}
+
+.memory-section,
+.memory-section *,
+.scroll-menu-wrap,
+.scroll-menu-wrap *,
+.message-form,
+.message-form *,
+.memory-preview-card,
+.memory-preview-card *,
+.font-picker,
+.font-picker *,
+.layer-controls,
+.layer-controls * {
+  pointer-events: auto !important;
+}
+
+.memory-section h2 {
+  font-size: clamp(28px, 3vw, 50px);
+  line-height: 1;
+  margin-bottom: 14px;
+  color: #201018;
+}
+
+.memory-section h3 {
+  font-size: clamp(17px, 1.5vw, 24px);
+  margin: 26px 0 12px 0;
+  color: #201018;
+}
+
+.memory-section p {
+  color: #201018;
+  font-size: clamp(14px, 1vw, 18px);
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+
+/* ===================================================== */
+/* 18. SCROLL MENU WRAPPER + BUTTONS */
+/* ===================================================== */
+
+.scroll-menu-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 18px auto 24px auto;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  z-index: 9992;
+}
+
+.scroll-menu-wrap .candle-picker,
+.scroll-menu-wrap .message-gif-picker,
+.scroll-menu-wrap .message-bg-picker {
+  margin: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+.scroll-menu-button {
+  flex: 0 0 auto;
+
+  width: 44px;
+  height: 44px;
+
+  border: 2px solid #333;
+  background: #ff00bf;
+  color: #fff8d8;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 26px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px #ff00bf,
+    0 0 28px #ffcc00;
+
+  z-index: 9993;
+}
+
+.scroll-menu-button:hover {
+  transform: scale(1.08);
+  background: #e56ad1;
+}
+
+
+/* ===================================================== */
+/* 19. MEMORY STATION MENUS */
 /* ===================================================== */
 
 .candle-picker,
@@ -822,6 +943,9 @@ body.entered-funeral .funeral-page {
 
   background: rgba(255, 248, 216, 0.35) !important;
   border: 2px solid #333 !important;
+
+  pointer-events: auto !important;
+  z-index: 9992;
 }
 
 .candle-choice,
@@ -842,6 +966,8 @@ body.entered-funeral .funeral-page {
   align-items: center !important;
   justify-content: center !important;
 
+  pointer-events: auto !important;
+
   box-shadow:
     inset 0 0 8px rgba(255, 255, 255, 0.9),
     0 0 10px rgba(255, 255, 255, 0.8) !important;
@@ -856,6 +982,7 @@ body.entered-funeral .funeral-page {
   max-height: 80px !important;
   object-fit: contain !important;
   display: block !important;
+  pointer-events: none !important;
 }
 
 .message-bg-choice img {
@@ -882,7 +1009,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 18. FONT + LAYER BUTTONS */
+/* 20. FONT + LAYER BUTTONS */
 /* ===================================================== */
 
 .font-picker,
@@ -905,6 +1032,8 @@ body.entered-funeral .funeral-page {
   font-size: 16px !important;
   font-weight: 700 !important;
   color: #201018 !important;
+
+  pointer-events: auto !important;
 }
 
 .font-choice:nth-child(1) {
@@ -921,44 +1050,22 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 19. OLD SLIDER CONTROLS */
+/* 21. HIDE OLD SLIDER CONTROLS */
 /* ===================================================== */
 
 .gif-controls {
-  width: min(90%, 520px);
-  margin: 12px auto 24px auto;
-  padding: 12px;
-
-  background: #fff8d8;
-  border: 2px solid #333;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px 18px;
-
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-weight: 700;
-  color: #201018;
-}
-
-.gif-controls label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.gif-controls input {
-  width: 100%;
+  display: none !important;
 }
 
 
 /* ===================================================== */
-/* 20. MEMORY PREVIEW EDITOR */
+/* 22. MEMORY PREVIEW EDITOR */
 /* ===================================================== */
 
 .message-form {
   margin-top: 24px;
   margin-bottom: 40px;
+  pointer-events: auto !important;
 }
 
 .selected-memory-preview {
@@ -970,7 +1077,7 @@ body.entered-funeral .funeral-page {
 }
 
 .memory-preview-card {
-  position: relative;
+  position: relative !important;
   overflow: visible !important;
 
   width: 155px;
@@ -983,6 +1090,9 @@ body.entered-funeral .funeral-page {
   background-position: center !important;
 
   border: 2px solid #333;
+
+  pointer-events: auto !important;
+  z-index: 9994;
 
   box-shadow:
     0 0 8px white,
@@ -999,6 +1109,8 @@ body.entered-funeral .funeral-page {
   height: 80px;
   object-fit: contain;
   z-index: 2;
+
+  pointer-events: none !important;
 }
 
 .gif-transform-box {
@@ -1009,11 +1121,14 @@ body.entered-funeral .funeral-page {
   width: 90px;
   height: 90px;
 
-  z-index: 5;
-  cursor: move;
+  z-index: 9995 !important;
+  cursor: move !important;
 
-  border: 1px dashed rgba(0, 0, 0, 0.5);
+  border: 1px dashed rgba(0, 0, 0, 0.65);
   transform-origin: center center;
+
+  pointer-events: auto !important;
+  touch-action: none;
 }
 
 .chosen-message-gif-img {
@@ -1025,36 +1140,40 @@ body.entered-funeral .funeral-page {
 }
 
 .gif-resize-handle {
-  position: absolute;
-  right: -8px;
-  bottom: -8px;
+  position: absolute !important;
+  right: -8px !important;
+  bottom: -8px !important;
 
-  width: 16px;
-  height: 16px;
+  width: 16px !important;
+  height: 16px !important;
 
-  background: #ff00bf;
-  border: 2px solid white;
-  box-shadow: 0 0 6px black;
+  background: #ff00bf !important;
+  border: 2px solid white !important;
+  box-shadow: 0 0 6px black !important;
 
-  cursor: nwse-resize;
-  z-index: 20;
+  cursor: nwse-resize !important;
+  z-index: 9996 !important;
+  pointer-events: auto !important;
+  touch-action: none;
 }
 
 .gif-rotate-handle {
-  position: absolute;
-  right: -10px;
-  top: -28px;
+  position: absolute !important;
+  right: -10px !important;
+  top: -28px !important;
 
-  width: 18px;
-  height: 18px;
+  width: 18px !important;
+  height: 18px !important;
 
-  background: #ffcc00;
-  border: 2px solid white;
-  border-radius: 50%;
-  box-shadow: 0 0 6px black;
+  background: #ffcc00 !important;
+  border: 2px solid white !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 6px black !important;
 
-  cursor: grab;
-  z-index: 21;
+  cursor: grab !important;
+  z-index: 9997 !important;
+  pointer-events: auto !important;
+  touch-action: none;
 }
 
 .gif-rotate-handle::after {
@@ -1071,7 +1190,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 21. MEMORY TEXT INPUT */
+/* 23. MEMORY TEXT INPUT */
 /* ===================================================== */
 
 .memory-message-input {
@@ -1095,6 +1214,10 @@ body.entered-funeral .funeral-page {
   text-shadow:
     0 0 2px white,
     0 0 4px white;
+
+  pointer-events: auto !important;
+  cursor: text !important;
+  z-index: 9994;
 }
 
 .post-memory-button {
@@ -1109,6 +1232,8 @@ body.entered-funeral .funeral-page {
   font-size: 19px;
   font-weight: 700;
   cursor: pointer;
+
+  pointer-events: auto !important;
 
   text-shadow:
     0 0 3px #7a3c18,
@@ -1136,6 +1261,8 @@ body.entered-funeral .funeral-page {
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
+
+  pointer-events: auto !important;
 }
 
 .clear-memory-button:hover {
@@ -1145,14 +1272,15 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 22. POP UP AD AT THE END */
+/* 24. POP UP AD AT THE END */
 /* ===================================================== */
 
 .cu-popup {
   position: relative;
   width: min(90vw, 1065px);
-  margin: 60px auto 0 auto;
+  margin: -20vh auto 0 auto;
   left: clamp(0px, 8vw, 160px);
+  z-index: 260;
 }
 
 .cu {
@@ -1201,7 +1329,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 23. TABLET RESPONSIVE */
+/* 25. TABLET RESPONSIVE */
 /* ===================================================== */
 
 @media (max-width: 1100px) {
@@ -1240,13 +1368,13 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 24. MOBILE RESPONSIVE */
+/* 26. MOBILE RESPONSIVE */
 /* ===================================================== */
 
 @media (max-width: 900px) {
   .funeral-page {
     min-height: 1120vh;
-    padding-top: 78vh;
+    padding-top: 85vh;
     padding-bottom: 160vh;
   }
 
@@ -1322,10 +1450,6 @@ body.entered-funeral .funeral-page {
     height: 105px !important;
   }
 
-  .gif-controls {
-    grid-template-columns: 1fr;
-  }
-
   .example1 {
     width: 220px;
   }
@@ -1333,259 +1457,4 @@ body.entered-funeral .funeral-page {
   .cu-popup {
     left: 0;
   }
-}
-/* ===================================================== */
-/* FINAL CLEANUP: no sliders, drag handles, better spacing */
-/* ===================================================== */
-
-/* hide the old slider controls */
-.gif-controls {
-  display: none !important;
-}
-
-/* give hero more room before first pink box */
-.funeral-page {
-  padding-top: 100vh !important;
-  min-height: 1100vh !important;
-}
-
-/* make first eulogy box start underneath the hero */
-.eulogy-box:first-of-type {
-  margin-top: 6vh !important;
-}
-
-/* keep the hero above everything */
-.hero-stack {
-  z-index: 280 !important;
-}
-
-.rainbow-title {
-  z-index: 281 !important;
-}
-
-.coffin {
-  z-index: 282 !important;
-}
-
-.subtitle {
-  top: 70% !important;
-  z-index: 283 !important;
-}
-
-/* make the memory preview actually draggable/clickable */
-.memory-preview-card {
-  overflow: visible !important;
-  position: relative !important;
-}
-
-.gif-transform-box {
-  position: absolute !important;
-  left: 45px;
-  top: 20px;
-
-  width: 90px;
-  height: 90px;
-
-  z-index: 20 !important;
-  cursor: move !important;
-
-  border: 1px dashed rgba(0, 0, 0, 0.65);
-  transform-origin: center center;
-  pointer-events: auto !important;
-}
-
-.chosen-message-gif-img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  display: block !important;
-  pointer-events: none !important;
-}
-
-/* resize corner */
-.gif-resize-handle {
-  position: absolute !important;
-  right: -8px !important;
-  bottom: -8px !important;
-
-  width: 16px !important;
-  height: 16px !important;
-
-  background: #ff00bf !important;
-  border: 2px solid white !important;
-  box-shadow: 0 0 6px black !important;
-
-  cursor: nwse-resize !important;
-  z-index: 30 !important;
-  pointer-events: auto !important;
-}
-
-/* rotate handle */
-.gif-rotate-handle {
-  position: absolute !important;
-  right: -10px !important;
-  top: -28px !important;
-
-  width: 18px !important;
-  height: 18px !important;
-
-  background: #ffcc00 !important;
-  border: 2px solid white !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 6px black !important;
-
-  cursor: grab !important;
-  z-index: 31 !important;
-  pointer-events: auto !important;
-}
-
-.gif-rotate-handle::after {
-  content: "↻";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -54%);
-
-  font-size: 13px;
-  font-weight: bold;
-  color: black;
-}
-
-/* move final pop-up box higher */
-.cu-popup {
-  margin-top: -40vh !important;
-}
-/* ===================================================== */
-/* SCROLL MENU SIDE BUTTONS */
-/* ===================================================== */
-
-.scroll-menu-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 720px;
-  margin: 18px auto 24px auto;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.scroll-menu-wrap .candle-picker,
-.scroll-menu-wrap .message-gif-picker,
-.scroll-menu-wrap .message-bg-picker {
-  margin: 0 !important;
-  flex: 1 1 auto !important;
-}
-
-.scroll-menu-button {
-  flex: 0 0 auto;
-
-  width: 44px;
-  height: 44px;
-
-  border: 2px solid #333;
-  background: #ff00bf;
-  color: #fff8d8;
-
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: 26px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow:
-    0 0 8px white,
-    0 0 18px #ff00bf,
-    0 0 28px #ffcc00;
-
-  z-index: 5;
-}
-
-.scroll-menu-button:hover {
-  transform: scale(1.08);
-  background: #e56ad1;
-}
-
-.scroll-menu-button:active {
-  transform: scale(0.96);
-}
-
-@media (max-width: 800px) {
-  .scroll-menu-button {
-    width: 38px;
-    height: 38px;
-    font-size: 22px;
-  }
-}
-/* ===================================================== */
-/* FIX MEMORY SECTION CLICKING */
-/* forces memory station to be clickable */
-/* ===================================================== */
-
-/* all decorative stuff must NOT block clicks */
-.pearl-border,
-.pearl-border *,
-.corner-heart,
-.hero-stack,
-.hero-stack *,
-.rainbow-title,
-.coffin,
-.subtitle,
-.gif-side,
-.gif-side *,
-.memory-wall,
-.memory-wall *,
-body.entered-funeral > canvas {
-  pointer-events: none !important;
-}
-
-/* memory station must sit above decorative layers and accept clicks */
-.memory-section {
-  position: relative !important;
-  z-index: 9990 !important;
-  pointer-events: auto !important;
-}
-
-/* everything inside the memory station must be clickable */
-.memory-section *,
-.scroll-menu-wrap,
-.scroll-menu-wrap *,
-.candle-picker,
-.candle-picker *,
-.message-gif-picker,
-.message-gif-picker *,
-.message-bg-picker,
-.message-bg-picker *,
-.font-picker,
-.font-picker *,
-.layer-controls,
-.layer-controls *,
-.message-form,
-.message-form *,
-.memory-preview-card,
-.memory-preview-card *,
-.memory-message-input,
-.post-memory-button,
-.clear-memory-button {
-  pointer-events: auto !important;
-}
-
-/* except the actual preview gif image, so dragging grabs the box not the image */
-.chosen-message-gif-img {
-  pointer-events: none !important;
-}
-
-/* make sure draggable box and handles are above the preview */
-.gif-transform-box {
-  z-index: 9995 !important;
-  pointer-events: auto !important;
-}
-
-.gif-resize-handle,
-.gif-rotate-handle {
-  z-index: 9996 !important;
-  pointer-events: auto !important;
 }
