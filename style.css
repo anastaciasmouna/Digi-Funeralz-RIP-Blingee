@@ -866,3 +866,340 @@ html.entered-funeral-state .funeral-page {
     left: 0;
   }
 }
+
+/* ===================================================== */
+/* ABSOLUTE FINAL GIF OVERRIDE */
+/* works with old side-blingee classes AND new left/right classes */
+/* ===================================================== */
+
+.gif-side {
+  display: contents !important;
+}
+
+.side-blingee,
+.kari-scatter,
+.memorial-gif {
+  position: absolute !important;
+  height: auto !important;
+  pointer-events: none !important;
+  z-index: 245 !important;
+  object-fit: contain !important;
+
+  filter:
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 12px rgba(255, 0, 191, 0.45));
+}
+
+/* make the main side gifs smaller */
+.side-blingee {
+  width: clamp(70px, 7vw, 125px) !important;
+}
+
+/* LEFT SIDE */
+/* old class + new class both included */
+
+.side-blingee-1,
+.left-gif-1 {
+  top: 120vh !important;
+  left: 2vw !important;
+  right: auto !important;
+  width: clamp(70px, 7vw, 120px) !important;
+  transform: rotate(-8deg) !important;
+}
+
+.side-blingee-2,
+.left-gif-2 {
+  top: 165vh !important;
+  left: 11vw !important;
+  right: auto !important;
+  width: clamp(65px, 6vw, 95px) !important;
+  transform: rotate(10deg) !important;
+}
+
+.side-blingee-3,
+.left-gif-3 {
+  top: 210vh !important;
+  left: 3vw !important;
+  right: auto !important;
+  width: clamp(70px, 7vw, 120px) !important;
+  transform: rotate(-4deg) !important;
+}
+
+.side-blingee-4,
+.left-gif-4 {
+  top: 255vh !important;
+  left: 12vw !important;
+  right: auto !important;
+  width: clamp(65px, 6vw, 90px) !important;
+  transform: rotate(12deg) !important;
+}
+
+.side-blingee-5,
+.left-gif-5 {
+  top: 300vh !important;
+  left: 2vw !important;
+  right: auto !important;
+  width: clamp(70px, 7vw, 115px) !important;
+  transform: rotate(-12deg) !important;
+}
+
+.side-blingee-6,
+.left-gif-6 {
+  top: 345vh !important;
+  left: 11vw !important;
+  right: auto !important;
+  width: clamp(65px, 6vw, 100px) !important;
+  transform: rotate(6deg) !important;
+}
+
+.side-blingee-7,
+.left-gif-7 {
+  top: 390vh !important;
+  left: 3vw !important;
+  right: auto !important;
+  width: clamp(70px, 7vw, 120px) !important;
+  transform: rotate(-9deg) !important;
+}
+
+.side-blingee-8,
+.left-gif-8 {
+  top: 435vh !important;
+  left: 12vw !important;
+  right: auto !important;
+  width: clamp(65px, 6vw, 90px) !important;
+  transform: rotate(14deg) !important;
+}
+
+.side-blingee-9,
+.left-gif-9 {
+  top: 480vh !important;
+  left: 2vw !important;
+  right: auto !important;
+  width: clamp(70px, 7vw, 110px) !important;
+  transform: rotate(-5deg) !important;
+}
+
+.side-blingee-10,
+.left-gif-10 {
+  top: 525vh !important;
+  left: 11vw !important;
+  right: auto !important;
+  width: clamp(65px, 6vw, 95px) !important;
+  transform: rotate(8deg) !important;
+}
+
+.side-blingee-11,
+.left-gif-11 {
+  top: 570vh !important;
+  left: 3vw !important;
+  right: auto !important;
+  width: clamp(70px, 7vw, 115px) !important;
+  transform: rotate(-10deg) !important;
+}
+
+.side-blingee-12,
+.left-gif-12 {
+  top: 615vh !important;
+  left: 12vw !important;
+  right: auto !important;
+  width: clamp(65px, 6vw, 100px) !important;
+  transform: rotate(11deg) !important;
+}
+
+.side-blingee-13,
+.left-gif-13 {
+  top: 660vh !important;
+  left: 2vw !important;
+  right: auto !important;
+  width: clamp(70px, 7vw, 110px) !important;
+  transform: rotate(-6deg) !important;
+}
+
+.side-blingee-14,
+.left-gif-14 {
+  top: 705vh !important;
+  left: 11vw !important;
+  right: auto !important;
+  width: clamp(65px, 6vw, 95px) !important;
+  transform: rotate(13deg) !important;
+}
+
+.side-blingee-15,
+.left-gif-15 {
+  top: 750vh !important;
+  left: 3vw !important;
+  right: auto !important;
+  width: clamp(70px, 7vw, 115px) !important;
+  transform: rotate(-11deg) !important;
+}
+
+/* RIGHT SIDE */
+
+.side-blingee-16,
+.right-gif-1 {
+  top: 140vh !important;
+  right: 2vw !important;
+  left: auto !important;
+  width: clamp(70px, 7vw, 120px) !important;
+  transform: rotate(8deg) !important;
+}
+
+.side-blingee-17,
+.right-gif-2 {
+  top: 185vh !important;
+  right: 11vw !important;
+  left: auto !important;
+  width: clamp(65px, 6vw, 95px) !important;
+  transform: rotate(-12deg) !important;
+}
+
+.side-blingee-18,
+.right-gif-3 {
+  top: 230vh !important;
+  right: 3vw !important;
+  left: auto !important;
+  width: clamp(70px, 7vw, 120px) !important;
+  transform: rotate(5deg) !important;
+}
+
+.side-blingee-19,
+.right-gif-4 {
+  top: 275vh !important;
+  right: 12vw !important;
+  left: auto !important;
+  width: clamp(65px, 6vw, 90px) !important;
+  transform: rotate(-9deg) !important;
+}
+
+.side-blingee-20,
+.right-gif-5 {
+  top: 320vh !important;
+  right: 2vw !important;
+  left: auto !important;
+  width: clamp(70px, 7vw, 115px) !important;
+  transform: rotate(11deg) !important;
+}
+
+.side-blingee-21,
+.right-gif-6 {
+  top: 365vh !important;
+  right: 11vw !important;
+  left: auto !important;
+  width: clamp(65px, 6vw, 100px) !important;
+  transform: rotate(-7deg) !important;
+}
+
+.side-blingee-22,
+.right-gif-7 {
+  top: 410vh !important;
+  right: 3vw !important;
+  left: auto !important;
+  width: clamp(70px, 7vw, 120px) !important;
+  transform: rotate(10deg) !important;
+}
+
+.side-blingee-23,
+.right-gif-8 {
+  top: 455vh !important;
+  right: 12vw !important;
+  left: auto !important;
+  width: clamp(65px, 6vw, 95px) !important;
+  transform: rotate(-13deg) !important;
+}
+
+.side-blingee-24,
+.right-gif-9 {
+  top: 500vh !important;
+  right: 2vw !important;
+  left: auto !important;
+  width: clamp(70px, 7vw, 110px) !important;
+  transform: rotate(6deg) !important;
+}
+
+.side-blingee-25,
+.right-gif-10 {
+  top: 545vh !important;
+  right: 11vw !important;
+  left: auto !important;
+  width: clamp(65px, 6vw, 90px) !important;
+  transform: rotate(-10deg) !important;
+}
+
+.side-blingee-26,
+.right-gif-11 {
+  top: 590vh !important;
+  right: 3vw !important;
+  left: auto !important;
+  width: clamp(70px, 7vw, 115px) !important;
+  transform: rotate(12deg) !important;
+}
+
+.side-blingee-27,
+.right-gif-12 {
+  top: 635vh !important;
+  right: 12vw !important;
+  left: auto !important;
+  width: clamp(65px, 6vw, 100px) !important;
+  transform: rotate(-8deg) !important;
+}
+
+.side-blingee-28,
+.right-gif-13 {
+  top: 680vh !important;
+  right: 2vw !important;
+  left: auto !important;
+  width: clamp(70px, 7vw, 110px) !important;
+  transform: rotate(9deg) !important;
+}
+
+.side-blingee-29,
+.right-gif-14 {
+  top: 725vh !important;
+  right: 11vw !important;
+  left: auto !important;
+  width: clamp(65px, 6vw, 95px) !important;
+  transform: rotate(-12deg) !important;
+}
+
+.side-blingee-30,
+.right-gif-15 {
+  top: 770vh !important;
+  right: 3vw !important;
+  left: auto !important;
+  width: clamp(70px, 7vw, 115px) !important;
+  transform: rotate(7deg) !important;
+}
+
+/* hide the repeated old duplicates if they still exist */
+.side-blingee-31,
+.side-blingee-32,
+.side-blingee-33,
+.side-blingee-34,
+.side-blingee-35,
+.side-blingee-36,
+.side-blingee-37,
+.side-blingee-38,
+.side-blingee-39,
+.side-blingee-40,
+.side-blingee-41,
+.side-blingee-42,
+.side-blingee-43,
+.side-blingee-44,
+.side-blingee-45,
+.side-blingee-46,
+.side-blingee-47,
+.side-blingee-48,
+.side-blingee-49,
+.side-blingee-50,
+.side-blingee-51,
+.side-blingee-52,
+.side-blingee-53,
+.side-blingee-54,
+.side-blingee-55,
+.side-blingee-56,
+.side-blingee-57,
+.side-blingee-58,
+.side-blingee-59,
+.side-blingee-60 {
+  display: none !important;
+}
