@@ -14,6 +14,10 @@ body {
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: white;
   overflow-x: hidden;
@@ -41,7 +45,8 @@ body {
   display: block;
 }
 
-body.entered-funeral .landing-page {
+body.entered-funeral .landing-page,
+html.entered-funeral-state .landing-page {
   display: none;
 }
 
@@ -51,16 +56,12 @@ body.entered-funeral .landing-page {
 
 .landing-pay-respects {
   position: fixed;
-
   left: 50%;
   bottom: 60px;
   transform: translateX(-50%);
-
   z-index: 30;
 
-  width: 360px;
-  max-width: 40vw;
-
+  width: clamp(220px, 24vw, 360px);
   border: none;
   outline: none;
   background: transparent;
@@ -132,7 +133,6 @@ body.entered-funeral > canvas {
 .warning-box {
   position: absolute;
   width: min(90vw, 1530px);
-
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -145,7 +145,7 @@ body.entered-funeral > canvas {
 
 .warning-button {
   position: absolute;
-  width: 150px;
+  width: clamp(120px, 10vw, 150px);
   text-align: center;
 
   border: 2px solid #7a3c18;
@@ -156,7 +156,7 @@ body.entered-funeral > canvas {
 
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   font-style: italic;
-  font-size: 20px;
+  font-size: clamp(15px, 1.3vw, 20px);
   line-height: 1;
 
   color: #fff8d8;
@@ -172,7 +172,6 @@ body.entered-funeral > canvas {
     0 0 32px rgba(255, 214, 120, 0.8);
 
   z-index: 520;
-
   transform: translate(-50%, -50%);
 }
 
@@ -189,12 +188,12 @@ body.entered-funeral > canvas {
 }
 
 .warning-leave {
-  left: calc(50% - 100px);
+  left: calc(50% - 105px);
   top: 60%;
 }
 
 .warning-continue {
-  left: calc(50% + 120px);
+  left: calc(50% + 105px);
   top: 60%;
 }
 
@@ -206,7 +205,8 @@ body.entered-funeral > canvas {
   display: none;
   position: relative;
   width: 100vw;
-  min-height: 660vh;
+
+  min-height: 790vh;
   overflow: hidden;
 
   background-image: url("imgs/stars3.gif");
@@ -215,10 +215,11 @@ body.entered-funeral > canvas {
   background-position: top left;
 
   padding-top: 67vh;
-  padding-bottom: 130vh;
+  padding-bottom: 150vh;
 }
 
-body.entered-funeral .funeral-page {
+body.entered-funeral .funeral-page,
+html.entered-funeral-state .funeral-page {
   display: block;
 }
 
@@ -228,7 +229,7 @@ body.entered-funeral .funeral-page {
 
 .hero-stack {
   position: absolute;
-  top: 65px;
+  top: clamp(45px, 4.5vw, 65px);
   left: 50%;
   transform: translateX(-50%);
 
@@ -254,7 +255,7 @@ body.entered-funeral .funeral-page {
 
 .coffin {
   position: absolute;
-  top: 170px;
+  top: 24%;
   left: 50%;
 
   width: 62%;
@@ -267,7 +268,7 @@ body.entered-funeral .funeral-page {
 
 .subtitle {
   position: absolute;
-  top: 540px;
+  top: 75%;
   left: 50%;
 
   width: 46%;
@@ -293,8 +294,8 @@ body.entered-funeral .funeral-page {
 }
 
 .pearl-border img {
-  width: 32px;
-  height: 32px;
+  width: clamp(24px, 2.2vw, 32px);
+  height: clamp(24px, 2.2vw, 32px);
   object-fit: contain;
   flex: 0 0 auto;
 }
@@ -309,7 +310,7 @@ body.entered-funeral .funeral-page {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: clamp(12px, 1.3vw, 18px);
 }
 
 /* bottom row */
@@ -319,12 +320,10 @@ body.entered-funeral .funeral-page {
   width: calc(100% - 140px);
   height: 60px;
 
-  overflow: hidden;
-
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 28px;
+  gap: clamp(16px, 1.8vw, 28px);
 }
 
 /* left side */
@@ -337,7 +336,7 @@ body.entered-funeral .funeral-page {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 28px;
+  gap: clamp(18px, 1.8vw, 28px);
 }
 
 /* right side */
@@ -350,7 +349,7 @@ body.entered-funeral .funeral-page {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 28px;
+  gap: clamp(18px, 1.8vw, 28px);
 }
 
 /* ===================================================== */
@@ -359,7 +358,7 @@ body.entered-funeral .funeral-page {
 
 .corner-heart {
   position: absolute;
-  width: 75px;
+  width: clamp(58px, 5vw, 75px);
   height: auto;
   z-index: 270;
   pointer-events: none;
@@ -391,760 +390,152 @@ body.entered-funeral .funeral-page {
 }
 
 /* ===================================================== */
-/* 10. LEFT AND RIGHT GIF GROUPS */
+/* 10. RESPONSIVE SIDE GIF SYSTEM */
 /* ===================================================== */
 
-/* Keeps the HTML organised without breaking your existing absolute positions */
+/* This makes the wrappers not trap the gifs inside a tiny box */
 .gif-side {
-  display: contents;
+  display: contents !important;
 }
 
-/* ===================================================== */
-/* 11. SIDE SCATTERED GIFS PACKED EDGES */
-/* ===================================================== */
-
-.side-scattered-gifs {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  min-height: 100%;
-  pointer-events: none;
-  z-index: 244;
-}
-
-.side-blingee {
-  position: absolute;
+.side-blingee,
+.kari-scatter,
+.memorial-gif {
+  position: absolute !important;
   height: auto;
   object-fit: contain;
   pointer-events: none;
-  z-index: 244;
+  z-index: 245;
 
   filter:
     drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))
     drop-shadow(0 0 12px rgba(255, 0, 191, 0.45));
 }
 
-/* LEFT SIDE, OUTER EDGE */
-
-.side-blingee-1 {
-  top: 76vh;
-  left: 2vw;
-  width: 125px;
-  transform: rotate(-8deg);
+/* Main gif size variables */
+.side-blingee {
+  width: clamp(70px, 7vw, 125px);
 }
-
-.side-blingee-2 {
-  top: 98vh;
-  left: 7vw;
-  width: 95px;
-  transform: rotate(10deg);
-}
-
-.side-blingee-3 {
-  top: 122vh;
-  left: 2.5vw;
-  width: 135px;
-  transform: rotate(-4deg);
-}
-
-.side-blingee-4 {
-  top: 148vh;
-  left: 8vw;
-  width: 95px;
-  transform: rotate(12deg);
-}
-
-.side-blingee-5 {
-  top: 174vh;
-  left: 2vw;
-  width: 130px;
-  transform: rotate(-12deg);
-}
-
-.side-blingee-6 {
-  top: 200vh;
-  left: 8.5vw;
-  width: 105px;
-  transform: rotate(6deg);
-}
-
-.side-blingee-7 {
-  top: 226vh;
-  left: 2.5vw;
-  width: 130px;
-  transform: rotate(-9deg);
-}
-
-.side-blingee-8 {
-  top: 252vh;
-  left: 8vw;
-  width: 95px;
-  transform: rotate(14deg);
-}
-
-.side-blingee-9 {
-  top: 278vh;
-  left: 2vw;
-  width: 120px;
-  transform: rotate(-5deg);
-}
-
-.side-blingee-10 {
-  top: 304vh;
-  left: 8.5vw;
-  width: 90px;
-  transform: rotate(8deg);
-}
-
-.side-blingee-11 {
-  top: 330vh;
-  left: 2.5vw;
-  width: 125px;
-  transform: rotate(-10deg);
-}
-
-.side-blingee-12 {
-  top: 356vh;
-  left: 8vw;
-  width: 100px;
-  transform: rotate(11deg);
-}
-
-.side-blingee-13 {
-  top: 382vh;
-  left: 2vw;
-  width: 120px;
-  transform: rotate(-6deg);
-}
-
-.side-blingee-14 {
-  top: 408vh;
-  left: 8.5vw;
-  width: 95px;
-  transform: rotate(13deg);
-}
-
-.side-blingee-15 {
-  top: 434vh;
-  left: 2vw;
-  width: 125px;
-  transform: rotate(-11deg);
-}
-
-/* RIGHT SIDE, OUTER EDGE */
-
-.side-blingee-16 {
-  top: 84vh;
-  right: 2vw;
-  width: 125px;
-  transform: rotate(8deg);
-}
-
-.side-blingee-17 {
-  top: 110vh;
-  right: 8vw;
-  width: 95px;
-  transform: rotate(-12deg);
-}
-
-.side-blingee-18 {
-  top: 136vh;
-  right: 2.5vw;
-  width: 135px;
-  transform: rotate(5deg);
-}
-
-.side-blingee-19 {
-  top: 162vh;
-  right: 8.5vw;
-  width: 90px;
-  transform: rotate(-9deg);
-}
-
-.side-blingee-20 {
-  top: 188vh;
-  right: 2vw;
-  width: 120px;
-  transform: rotate(11deg);
-}
-
-.side-blingee-21 {
-  top: 214vh;
-  right: 8vw;
-  width: 105px;
-  transform: rotate(-7deg);
-}
-
-.side-blingee-22 {
-  top: 240vh;
-  right: 2vw;
-  width: 135px;
-  transform: rotate(10deg);
-}
-
-.side-blingee-23 {
-  top: 266vh;
-  right: 8.5vw;
-  width: 95px;
-  transform: rotate(-13deg);
-}
-
-.side-blingee-24 {
-  top: 292vh;
-  right: 2.5vw;
-  width: 120px;
-  transform: rotate(6deg);
-}
-
-.side-blingee-25 {
-  top: 318vh;
-  right: 8vw;
-  width: 90px;
-  transform: rotate(-10deg);
-}
-
-.side-blingee-26 {
-  top: 344vh;
-  right: 2vw;
-  width: 130px;
-  transform: rotate(12deg);
-}
-
-.side-blingee-27 {
-  top: 370vh;
-  right: 8.5vw;
-  width: 100px;
-  transform: rotate(-8deg);
-}
-
-.side-blingee-28 {
-  top: 396vh;
-  right: 2.5vw;
-  width: 120px;
-  transform: rotate(9deg);
-}
-
-.side-blingee-29 {
-  top: 422vh;
-  right: 8vw;
-  width: 95px;
-  transform: rotate(-12deg);
-}
-
-.side-blingee-30 {
-  top: 448vh;
-  right: 2vw;
-  width: 130px;
-  transform: rotate(7deg);
-}
-
-/* LEFT SIDE, INNER EDGE */
-
-.side-blingee-31 {
-  top: 90vh;
-  left: 13vw;
-  width: 90px;
-  transform: rotate(7deg);
-}
-
-.side-blingee-32 {
-  top: 118vh;
-  left: 15vw;
-  width: 110px;
-  transform: rotate(-10deg);
-}
-
-.side-blingee-33 {
-  top: 146vh;
-  left: 12vw;
-  width: 85px;
-  transform: rotate(13deg);
-}
-
-.side-blingee-34 {
-  top: 176vh;
-  left: 14.5vw;
-  width: 115px;
-  transform: rotate(-6deg);
-}
-
-.side-blingee-35 {
-  top: 206vh;
-  left: 13vw;
-  width: 90px;
-  transform: rotate(9deg);
-}
-
-.side-blingee-36 {
-  top: 236vh;
-  left: 15vw;
-  width: 110px;
-  transform: rotate(-12deg);
-}
-
-.side-blingee-37 {
-  top: 266vh;
-  left: 12vw;
-  width: 95px;
-  transform: rotate(5deg);
-}
-
-.side-blingee-38 {
-  top: 296vh;
-  left: 15vw;
-  width: 115px;
-  transform: rotate(-8deg);
-}
-
-.side-blingee-39 {
-  top: 326vh;
-  left: 13vw;
-  width: 90px;
-  transform: rotate(11deg);
-}
-
-.side-blingee-40 {
-  top: 356vh;
-  left: 15vw;
-  width: 105px;
-  transform: rotate(-7deg);
-}
-
-.side-blingee-41 {
-  top: 386vh;
-  left: 12.5vw;
-  width: 95px;
-  transform: rotate(10deg);
-}
-
-.side-blingee-42 {
-  top: 416vh;
-  left: 14.5vw;
-  width: 115px;
-  transform: rotate(-11deg);
-}
-
-.side-blingee-43 {
-  top: 446vh;
-  left: 13vw;
-  width: 90px;
-  transform: rotate(6deg);
-}
-
-.side-blingee-44 {
-  top: 476vh;
-  left: 15vw;
-  width: 105px;
-  transform: rotate(-9deg);
-}
-
-.side-blingee-45 {
-  top: 506vh;
-  left: 12.5vw;
-  width: 100px;
-  transform: rotate(12deg);
-}
-
-/* RIGHT SIDE, INNER EDGE */
-
-.side-blingee-46 {
-  top: 96vh;
-  right: 13vw;
-  width: 95px;
-  transform: rotate(-7deg);
-}
-
-.side-blingee-47 {
-  top: 124vh;
-  right: 15vw;
-  width: 110px;
-  transform: rotate(10deg);
-}
-
-.side-blingee-48 {
-  top: 154vh;
-  right: 12vw;
-  width: 90px;
-  transform: rotate(-13deg);
-}
-
-.side-blingee-49 {
-  top: 184vh;
-  right: 14.5vw;
-  width: 115px;
-  transform: rotate(6deg);
-}
-
-.side-blingee-50 {
-  top: 214vh;
-  right: 13vw;
-  width: 95px;
-  transform: rotate(-9deg);
-}
-
-.side-blingee-51 {
-  top: 244vh;
-  right: 15vw;
-  width: 110px;
-  transform: rotate(12deg);
-}
-
-.side-blingee-52 {
-  top: 274vh;
-  right: 12.5vw;
-  width: 90px;
-  transform: rotate(-5deg);
-}
-
-.side-blingee-53 {
-  top: 304vh;
-  right: 15vw;
-  width: 115px;
-  transform: rotate(8deg);
-}
-
-.side-blingee-54 {
-  top: 334vh;
-  right: 13vw;
-  width: 95px;
-  transform: rotate(-11deg);
-}
-
-.side-blingee-55 {
-  top: 364vh;
-  right: 15vw;
-  width: 105px;
-  transform: rotate(7deg);
-}
-
-.side-blingee-56 {
-  top: 394vh;
-  right: 12.5vw;
-  width: 95px;
-  transform: rotate(-10deg);
-}
-
-.side-blingee-57 {
-  top: 424vh;
-  right: 14.5vw;
-  width: 115px;
-  transform: rotate(11deg);
-}
-
-.side-blingee-58 {
-  top: 454vh;
-  right: 13vw;
-  width: 90px;
-  transform: rotate(-6deg);
-}
-
-.side-blingee-59 {
-  top: 484vh;
-  right: 15vw;
-  width: 105px;
-  transform: rotate(9deg);
-}
-
-.side-blingee-60 {
-  top: 514vh;
-  right: 12.5vw;
-  width: 100px;
-  transform: rotate(-12deg);
-}
-
-/* ===================================================== */
-/* 12. MAIN SCATTERED GIFS */
-/* ===================================================== */
 
 .kari-scatter {
-  position: absolute;
-  z-index: 245;
-  pointer-events: none;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.45));
+  width: clamp(70px, 8vw, 140px);
 }
 
-.kari-butterfly {
-  width: 90px;
-  top: 40vh;
-  right: 10vw;
-  transform: rotate(12deg);
+.memorial-gif {
+  width: clamp(75px, 8vw, 145px);
 }
 
-.kari-butterfly2 {
-  width: 100px;
-  top: 118vh;
-  left: 8vw;
-  transform: rotate(-9deg);
-}
+/* ===================================================== */
+/* 11. LEFT SIDE GIFS */
+/* ===================================================== */
 
-.kari-butterfly3 {
-  width: 110px;
-  top: 205vh;
-  right: 7vw;
-  transform: rotate(8deg);
-}
+.left-gif-1  { top: 95vh;  left: clamp(18px, 2vw, 38px);  transform: rotate(-8deg); }
+.left-gif-2  { top: 140vh; left: clamp(85px, 10vw, 160px); transform: rotate(10deg); }
+.left-gif-3  { top: 185vh; left: clamp(20px, 3vw, 55px);  transform: rotate(-4deg); }
+.left-gif-4  { top: 230vh; left: clamp(95px, 11vw, 175px); transform: rotate(12deg); }
+.left-gif-5  { top: 275vh; left: clamp(18px, 2vw, 38px);  transform: rotate(-12deg); }
+.left-gif-6  { top: 320vh; left: clamp(85px, 10vw, 160px); transform: rotate(6deg); }
+.left-gif-7  { top: 365vh; left: clamp(20px, 3vw, 55px);  transform: rotate(-9deg); }
+.left-gif-8  { top: 410vh; left: clamp(95px, 11vw, 175px); transform: rotate(14deg); }
+.left-gif-9  { top: 455vh; left: clamp(18px, 2vw, 38px);  transform: rotate(-5deg); }
+.left-gif-10 { top: 500vh; left: clamp(85px, 10vw, 160px); transform: rotate(8deg); }
+.left-gif-11 { top: 545vh; left: clamp(20px, 3vw, 55px);  transform: rotate(-10deg); }
+.left-gif-12 { top: 590vh; left: clamp(95px, 11vw, 175px); transform: rotate(11deg); }
+.left-gif-13 { top: 635vh; left: clamp(18px, 2vw, 38px);  transform: rotate(-6deg); }
+.left-gif-14 { top: 680vh; left: clamp(85px, 10vw, 160px); transform: rotate(13deg); }
+.left-gif-15 { top: 725vh; left: clamp(20px, 3vw, 55px);  transform: rotate(-11deg); }
 
-.kari-candle {
-  width: 140px;
-  top: 160vh;
-  right: 14vw;
-}
+/* ===================================================== */
+/* 12. RIGHT SIDE GIFS */
+/* ===================================================== */
 
-.kari-hello {
-  width: 350px;
-  top: 700px;
-  left: 300px;
-}
+.right-gif-1  { top: 115vh; right: clamp(18px, 2vw, 38px);  transform: rotate(8deg); }
+.right-gif-2  { top: 160vh; right: clamp(85px, 10vw, 160px); transform: rotate(-12deg); }
+.right-gif-3  { top: 205vh; right: clamp(20px, 3vw, 55px);  transform: rotate(5deg); }
+.right-gif-4  { top: 250vh; right: clamp(95px, 11vw, 175px); transform: rotate(-9deg); }
+.right-gif-5  { top: 295vh; right: clamp(18px, 2vw, 38px);  transform: rotate(11deg); }
+.right-gif-6  { top: 340vh; right: clamp(85px, 10vw, 160px); transform: rotate(-7deg); }
+.right-gif-7  { top: 385vh; right: clamp(20px, 3vw, 55px);  transform: rotate(10deg); }
+.right-gif-8  { top: 430vh; right: clamp(95px, 11vw, 175px); transform: rotate(-13deg); }
+.right-gif-9  { top: 475vh; right: clamp(18px, 2vw, 38px);  transform: rotate(6deg); }
+.right-gif-10 { top: 520vh; right: clamp(85px, 10vw, 160px); transform: rotate(-10deg); }
+.right-gif-11 { top: 565vh; right: clamp(20px, 3vw, 55px);  transform: rotate(12deg); }
+.right-gif-12 { top: 610vh; right: clamp(95px, 11vw, 175px); transform: rotate(-8deg); }
+.right-gif-13 { top: 655vh; right: clamp(18px, 2vw, 38px);  transform: rotate(9deg); }
+.right-gif-14 { top: 700vh; right: clamp(85px, 10vw, 160px); transform: rotate(-12deg); }
+.right-gif-15 { top: 745vh; right: clamp(20px, 3vw, 55px);  transform: rotate(7deg); }
 
-.kari-kitty {
-  width: 125px;
-  top: 168vh;
-  right: 14vw;
-  transform: rotate(6deg);
-}
+/* ===================================================== */
+/* 13. KARI GIFS */
+/* ===================================================== */
 
-.kari-music {
-  width: 140px;
-  top: 155vh;
-  left: 10vw;
-}
+.kari-butterfly2 { top: 122vh; left: clamp(30px, 5vw, 90px);  transform: rotate(-9deg); }
+.kari-hello      { top: 168vh; left: clamp(90px, 13vw, 210px); width: clamp(100px, 10vw, 170px); transform: rotate(4deg); }
+.kari-music      { top: 215vh; left: clamp(35px, 5vw, 90px);  transform: rotate(-6deg); }
+.kari-flower2    { top: 262vh; left: clamp(90px, 13vw, 210px); transform: rotate(8deg); }
+.kari-horse      { top: 309vh; left: clamp(35px, 5vw, 90px);  transform: rotate(-5deg); }
+.kari-trebble    { top: 356vh; left: clamp(90px, 13vw, 210px); transform: rotate(7deg); }
+.kari-pyramid    { top: 403vh; left: clamp(35px, 5vw, 90px);  transform: rotate(-8deg); }
+.kari-flower4    { top: 450vh; left: clamp(90px, 13vw, 210px); transform: rotate(6deg); }
 
-.kari-music2 {
-  width: 90px;
-  top: 180vh;
-  right: 12vw;
-}
+.kari-butterfly  { top: 137vh; right: clamp(35px, 5vw, 90px);  transform: rotate(10deg); }
+.kari-butterfly3 { top: 184vh; right: clamp(90px, 13vw, 210px); transform: rotate(-8deg); }
+.kari-candle     { top: 231vh; right: clamp(35px, 5vw, 90px);  transform: rotate(5deg); }
+.kari-kitty      { top: 278vh; right: clamp(90px, 13vw, 210px); transform: rotate(-6deg); }
+.kari-music2     { top: 325vh; right: clamp(35px, 5vw, 90px);  transform: rotate(9deg); }
+.kari-flower3    { top: 372vh; right: clamp(90px, 13vw, 210px); transform: rotate(-7deg); }
+.kari-heart2     { top: 419vh; right: clamp(35px, 5vw, 90px);  transform: rotate(6deg); }
+.kari-trebble2   { top: 466vh; right: clamp(90px, 13vw, 210px); transform: rotate(-9deg); }
+.kari-flower5    { top: 513vh; right: clamp(35px, 5vw, 90px);  transform: rotate(8deg); }
 
 .kari-rigs {
-  width: 245px;
-  height: 618px;
-  top: 673.5vh;
-  left: 8vw;
+  top: 660vh;
+  left: clamp(30px, 5vw, 90px);
+  width: clamp(120px, 13vw, 180px);
+  height: auto;
 }
 
 .kari-rigs1 {
-  width: 245px;
-  height: 618px;
-  top: 673.5vh;
-  left: 73vw;
-}
-
-.kari-flower2 {
-  width: 190px;
-  top: 105vh;
-  left: 7vw;
-}
-
-.kari-flower3 {
-  width: 150px;
-  top: 135vh;
-  right: 7vw;
-  transform: rotate(8deg);
-}
-
-.kari-flower4 {
-  width: 130px;
-  top: 300vh;
-  left: 14vw;
-}
-
-.kari-flower5 {
-  width: 240px;
-  top: 330vh;
-  right: 9vw;
-  opacity: 0.85;
-}
-
-.kari-heart2 {
-  width: 160px;
-  top: 365vh;
-  right: 12vw;
-}
-
-.kari-horse {
-  width: 120px;
-  top: 395vh;
-  left: 12vw;
-}
-
-.kari-trebble {
-  width: 150px;
-  top: 430vh;
-  left: 8vw;
-}
-
-.kari-trebble2 {
-  width: 85px;
-  top: 450vh;
-  right: 8vw;
-}
-
-.kari-pyramid {
-  width: 130px;
-  top: 470vh;
-  left: 10vw;
-  transform: rotate(10deg);
+  top: 660vh;
+  right: clamp(30px, 5vw, 90px);
+  left: auto;
+  width: clamp(120px, 13vw, 180px);
+  height: auto;
 }
 
 /* ===================================================== */
-/* 13. MEMORIAL GIFS */
+/* 14. MEMORIAL GIFS */
 /* ===================================================== */
 
-.memorial-gif {
-  position: absolute;
-  pointer-events: none;
-  z-index: 246;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.65));
-}
+.memorial-angel1   { top: 112vh; left: clamp(120px, 16vw, 260px); transform: rotate(-6deg); }
+.memorial-candle2  { top: 202vh; left: clamp(120px, 16vw, 260px); transform: rotate(4deg); }
+.memorial-dove2    { top: 292vh; left: clamp(120px, 16vw, 260px); transform: rotate(-8deg); }
+.memorial-flower7  { top: 382vh; left: clamp(120px, 16vw, 260px); transform: rotate(6deg); }
+.memorial-heart3   { top: 472vh; left: clamp(120px, 16vw, 260px); transform: rotate(-4deg); }
+.memorial-heart5   { top: 562vh; left: clamp(120px, 16vw, 260px); transform: rotate(5deg); }
+.memorial-loveyou1 { top: 642vh; left: clamp(90px, 12vw, 220px);  transform: rotate(-5deg); }
 
-.memorial-angel1 {
-  width: 180px;
-  top: 80vh;
-  left: 4vw;
-  transform: rotate(-6deg);
-}
+.memorial-angel2    { top: 127vh; right: clamp(120px, 16vw, 260px); transform: rotate(7deg); }
+.memorial-candle3   { top: 217vh; right: clamp(120px, 16vw, 260px); transform: rotate(-5deg); }
+.memorial-dove3     { top: 307vh; right: clamp(120px, 16vw, 260px); transform: rotate(8deg); }
+.memorial-goldheart { top: 397vh; right: clamp(120px, 16vw, 260px); transform: rotate(-7deg); }
+.memorial-heart4    { top: 487vh; right: clamp(120px, 16vw, 260px); transform: rotate(5deg); }
+.memorial-heart6    { top: 577vh; right: clamp(120px, 16vw, 260px); transform: rotate(7deg); }
+.memorial-loveyou2  { top: 642vh; right: clamp(90px, 12vw, 220px);  transform: rotate(4deg); }
 
-.memorial-angel2 {
-  width: 170px;
-  top: 108vh;
-  right: 5vw;
-  transform: rotate(7deg);
-}
-
-.memorial-candle2 {
-  width: 130px;
-  top: 178vh;
-  left: 10vw;
-  transform: rotate(4deg);
-}
-
-.memorial-candle3 {
-  width: 120px;
-  top: 210vh;
-  right: 9vw;
-  transform: rotate(-5deg);
-}
-
-.memorial-dove2 {
-  width: 180px;
-  top: 250vh;
-  left: 7vw;
-  transform: rotate(-8deg);
-}
-
-.memorial-dove3 {
-  width: 170px;
-  top: 280vh;
-  right: 7vw;
-  transform: rotate(8deg);
-}
-
-.memorial-flower7 {
-  width: 130px;
-  top: 315vh;
-  left: 13vw;
-  transform: rotate(6deg);
-}
-
-.memorial-goldheart {
-  width: 110px;
-  top: 338vh;
-  right: 13vw;
-  transform: rotate(-7deg);
-}
-
-.memorial-heart3 {
-  width: 130px;
-  top: 365vh;
-  left: 7vw;
-}
-
-.memorial-heart4 {
-  width: 170px;
-  top: 395vh;
-  right: 8vw;
-  transform: rotate(5deg);
-}
-
-.memorial-heart5 {
-  width: 160px;
-  top: 425vh;
-  left: 12vw;
-  transform: rotate(-4deg);
-}
-
-.memorial-heart6 {
-  width: 150px;
-  top: 455vh;
-  right: 12vw;
-  transform: rotate(7deg);
-}
-
-.memorial-loveyou1 {
-  width: 170px;
-  top: 485vh;
-  left: 5vw;
-  transform: rotate(-5deg);
-}
-
-.memorial-loveyou2 {
-  width: 180px;
-  top: 512vh;
-  right: 6vw;
-  transform: rotate(4deg);
-}
-
-.memorial-missyou1 {
-  width: 160px;
-  top: 540vh;
-  left: 9vw;
-  transform: rotate(6deg);
-}
-
-.memorial-missyou2 {
-  width: 160px;
-  top: 552vh;
-  left: 9vw;
-  transform: rotate(6deg);
-}
-
-.memorial-missyou3 {
-  width: 165px;
-  top: 565vh;
-  right: 9vw;
-  transform: rotate(-6deg);
-}
-
-.memorial-missyou4 {
-  width: 150px;
-  top: 590vh;
-  left: 14vw;
-  transform: rotate(-4deg);
-}
-
-.memorial-missyou5 {
-  width: 165px;
-  top: 615vh;
-  right: 12vw;
-  transform: rotate(5deg);
-}
-
-.memorial-missyou6 {
-  width: 170px;
-  top: 640vh;
-  left: 7vw;
-  transform: rotate(7deg);
-}
-
+/* Hide extra bottom memorial gifs so they do not crowd */
+.memorial-missyou1,
+.memorial-missyou2,
+.memorial-missyou3,
+.memorial-missyou4,
+.memorial-missyou5,
+.memorial-missyou6,
 .memorial-missyou7 {
-  width: 170px;
-  top: 650vh;
-  right: 7vw;
-  transform: rotate(-7deg);
+  display: none !important;
 }
 
 /* ===================================================== */
-/* 14. PINK TEXT BOXES */
+/* 15. PINK TEXT BOXES */
 /* ===================================================== */
 
 .eulogy-box,
@@ -1164,34 +555,26 @@ body.entered-funeral .funeral-page {
 
 .eulogy-box {
   margin: 28vh auto 0 auto;
-  width: 50vw;
-  max-width: 520px;
-  min-width: 420px;
-  padding: 32px 36px;
+  width: clamp(360px, 50vw, 520px);
+  padding: clamp(24px, 2.5vw, 36px);
   top: 45px;
 }
 
 .diagram-section {
   margin: 32vh auto 0 auto;
-  width: 5vw;
-  max-width: 820px;
-  min-width: 420px;
+  width: clamp(360px, 55vw, 820px);
   padding: 28px;
 }
 
 .gif-gallery-section {
   margin: 18vh auto 0 auto;
-  width: 72vw;
-  max-width: 980px;
-  min-width: 420px;
+  width: clamp(360px, 72vw, 980px);
   padding: 32px;
 }
 
 .mia-section {
   margin: 18vh auto 0 auto;
-  width: 46vw;
-  max-width: 760px;
-  min-width: 420px;
+  width: clamp(360px, 46vw, 760px);
   padding: 28px;
 }
 
@@ -1217,13 +600,14 @@ body.entered-funeral .funeral-page {
 }
 
 /* ===================================================== */
-/* 15. EXAMPLE IMAGE */
+/* 16. EXAMPLE IMAGE */
 /* ===================================================== */
 
 .example1 {
-  width: 300px;
+  width: clamp(180px, 20vw, 300px);
   position: relative;
-  left: 625px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 150px;
   z-index: 231;
 }
@@ -1235,7 +619,7 @@ body.entered-funeral .funeral-page {
 }
 
 /* ===================================================== */
-/* 16. VIDEO FRAMES */
+/* 17. VIDEO FRAMES */
 /* ===================================================== */
 
 .video-frame {
@@ -1256,7 +640,7 @@ body.entered-funeral .funeral-page {
 }
 
 /* ===================================================== */
-/* 17. BLINGEE GALLERY */
+/* 18. BLINGEE GALLERY */
 /* ===================================================== */
 
 .gif-gallery {
@@ -1293,17 +677,14 @@ body.entered-funeral .funeral-page {
 }
 
 /* ===================================================== */
-/* 18. POP UP AD AT THE END */
+/* 19. POP UP AD AT THE END */
 /* ===================================================== */
 
 .cu-popup {
   position: relative;
-  width: 1065px;
-  max-width: 90vw;
-
+  width: min(90vw, 1065px);
   margin: 60px auto 0 auto;
-
-  left: 160px;
+  left: clamp(0px, 8vw, 160px);
 }
 
 .cu {
@@ -1351,18 +732,74 @@ body.entered-funeral .funeral-page {
 }
 
 /* ===================================================== */
-/* 19. RESPONSIVE */
+/* 20. TABLET RESPONSIVE */
 /* ===================================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .funeral-page {
+    min-height: 760vh;
+  }
+
+  .hero-stack {
+    width: 88vw;
+  }
+
+  .rainbow-title {
+    width: 125%;
+  }
+
+  .coffin {
+    width: 68%;
+  }
+
+  .subtitle {
+    width: 54%;
+  }
+
+  .side-blingee {
+    width: clamp(55px, 8vw, 95px);
+  }
+
+  .kari-scatter,
+  .memorial-gif {
+    width: clamp(60px, 8vw, 105px);
+  }
+
+  .memorial-angel1,
+  .memorial-candle2,
+  .memorial-dove2,
+  .memorial-flower7,
+  .memorial-heart3,
+  .memorial-heart5,
+  .memorial-loveyou1 {
+    left: clamp(80px, 13vw, 150px);
+  }
+
+  .memorial-angel2,
+  .memorial-candle3,
+  .memorial-dove3,
+  .memorial-goldheart,
+  .memorial-heart4,
+  .memorial-heart6,
+  .memorial-loveyou2 {
+    right: clamp(80px, 13vw, 150px);
+  }
+}
+
+/* ===================================================== */
+/* 21. MOBILE RESPONSIVE */
+/* ===================================================== */
+
+@media (max-width: 800px) {
   .funeral-page {
     min-height: 720vh;
+    padding-top: 60vh;
     padding-bottom: 120vh;
   }
 
   .hero-stack {
-    width: 95vw;
-    top: 60px;
+    width: 96vw;
+    top: 70px;
   }
 
   .rainbow-title {
@@ -1370,20 +807,35 @@ body.entered-funeral .funeral-page {
   }
 
   .coffin {
-    top: 150px;
-    width: 75%;
+    top: 28%;
+    width: 78%;
   }
 
   .subtitle {
-    top: 480px;
-    width: 60%;
+    top: 78%;
+    width: 65%;
+  }
+
+  .pearl-border img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pearl-border-top,
+  .pearl-border-bottom {
+    left: 60px;
+    width: calc(100% - 120px);
+  }
+
+  .corner-heart {
+    width: 58px;
   }
 
   .eulogy-box,
   .diagram-section,
   .gif-gallery-section,
   .mia-section {
-    width: 80vw;
+    width: 82vw;
     min-width: 0;
     padding: 24px;
   }
@@ -1392,152 +844,25 @@ body.entered-funeral .funeral-page {
   .diagram-section p,
   .gif-gallery-section p,
   .mia-section p {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .gif-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Hide most side decoration on small screens so content stays readable */
   .side-blingee,
   .kari-scatter,
   .memorial-gif {
-    display: none;
+    display: none !important;
   }
 
   .example1 {
     width: 220px;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .cu-popup {
     left: 0;
   }
-}
-
-/* ===================================================== */
-/* FIX SIDE GIFS - SPREAD DOWN LEFT AND RIGHT SIDE */
-/* Paste this at the VERY BOTTOM of style.css */
-/* ===================================================== */
-
-.gif-side {
-  display: contents;
-}
-
-.side-blingee,
-.kari-scatter,
-.memorial-gif {
-  position: absolute;
-  height: auto;
-  object-fit: contain;
-  pointer-events: none;
-  z-index: 245;
-
-  filter:
-    drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))
-    drop-shadow(0 0 12px rgba(255, 0, 191, 0.45));
-}
-
-/* LEFT SIDE MAIN GIFS */
-
-.left-gif-1  { top: 88vh;  left: 2vw;  width: 120px; transform: rotate(-8deg); }
-.left-gif-2  { top: 125vh; left: 11vw; width: 95px;  transform: rotate(10deg); }
-.left-gif-3  { top: 162vh; left: 3vw;  width: 120px; transform: rotate(-4deg); }
-.left-gif-4  { top: 199vh; left: 12vw; width: 90px;  transform: rotate(12deg); }
-.left-gif-5  { top: 236vh; left: 2vw;  width: 115px; transform: rotate(-12deg); }
-.left-gif-6  { top: 273vh; left: 11vw; width: 100px; transform: rotate(6deg); }
-.left-gif-7  { top: 310vh; left: 3vw;  width: 120px; transform: rotate(-9deg); }
-.left-gif-8  { top: 347vh; left: 12vw; width: 90px;  transform: rotate(14deg); }
-.left-gif-9  { top: 384vh; left: 2vw;  width: 110px; transform: rotate(-5deg); }
-.left-gif-10 { top: 421vh; left: 11vw; width: 95px;  transform: rotate(8deg); }
-.left-gif-11 { top: 458vh; left: 3vw;  width: 115px; transform: rotate(-10deg); }
-.left-gif-12 { top: 495vh; left: 12vw; width: 100px; transform: rotate(11deg); }
-.left-gif-13 { top: 532vh; left: 2vw;  width: 110px; transform: rotate(-6deg); }
-.left-gif-14 { top: 569vh; left: 11vw; width: 95px;  transform: rotate(13deg); }
-.left-gif-15 { top: 606vh; left: 3vw;  width: 115px; transform: rotate(-11deg); }
-
-/* RIGHT SIDE MAIN GIFS */
-
-.right-gif-1  { top: 105vh; right: 2vw;  width: 120px; transform: rotate(8deg); }
-.right-gif-2  { top: 142vh; right: 11vw; width: 95px;  transform: rotate(-12deg); }
-.right-gif-3  { top: 179vh; right: 3vw;  width: 120px; transform: rotate(5deg); }
-.right-gif-4  { top: 216vh; right: 12vw; width: 90px;  transform: rotate(-9deg); }
-.right-gif-5  { top: 253vh; right: 2vw;  width: 115px; transform: rotate(11deg); }
-.right-gif-6  { top: 290vh; right: 11vw; width: 100px; transform: rotate(-7deg); }
-.right-gif-7  { top: 327vh; right: 3vw;  width: 120px; transform: rotate(10deg); }
-.right-gif-8  { top: 364vh; right: 12vw; width: 95px;  transform: rotate(-13deg); }
-.right-gif-9  { top: 401vh; right: 2vw;  width: 110px; transform: rotate(6deg); }
-.right-gif-10 { top: 438vh; right: 11vw; width: 90px;  transform: rotate(-10deg); }
-.right-gif-11 { top: 475vh; right: 3vw;  width: 115px; transform: rotate(12deg); }
-.right-gif-12 { top: 512vh; right: 12vw; width: 100px; transform: rotate(-8deg); }
-.right-gif-13 { top: 549vh; right: 2vw;  width: 110px; transform: rotate(9deg); }
-.right-gif-14 { top: 586vh; right: 11vw; width: 95px;  transform: rotate(-12deg); }
-.right-gif-15 { top: 623vh; right: 3vw;  width: 115px; transform: rotate(7deg); }
-
-/* KARI GIFS - ALSO SPREAD OUT */
-
-.kari-butterfly2 { top: 120vh; left: 5vw;  width: 90px;  transform: rotate(-9deg); }
-.kari-hello      { top: 150vh; left: 8vw;  width: 150px; transform: rotate(4deg); }
-.kari-music      { top: 185vh; left: 5vw;  width: 120px; transform: rotate(-6deg); }
-.kari-flower2    { top: 225vh; left: 9vw;  width: 120px; transform: rotate(8deg); }
-.kari-horse      { top: 270vh; left: 5vw;  width: 110px; transform: rotate(-5deg); }
-.kari-trebble    { top: 315vh; left: 10vw; width: 100px; transform: rotate(7deg); }
-.kari-pyramid    { top: 360vh; left: 5vw;  width: 110px; transform: rotate(-8deg); }
-.kari-flower4    { top: 405vh; left: 10vw; width: 115px; transform: rotate(6deg); }
-
-.kari-butterfly  { top: 135vh; right: 5vw;  width: 90px;  transform: rotate(10deg); }
-.kari-butterfly3 { top: 170vh; right: 10vw; width: 95px;  transform: rotate(-8deg); }
-.kari-candle     { top: 210vh; right: 5vw;  width: 110px; transform: rotate(5deg); }
-.kari-kitty      { top: 250vh; right: 10vw; width: 105px; transform: rotate(-6deg); }
-.kari-music2     { top: 295vh; right: 5vw;  width: 95px;  transform: rotate(9deg); }
-.kari-flower3    { top: 340vh; right: 10vw; width: 110px; transform: rotate(-7deg); }
-.kari-heart2     { top: 385vh; right: 5vw;  width: 120px; transform: rotate(6deg); }
-.kari-trebble2   { top: 430vh; right: 10vw; width: 90px;  transform: rotate(-9deg); }
-.kari-flower5    { top: 475vh; right: 5vw;  width: 120px; transform: rotate(8deg); }
-
-/* HUGE RIGS LOWER DOWN SO THEY DON'T SIT ON TOP */
-
-.kari-rigs {
-  top: 650vh;
-  left: 5vw;
-  width: 180px;
-  height: auto;
-}
-
-.kari-rigs1 {
-  top: 650vh;
-  right: 5vw;
-  left: auto;
-  width: 180px;
-  height: auto;
-}
-
-/* MEMORIAL GIFS - SPACED OUT */
-
-.memorial-angel1   { top: 110vh; left: 15vw; width: 130px; transform: rotate(-6deg); }
-.memorial-candle2  { top: 200vh; left: 15vw; width: 100px; transform: rotate(4deg); }
-.memorial-dove2    { top: 290vh; left: 15vw; width: 130px; transform: rotate(-8deg); }
-.memorial-flower7  { top: 380vh; left: 15vw; width: 110px; transform: rotate(6deg); }
-.memorial-heart3   { top: 470vh; left: 15vw; width: 110px; transform: rotate(-4deg); }
-.memorial-heart5   { top: 560vh; left: 15vw; width: 115px; transform: rotate(5deg); }
-.memorial-loveyou1 { top: 635vh; left: 12vw; width: 130px; transform: rotate(-5deg); }
-
-.memorial-angel2    { top: 125vh; right: 15vw; width: 130px; transform: rotate(7deg); }
-.memorial-candle3   { top: 215vh; right: 15vw; width: 100px; transform: rotate(-5deg); }
-.memorial-dove3     { top: 305vh; right: 15vw; width: 130px; transform: rotate(8deg); }
-.memorial-goldheart { top: 395vh; right: 15vw; width: 100px; transform: rotate(-7deg); }
-.memorial-heart4    { top: 485vh; right: 15vw; width: 115px; transform: rotate(5deg); }
-.memorial-heart6    { top: 575vh; right: 15vw; width: 115px; transform: rotate(7deg); }
-.memorial-loveyou2  { top: 635vh; right: 12vw; width: 130px; transform: rotate(4deg); }
-
-/* HIDE SOME IF THEY CROWD THE VERY BOTTOM */
-.memorial-missyou1,
-.memorial-missyou2,
-.memorial-missyou3,
-.memorial-missyou4,
-.memorial-missyou5,
-.memorial-missyou6,
-.memorial-missyou7 {
-  display: none;
 }
