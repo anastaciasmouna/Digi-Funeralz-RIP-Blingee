@@ -89,15 +89,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   const candleButtons = document.querySelectorAll(".candle-choice");
+  const messageGifButtons = document.querySelectorAll(".message-gif-choice");
+  const fontButtons = document.querySelectorAll(".font-choice");
+
   const chosenCandleImg = document.querySelector(".chosen-candle-img");
+  const chosenMessageGifImg = document.querySelector(".chosen-message-gif-img");
+
   const messageInput = document.querySelector(".memory-message-input");
   const postButton = document.querySelector(".post-memory-button");
+
   const memoryWallLeft = document.querySelector(".memory-wall-left");
   const memoryWallRight = document.querySelector(".memory-wall-right");
 
   if (
     !candleButtons.length ||
+    !messageGifButtons.length ||
+    !fontButtons.length ||
     !chosenCandleImg ||
+    !chosenMessageGifImg ||
     !messageInput ||
     !postButton ||
     !memoryWallLeft ||
@@ -107,6 +116,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   let selectedCandle = "imgs/candle1.png";
+  let selectedMessageGif = "imgs/messagegif1.gif";
+  let selectedFont = "'Apple Chancery', cursive";
 
   const colours = [
     "#fff8d8",
@@ -147,15 +158,28 @@ window.addEventListener("DOMContentLoaded", () => {
       const note = document.createElement("div");
       note.className = "memory-note";
       note.style.background = message.colour;
+      note.style.fontFamily = message.font;
+
+      const visual = document.createElement("div");
+      visual.className = "memory-note-visual";
 
       const candle = document.createElement("img");
+      candle.className = "memory-note-candle";
       candle.src = message.candle;
       candle.alt = "";
+
+      const messageGif = document.createElement("img");
+      messageGif.className = "memory-note-gif";
+      messageGif.src = message.messageGif;
+      messageGif.alt = "";
 
       const text = document.createElement("p");
       text.textContent = message.text;
 
-      note.appendChild(candle);
+      visual.appendChild(candle);
+      visual.appendChild(messageGif);
+
+      note.appendChild(visual);
       note.appendChild(text);
 
       if (index % 2 === 0) {
@@ -176,6 +200,26 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  messageGifButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      messageGifButtons.forEach((btn) => btn.classList.remove("selected"));
+
+      button.classList.add("selected");
+      selectedMessageGif = button.dataset.messageGif;
+      chosenMessageGifImg.src = selectedMessageGif;
+    });
+  });
+
+  fontButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      fontButtons.forEach((btn) => btn.classList.remove("selected"));
+
+      button.classList.add("selected");
+      selectedFont = button.dataset.font;
+      messageInput.style.fontFamily = selectedFont;
+    });
+  });
+
   postButton.addEventListener("click", () => {
     const text = messageInput.value.trim();
 
@@ -189,6 +233,8 @@ window.addEventListener("DOMContentLoaded", () => {
     messages.push({
       text,
       candle: selectedCandle,
+      messageGif: selectedMessageGif,
+      font: selectedFont,
       colour: colours[messages.length % colours.length],
     });
 
@@ -199,5 +245,10 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   candleButtons[0].classList.add("selected");
+  messageGifButtons[0].classList.add("selected");
+  fontButtons[0].classList.add("selected");
+
+  messageInput.style.fontFamily = selectedFont;
+
   renderMessages();
 });
