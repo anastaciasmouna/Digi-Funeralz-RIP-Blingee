@@ -128,7 +128,6 @@ window.addEventListener("DOMContentLoaded", () => {
     !messageGifButtons.length ||
     !bgButtons.length ||
     !fontButtons.length ||
-    !layerButtons.length ||
     !chosenCandleImg ||
     !chosenMessageGifImg ||
     !previewCard ||
@@ -141,6 +140,7 @@ window.addEventListener("DOMContentLoaded", () => {
     !memoryWallLeft ||
     !memoryWallRight
   ) {
+    console.log("Memory station missing one or more elements.");
     return;
   }
 
@@ -193,10 +193,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (selectedLayer === "behind") {
       transformBox.style.zIndex = "1";
-      chosenCandleImg.style.zIndex = "4";
+      chosenCandleImg.style.zIndex = "10";
     } else {
-      transformBox.style.zIndex = "5";
-      chosenCandleImg.style.zIndex = "1";
+      transformBox.style.zIndex = "20";
+      chosenCandleImg.style.zIndex = "2";
     }
   }
 
@@ -260,8 +260,8 @@ window.addEventListener("DOMContentLoaded", () => {
   candleButtons.forEach((button) => {
     button.addEventListener("click", () => {
       candleButtons.forEach((btn) => btn.classList.remove("selected"));
-
       button.classList.add("selected");
+
       selectedCandle = button.dataset.candle;
       chosenCandleImg.src = selectedCandle;
     });
@@ -270,8 +270,8 @@ window.addEventListener("DOMContentLoaded", () => {
   messageGifButtons.forEach((button) => {
     button.addEventListener("click", () => {
       messageGifButtons.forEach((btn) => btn.classList.remove("selected"));
-
       button.classList.add("selected");
+
       selectedMessageGif = button.dataset.messageGif;
       chosenMessageGifImg.src = selectedMessageGif;
     });
@@ -280,8 +280,8 @@ window.addEventListener("DOMContentLoaded", () => {
   bgButtons.forEach((button) => {
     button.addEventListener("click", () => {
       bgButtons.forEach((btn) => btn.classList.remove("selected"));
-
       button.classList.add("selected");
+
       selectedBg = button.dataset.bg;
 
       previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
@@ -292,24 +292,24 @@ window.addEventListener("DOMContentLoaded", () => {
   fontButtons.forEach((button) => {
     button.addEventListener("click", () => {
       fontButtons.forEach((btn) => btn.classList.remove("selected"));
-
       button.classList.add("selected");
-      selectedFont = button.dataset.font;
 
+      selectedFont = button.dataset.font;
       messageInput.style.setProperty("font-family", selectedFont, "important");
     });
   });
 
-  layerButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      layerButtons.forEach((btn) => btn.classList.remove("selected"));
+  if (layerButtons.length) {
+    layerButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        layerButtons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
 
-      button.classList.add("selected");
-      selectedLayer = button.dataset.layer;
-
-      updateTransformBox();
+        selectedLayer = button.dataset.layer;
+        updateTransformBox();
+      });
     });
-  });
+  }
 
   let dragging = false;
   let resizing = false;
@@ -360,9 +360,9 @@ window.addEventListener("DOMContentLoaded", () => {
       gifX = startX + (event.clientX - startMouseX);
       gifY = startY + (event.clientY - startMouseY);
 
-      // allow it to go outside the preview card
-      gifX = Math.max(-90, Math.min(180, gifX));
-      gifY = Math.max(-90, Math.min(180, gifY));
+      // can go slightly outside the preview
+      gifX = Math.max(-120, Math.min(220, gifX));
+      gifY = Math.max(-120, Math.min(220, gifY));
 
       updateTransformBox();
     }
@@ -374,7 +374,6 @@ window.addEventListener("DOMContentLoaded", () => {
       );
 
       gifSize = Math.max(35, Math.min(220, startSize + movement));
-
       updateTransformBox();
     }
 
@@ -437,7 +436,10 @@ window.addEventListener("DOMContentLoaded", () => {
   messageGifButtons[0].classList.add("selected");
   bgButtons[0].classList.add("selected");
   fontButtons[0].classList.add("selected");
-  layerButtons[0].classList.add("selected");
+
+  if (layerButtons.length) {
+    layerButtons[0].classList.add("selected");
+  }
 
   previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
   messageInput.style.setProperty("--message-bg", `url("${selectedBg}")`);

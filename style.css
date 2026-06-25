@@ -1334,3 +1334,124 @@ body.entered-funeral .funeral-page {
     left: 0;
   }
 }
+/* ===================================================== */
+/* FINAL CLEANUP: no sliders, drag handles, better spacing */
+/* ===================================================== */
+
+/* hide the old slider controls */
+.gif-controls {
+  display: none !important;
+}
+
+/* give hero more room before first pink box */
+.funeral-page {
+  padding-top: 100vh !important;
+  min-height: 1100vh !important;
+}
+
+/* make first eulogy box start underneath the hero */
+.eulogy-box:first-of-type {
+  margin-top: 6vh !important;
+}
+
+/* keep the hero above everything */
+.hero-stack {
+  z-index: 280 !important;
+}
+
+.rainbow-title {
+  z-index: 281 !important;
+}
+
+.coffin {
+  z-index: 282 !important;
+}
+
+.subtitle {
+  top: 70% !important;
+  z-index: 283 !important;
+}
+
+/* make the memory preview actually draggable/clickable */
+.memory-preview-card {
+  overflow: visible !important;
+  position: relative !important;
+}
+
+.gif-transform-box {
+  position: absolute !important;
+  left: 45px;
+  top: 20px;
+
+  width: 90px;
+  height: 90px;
+
+  z-index: 20 !important;
+  cursor: move !important;
+
+  border: 1px dashed rgba(0, 0, 0, 0.65);
+  transform-origin: center center;
+  pointer-events: auto !important;
+}
+
+.chosen-message-gif-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
+/* resize corner */
+.gif-resize-handle {
+  position: absolute !important;
+  right: -8px !important;
+  bottom: -8px !important;
+
+  width: 16px !important;
+  height: 16px !important;
+
+  background: #ff00bf !important;
+  border: 2px solid white !important;
+  box-shadow: 0 0 6px black !important;
+
+  cursor: nwse-resize !important;
+  z-index: 30 !important;
+  pointer-events: auto !important;
+}
+
+/* rotate handle */
+.gif-rotate-handle {
+  position: absolute !important;
+  right: -10px !important;
+  top: -28px !important;
+
+  width: 18px !important;
+  height: 18px !important;
+
+  background: #ffcc00 !important;
+  border: 2px solid white !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 6px black !important;
+
+  cursor: grab !important;
+  z-index: 31 !important;
+  pointer-events: auto !important;
+}
+
+.gif-rotate-handle::after {
+  content: "↻";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -54%);
+
+  font-size: 13px;
+  font-weight: bold;
+  color: black;
+}
+
+/* move final pop-up box higher */
+.cu-popup {
+  margin-top: -40vh !important;
+}
