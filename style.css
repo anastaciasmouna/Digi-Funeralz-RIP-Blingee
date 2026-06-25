@@ -1459,3 +1459,32 @@ body.entered-funeral .funeral-page {
     left: 0;
   }
 }
+
+/* ===================================================== */
+/* FORCE CONTENT BELOW HERO */
+/* ===================================================== */
+
+.funeral-page {
+  padding-top: 125vh !important;
+}
+
+.hero-stack {
+  top: 75px !important;
+  z-index: 260 !important;
+}
+
+.subtitle {
+  top: 69% !important;
+}
+
+/* first pink box starts after subtitle/hero */
+.eulogy-box:first-of-type {
+  margin-top: 0 !important;
+}
+
+/* example sits after first eulogy, not inside hero */
+.example1 {
+  top: 0 !important;
+  margin-top: 22vh !important;
+  margin-bottom: 24vh !important;
+}
