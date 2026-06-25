@@ -52,7 +52,7 @@ body.entered-funeral .landing-page {
 
 
 /* ===================================================== */
-/* 3. LANDING PAY RESPECTS BUTTON */
+/* 3. LANDING BUTTON */
 /* ===================================================== */
 
 .landing-pay-respects {
@@ -217,10 +217,6 @@ body.entered-funeral > canvas {
   background-repeat: repeat;
   background-size: auto;
   background-position: top left;
-
-  /* content begins AFTER hero */
-  padding-top: 118vh;
-  padding-bottom: 240vh;
 }
 
 body.entered-funeral .funeral-page {
@@ -267,7 +263,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 8. HERO IMAGE LAYERS */
+/* 8. HERO */
 /* ===================================================== */
 
 .hero-stack {
@@ -283,10 +279,7 @@ body.entered-funeral .funeral-page {
   pointer-events: none !important;
 }
 
-.hero-stack *,
-.rainbow-title,
-.coffin,
-.subtitle {
+.hero-stack * {
   pointer-events: none !important;
 }
 
@@ -330,7 +323,22 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 9. SMALL PEARL BORDER */
+/* 9. CONTENT FLOW */
+/* THIS IS THE IMPORTANT FIX */
+/* ===================================================== */
+
+.content-flow {
+  position: relative;
+  z-index: 230;
+
+  /* this forces the first eulogy box below the whole hero */
+  padding-top: 155vh;
+  padding-bottom: 240vh;
+}
+
+
+/* ===================================================== */
+/* 10. PEARL BORDER */
 /* ===================================================== */
 
 .pearl-border {
@@ -352,7 +360,6 @@ body.entered-funeral .funeral-page {
   flex: 0 0 auto;
 }
 
-/* top inner border */
 .pearl-border-top {
   top: 24px;
   left: 120px;
@@ -365,7 +372,6 @@ body.entered-funeral .funeral-page {
   gap: 18px;
 }
 
-/* bottom inner border */
 .pearl-border-bottom {
   bottom: 24px;
   left: 120px;
@@ -378,7 +384,6 @@ body.entered-funeral .funeral-page {
   gap: 22px;
 }
 
-/* left inner border */
 .pearl-border-left {
   top: 120px;
   left: 115px;
@@ -391,7 +396,6 @@ body.entered-funeral .funeral-page {
   gap: 26px;
 }
 
-/* right inner border */
 .pearl-border-right {
   top: 120px;
   right: 115px;
@@ -406,7 +410,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 10. CORNER HEARTS */
+/* 11. CORNER HEARTS */
 /* ===================================================== */
 
 .corner-heart {
@@ -444,7 +448,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 11. GIF COLUMNS OUTSIDE PEARL BORDER */
+/* 12. SIDE GIF COLUMNS OUTSIDE BORDER */
 /* ===================================================== */
 
 .gif-side {
@@ -511,33 +515,16 @@ body.entered-funeral .funeral-page {
   transform: rotate(-8deg);
 }
 
-.kari-rigs,
-.kari-rigs1 {
-  width: 88px !important;
-  height: auto !important;
-}
-
-.memorial-missyou1,
-.memorial-missyou2,
-.memorial-missyou3,
-.memorial-missyou4,
-.memorial-missyou5,
-.memorial-missyou6,
-.memorial-missyou7 {
-  display: none !important;
-}
-
 
 /* ===================================================== */
-/* 12. SMALLER PINK TEXT BOXES */
+/* 13. TEXT BOXES */
 /* ===================================================== */
 
 .eulogy-box,
-.diagram-section,
 .gif-gallery-section,
-.mia-section {
+.mia-section,
+.memory-section {
   position: relative;
-  top: 300px;
   z-index: 230;
 
   background: #e56ad1;
@@ -553,19 +540,13 @@ body.entered-funeral .funeral-page {
 }
 
 .eulogy-box {
-  margin: 0 auto 0 auto;
   width: clamp(340px, 38vw, 470px);
   padding: 24px 28px;
+  margin: 0 auto;
 }
 
 .eulogy-box + .eulogy-box {
   margin-top: 22vh;
-}
-
-.diagram-section {
-  margin: 24vh auto 0 auto;
-  width: clamp(340px, 44vw, 620px);
-  padding: 24px;
 }
 
 .gif-gallery-section {
@@ -581,9 +562,9 @@ body.entered-funeral .funeral-page {
 }
 
 .eulogy-box p,
-.diagram-section p,
 .gif-gallery-section p,
-.mia-section p {
+.mia-section p,
+.memory-section p {
   color: #201018;
   font-size: clamp(14px, 1vw, 18px);
   line-height: 1.15;
@@ -592,9 +573,9 @@ body.entered-funeral .funeral-page {
 }
 
 .eulogy-box h3,
-.diagram-section h2,
 .gif-gallery-section h2,
-.mia-section h2 {
+.mia-section h2,
+.memory-section h2 {
   font-size: clamp(22px, 2vw, 38px);
   line-height: 1;
   margin-bottom: 14px;
@@ -603,17 +584,14 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 13. EXAMPLE IMAGE */
+/* 14. EXAMPLE IMAGE */
 /* ===================================================== */
 
 .example1 {
   width: clamp(180px, 18vw, 260px);
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  margin-top: 20vh;
-  margin-bottom: 24vh;
+
+  margin: 24vh auto 24vh auto;
   z-index: 231;
 }
 
@@ -625,7 +603,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 14. VIDEO FRAMES */
+/* 15. VIDEO */
 /* ===================================================== */
 
 .video-frame {
@@ -647,7 +625,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 15. BLINGEE GALLERY */
+/* 16. GALLERY */
 /* ===================================================== */
 
 .gif-gallery {
@@ -673,19 +651,9 @@ body.entered-funeral .funeral-page {
   margin: 0 auto;
 }
 
-.gif-gallery figcaption {
-  max-width: 190px;
-  margin: 8px auto 0 auto;
-  color: #201018;
-  font-size: 11px;
-  line-height: 1.1;
-  font-weight: 700;
-  text-align: left;
-}
-
 
 /* ===================================================== */
-/* 16. MEMORY MESSAGE WALL INSIDE PEARL BORDER */
+/* 17. MEMORY WALL */
 /* ===================================================== */
 
 .memory-wall {
@@ -799,7 +767,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 17. MEMORY SECTION - CLICKABLE */
+/* 18. MEMORY SECTION */
 /* ===================================================== */
 
 .memory-section {
@@ -811,40 +779,16 @@ body.entered-funeral .funeral-page {
   margin: 24vh auto 90vh auto;
   padding: 28px;
 
-  background: #e56ad1;
-  border: 2px solid #333;
-
-  text-align: center;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  color: #201018;
-
   pointer-events: auto !important;
-
-  box-shadow:
-    0 0 10px rgba(255, 255, 255, 0.7),
-    0 0 22px rgba(255, 0, 191, 0.45);
 }
 
 .memory-section,
-.memory-section *,
-.scroll-menu-wrap,
-.scroll-menu-wrap *,
-.message-form,
-.message-form *,
-.memory-preview-card,
-.memory-preview-card *,
-.font-picker,
-.font-picker *,
-.layer-controls,
-.layer-controls * {
+.memory-section * {
   pointer-events: auto !important;
 }
 
 .memory-section h2 {
   font-size: clamp(28px, 3vw, 50px);
-  line-height: 1;
-  margin-bottom: 14px;
-  color: #201018;
 }
 
 .memory-section h3 {
@@ -853,17 +797,9 @@ body.entered-funeral .funeral-page {
   color: #201018;
 }
 
-.memory-section p {
-  color: #201018;
-  font-size: clamp(14px, 1vw, 18px);
-  line-height: 1.15;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-
 
 /* ===================================================== */
-/* 18. SCROLL MENU WRAPPER + BUTTONS */
+/* 19. SCROLL MENUS */
 /* ===================================================== */
 
 .scroll-menu-wrap {
@@ -919,11 +855,6 @@ body.entered-funeral .funeral-page {
   background: #e56ad1;
 }
 
-
-/* ===================================================== */
-/* 19. MEMORY STATION MENUS */
-/* ===================================================== */
-
 .candle-picker,
 .message-gif-picker,
 .message-bg-picker {
@@ -946,7 +877,6 @@ body.entered-funeral .funeral-page {
   border: 2px solid #333 !important;
 
   pointer-events: auto !important;
-  z-index: 9992;
 }
 
 .candle-choice,
@@ -1051,7 +981,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 21. HIDE OLD SLIDER CONTROLS */
+/* 21. HIDE OLD SLIDERS */
 /* ===================================================== */
 
 .gif-controls {
@@ -1060,21 +990,13 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 22. MEMORY PREVIEW EDITOR */
+/* 22. MEMORY PREVIEW */
 /* ===================================================== */
 
 .message-form {
   margin-top: 24px;
   margin-bottom: 40px;
   pointer-events: auto !important;
-}
-
-.selected-memory-preview {
-  margin-bottom: 14px;
-}
-
-.selected-memory-preview p {
-  margin-bottom: 8px;
 }
 
 .memory-preview-card {
@@ -1191,7 +1113,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 23. MEMORY TEXT INPUT */
+/* 23. MEMORY INPUT */
 /* ===================================================== */
 
 .memory-message-input {
@@ -1273,7 +1195,7 @@ body.entered-funeral .funeral-page {
 
 
 /* ===================================================== */
-/* 24. POP UP AD AT THE END */
+/* 24. POP UP */
 /* ===================================================== */
 
 .cu-popup {
@@ -1281,12 +1203,16 @@ body.entered-funeral .funeral-page {
   width: min(90vw, 1065px);
   margin: -20vh auto 0 auto;
   left: clamp(0px, 8vw, 160px);
-  z-index: 260;
+  z-index: 9998;
+  pointer-events: auto !important;
 }
 
 .cu {
   width: 70%;
   display: block;
+  position: relative;
+  z-index: 1;
+  pointer-events: none !important;
 }
 
 .cuok {
@@ -1298,15 +1224,9 @@ body.entered-funeral .funeral-page {
   width: 260px;
   max-width: 28%;
   cursor: pointer;
-}
 
-.cuok img {
-  width: 100%;
-  display: block;
-}
-
-.cuok:hover {
-  filter: brightness(1.12);
+  z-index: 9999;
+  pointer-events: auto !important;
 }
 
 .X {
@@ -1317,27 +1237,24 @@ body.entered-funeral .funeral-page {
   display: block;
   width: 40px;
   cursor: pointer;
+
+  z-index: 9999;
+  pointer-events: auto !important;
 }
 
+.cuok img,
 .X img {
   width: 100%;
   display: block;
-}
-
-.X:hover {
-  filter: brightness(1.12);
+  pointer-events: none !important;
 }
 
 
 /* ===================================================== */
-/* 25. TABLET RESPONSIVE */
+/* 25. RESPONSIVE */
 /* ===================================================== */
 
 @media (max-width: 1100px) {
-  .funeral-page {
-    min-height: 1120vh;
-  }
-
   .hero-stack {
     width: 88vw;
   }
@@ -1354,6 +1271,10 @@ body.entered-funeral .funeral-page {
     width: 54%;
   }
 
+  .content-flow {
+    padding-top: 145vh;
+  }
+
   .memory-wall-left {
     left: 135px;
   }
@@ -1367,16 +1288,9 @@ body.entered-funeral .funeral-page {
   }
 }
 
-
-/* ===================================================== */
-/* 26. MOBILE RESPONSIVE */
-/* ===================================================== */
-
 @media (max-width: 900px) {
   .funeral-page {
     min-height: 1120vh;
-    padding-top: 85vh;
-    padding-bottom: 160vh;
   }
 
   .hero-stack {
@@ -1396,6 +1310,11 @@ body.entered-funeral .funeral-page {
   .subtitle {
     top: 75%;
     width: 65%;
+  }
+
+  .content-flow {
+    padding-top: 105vh;
+    padding-bottom: 160vh;
   }
 
   .pearl-border-left {
@@ -1422,7 +1341,6 @@ body.entered-funeral .funeral-page {
   }
 
   .eulogy-box,
-  .diagram-section,
   .gif-gallery-section,
   .mia-section,
   .memory-section {
@@ -1431,24 +1349,8 @@ body.entered-funeral .funeral-page {
     padding: 24px;
   }
 
-  .eulogy-box p,
-  .diagram-section p,
-  .gif-gallery-section p,
-  .mia-section p,
-  .memory-section p {
-    font-size: 17px;
-  }
-
   .gif-gallery {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .candle-choice,
-  .message-gif-choice,
-  .message-bg-choice {
-    flex: 0 0 120px !important;
-    width: 120px !important;
-    height: 105px !important;
   }
 
   .example1 {
@@ -1458,60 +1360,4 @@ body.entered-funeral .funeral-page {
   .cu-popup {
     left: 0;
   }
-}
-
-/* ===================================================== */
-/* FORCE CONTENT BELOW HERO */
-/* ===================================================== */
-
-.funeral-page {
-  padding-top: 125vh !important;
-}
-
-.hero-stack {
-  top: 75px !important;
-  z-index: 260 !important;
-}
-
-.subtitle {
-  top: 69% !important;
-}
-
-/* first pink box starts after subtitle/hero */
-.eulogy-box:first-of-type {
-  margin-top: 0 !important;
-}
-
-/* example sits after first eulogy, not inside hero */
-.example1 {
-  top: 0 !important;
-  margin-top: 22vh !important;
-  margin-bottom: 24vh !important;
-}
-
-/* ===================================================== */
-/* FIX END POPUP CLICKING */
-/* ===================================================== */
-
-.cu-popup {
-  z-index: 9998 !important;
-  pointer-events: auto !important;
-}
-
-.cu {
-  position: relative !important;
-  z-index: 1 !important;
-  pointer-events: none !important;
-}
-
-.cuok,
-.X {
-  z-index: 9999 !important;
-  pointer-events: auto !important;
-  cursor: pointer !important;
-}
-
-.cuok img,
-.X img {
-  pointer-events: none !important;
 }
