@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 
-html,
+html{
+  background: rgb(0, 255, 13);
+}
 body {
   width: 100%;
   height: 100%;
@@ -77,63 +79,57 @@ body {
   position: fixed;
   top: 23%; /* change this to move it up/down */
   left: 20%; /* change this to move it left/right */
-  width: 180px;
-  height: 90px;
+  width:240px;
+  height: 190px;
   border: 2px solid rgb(66, 23, 254);
   /* soft glow instead of hard border */
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
 }
 .settee {
   position: fixed;
-  top: 38%; /* change this to move it up/down */
+  top: 46%; /* change this to move it up/down */
   left: 20%; /* change this to move it left/right */
-  width: 180px;
-  height: 90px;
-  border: 3px solid rgb(66, 23, 254);
+  width:240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
   /* soft glow instead of hard border */
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
 }
 .seat {
   position: fixed;
-  top: 53%; /* change this to move it up/down */
-  left: 20%; /* change this to move it left/right */
-  width: 180px;
-  height: 90px;
-  border: 3px solid rgb(0, 30, 255);
-  /* fully circular (if image is square) */
-  /* border-radius: 50%; */
-  /* soft glow instead of hard border */
+  top: 69.5%; 
+  left: 20%; 
+  width:240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
 }
 .faux {
   position: fixed;
   top: 23%;
   left: 64%;
-  width: 180px;
-  height: 90px; /* different ratio to the original = stretched */
-  border: 3px solid rgb(66, 23, 254);
-  /* soft glow instead of hard border */
+  width:240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
 }
 .sofas {
   position: fixed;
-  top: 38%; /* change this to move it up/down */
+  top: 46%; /* change this to move it up/down */
   left: 64%; /* change this to move it left/right */
-  width: 180px;
-  height: 90px; /* different ratio to the original = stretched */
-  border: 3px solid rgb(66, 23, 254);
-  /* soft glow instead of hard border */
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+   width:240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);;
 }
 .fur {
   position: fixed;
-  top: 53%; /* change this to move it up/down */
+  top: 69.5%; /* change this to move it up/down */
   left: 64%; /* change this to move it left/right */
-  width: 180px;
-  height: 90px; /* different ratio to the original = stretched */
-  border: 3px solid rgb(66, 23, 254);
-  /* soft glow instead of hard border */
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  width:240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);;
 }
 .sphynx {
   position: fixed;
@@ -147,7 +143,7 @@ body {
 }
 .fro {
   position: fixed;
-  top: 17%; /* change this to move it up/down */
+  top: 13%; /* change this to move it up/down */
   left: 0%; /* change this to move it left/right */
   width: 50px;
   height: 130px; /* different ratio to the original = stretched */
@@ -181,7 +177,7 @@ h3 {
   font-size: 20px;
   font-family: "Verdana", Geneva, Tahoma, sans-serif;
   position: fixed;
-  top: 39%;
+  top: 41%;
   left: 0%;
 
   background: rgb(0, 128, 234); /* black, half transparent */
@@ -192,7 +188,7 @@ h4 {
   font-size: 11px;
   font-family: "Verdana", Geneva, Tahoma, sans-serif;
   position: fixed;
-  top: 78%;
+  top: 70%;
   left: 0%;
 
   background: rgb(0, 128, 234); /* black, half transparent */
