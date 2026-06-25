@@ -94,18 +94,18 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("DOMContentLoaded", () => {
   const candleButtons = document.querySelectorAll(".candle-choice");
   const messageGifButtons = document.querySelectorAll(".message-gif-choice");
+  const bgButtons = document.querySelectorAll(".message-bg-choice");
   const fontButtons = document.querySelectorAll(".font-choice");
 
   const chosenCandleImg = document.querySelector(".chosen-candle-img");
   const chosenMessageGifImg = document.querySelector(".chosen-message-gif-img");
-
-  const gifXControl = document.querySelector(".gif-x-control");
-  const gifYControl = document.querySelector(".gif-y-control");
-  const gifScaleControl = document.querySelector(".gif-scale-control");
-  const gifRotateControl = document.querySelector(".gif-rotate-control");
+  const previewCard = document.querySelector(".memory-preview-card");
+  const transformBox = document.querySelector(".gif-transform-box");
+  const resizeHandle = document.querySelector(".gif-resize-handle");
 
   const messageInput = document.querySelector(".memory-message-input");
   const postButton = document.querySelector(".post-memory-button");
+  const clearButton = document.querySelector(".clear-memory-button");
 
   const memoryWallLeft = document.querySelector(".memory-wall-left");
   const memoryWallRight = document.querySelector(".memory-wall-right");
@@ -113,15 +113,16 @@ window.addEventListener("DOMContentLoaded", () => {
   if (
     !candleButtons.length ||
     !messageGifButtons.length ||
+    !bgButtons.length ||
     !fontButtons.length ||
     !chosenCandleImg ||
     !chosenMessageGifImg ||
-    !gifXControl ||
-    !gifYControl ||
-    !gifScaleControl ||
-    !gifRotateControl ||
+    !previewCard ||
+    !transformBox ||
+    !resizeHandle ||
     !messageInput ||
     !postButton ||
+    !clearButton ||
     !memoryWallLeft ||
     !memoryWallRight
   ) {
@@ -130,12 +131,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let selectedCandle = "imgs/candle1.png";
   let selectedMessageGif = "imgs/messagegif1.gif";
+  let selectedBg = "imgs/background1.gif";
   let selectedFont = "'Apple Chancery', cursive";
 
-  let gifX = 0;
-  let gifY = 0;
-  let gifScale = 1;
-  let gifRotate = 0;
+  let gifX = 45;
+  let gifY = 20;
+  let gifSize = 90;
 
   const colours = [
     "#fff8d8",
@@ -166,12 +167,12 @@ window.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("blingeeMemoryMessages", JSON.stringify(messages));
   }
 
-  function updatePreviewTransform() {
-    chosenMessageGifImg.style.transform = `
-      translate(calc(-50% + ${gifX}px), ${gifY}px)
-      scale(${gifScale})
-      rotate(${gifRotate}deg)
-    `;
+  function updateTransformBox() {
+    transformBox.style.left = `${gifX}px`;
+    transformBox.style.top = `${gifY}px`;
+    transformBox.style.width = `${gifSize}px`;
+    transformBox.style.height = `${gifSize}px`;
+    transformBox.style.transform = "none";
   }
 
   function renderMessages() {
@@ -186,6 +187,10 @@ window.addEventListener("DOMContentLoaded", () => {
       note.style.background = message.colour;
       note.style.fontFamily = message.font;
 
+      if (message.background) {
+        note.style.setProperty("--saved-message-bg", `url("${message.background}")`);
+      }
+
       const visual = document.createElement("div");
       visual.className = "memory-note-visual";
 
@@ -199,16 +204,11 @@ window.addEventListener("DOMContentLoaded", () => {
       messageGif.src = message.messageGif;
       messageGif.alt = "";
 
-      const savedX = message.gifX || 0;
-      const savedY = message.gifY || 0;
-      const savedScale = message.gifScale || 1;
-      const savedRotate = message.gifRotate || 0;
-
-      messageGif.style.transform = `
-        translate(calc(-50% + ${savedX}px), ${savedY}px)
-        scale(${savedScale})
-        rotate(${savedRotate}deg)
-      `;
+      messageGif.style.left = `${message.gifX || 45}px`;
+      messageGif.style.top = `${message.gifY || 0}px`;
+      messageGif.style.width = `${message.gifSize || 70}px`;
+      messageGif.style.height = `${message.gifSize || 70}px`;
+      messageGif.style.transform = "none";
 
       const text = document.createElement("p");
       text.textContent = message.text;
@@ -247,6 +247,16 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  bgButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      bgButtons.forEach((btn) => btn.classList.remove("selected"));
+
+      button.classList.add("selected");
+      selectedBg = button.dataset.bg;
+      previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
+    });
+  });
+
   fontButtons.forEach((button) => {
     button.addEventListener("click", () => {
       fontButtons.forEach((btn) => btn.classList.remove("selected"));
@@ -258,24 +268,67 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  gifXControl.addEventListener("input", () => {
-    gifX = Number(gifXControl.value);
-    updatePreviewTransform();
+  // drag the GIF box
+  let dragging = false;
+  let resizing = false;
+  let startMouseX = 0;
+  let startMouseY = 0;
+  let startX = 0;
+  let startY = 0;
+  let startSize = 90;
+
+  transformBox.addEventListener("mousedown", (event) => {
+    if (event.target === resizeHandle) {
+      return;
+    }
+
+    dragging = true;
+    startMouseX = event.clientX;
+    startMouseY = event.clientY;
+    startX = gifX;
+    startY = gifY;
+
+    event.preventDefault();
   });
 
-  gifYControl.addEventListener("input", () => {
-    gifY = Number(gifYControl.value);
-    updatePreviewTransform();
+  resizeHandle.addEventListener("mousedown", (event) => {
+    resizing = true;
+    startMouseX = event.clientX;
+    startMouseY = event.clientY;
+    startSize = gifSize;
+
+    event.preventDefault();
+    event.stopPropagation();
   });
 
-  gifScaleControl.addEventListener("input", () => {
-    gifScale = Number(gifScaleControl.value) / 100;
-    updatePreviewTransform();
+  window.addEventListener("mousemove", (event) => {
+    if (dragging) {
+      gifX = startX + (event.clientX - startMouseX);
+      gifY = startY + (event.clientY - startMouseY);
+
+      gifX = Math.max(0, Math.min(180 - gifSize, gifX));
+      gifY = Math.max(0, Math.min(180 - gifSize, gifY));
+
+      updateTransformBox();
+    }
+
+    if (resizing) {
+      const movement = Math.max(
+        event.clientX - startMouseX,
+        event.clientY - startMouseY
+      );
+
+      gifSize = Math.max(35, Math.min(160, startSize + movement));
+      gifX = Math.max(0, Math.min(180 - gifSize, gifX));
+      gifY = Math.max(0, Math.min(180 - gifSize, gifY));
+
+      updateTransformBox();
+    }
   });
 
-  gifRotateControl.addEventListener("input", () => {
-    gifRotate = Number(gifRotateControl.value);
-    updatePreviewTransform();
+  window.addEventListener("mouseup", () => {
+    dragging = false;
+    resizing = false;
   });
 
   postButton.addEventListener("click", () => {
@@ -292,11 +345,11 @@ window.addEventListener("DOMContentLoaded", () => {
       text,
       candle: selectedCandle,
       messageGif: selectedMessageGif,
+      background: selectedBg,
       font: selectedFont,
       gifX,
       gifY,
-      gifScale,
-      gifRotate,
+      gifSize,
       colour: colours[messages.length % colours.length],
     });
 
@@ -306,12 +359,25 @@ window.addEventListener("DOMContentLoaded", () => {
     messageInput.value = "";
   });
 
+  clearButton.addEventListener("click", () => {
+    const confirmed = confirm("Clear all Blingee memory messages on this computer?");
+
+    if (!confirmed) {
+      return;
+    }
+
+    localStorage.removeItem("blingeeMemoryMessages");
+    renderMessages();
+  });
+
   candleButtons[0].classList.add("selected");
   messageGifButtons[0].classList.add("selected");
+  bgButtons[0].classList.add("selected");
   fontButtons[0].classList.add("selected");
 
+  previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
   messageInput.style.setProperty("font-family", selectedFont, "important");
 
-  updatePreviewTransform();
+  updateTransformBox();
   renderMessages();
 });

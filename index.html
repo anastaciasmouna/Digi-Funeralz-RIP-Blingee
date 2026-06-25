@@ -517,25 +517,64 @@
   </div>
 
   <div class="message-form">
-    <div class="selected-memory-preview">
-      <p>Preview:</p>
+   <div class="memory-preview-card">
+  <img class="chosen-candle-img" src="imgs/candle1.png" alt="Selected candle" />
 
-      <div class="memory-preview-card">
-        <img class="chosen-candle-img" src="imgs/candle1.png" alt="Selected candle" />
-        <img class="chosen-message-gif-img" src="imgs/messagegif1.gif" alt="Selected message GIF" />
-      </div>
-    </div>
+  <div class="gif-transform-box">
+    <img class="chosen-message-gif-img" src="imgs/messagegif1.gif" alt="Selected message GIF" />
+    <div class="gif-resize-handle"></div>
+  </div>
+</div>
 
     <textarea
       class="memory-message-input"
       maxlength="120"
-      placeholder="Type your message to Blingee..."
+      placeholder="Type a message in memory of Blingee..."
     ></textarea>
 
     <button class="post-memory-button" type="button">
       Post message
     </button>
+    <button class="clear-memory-button" type="button">
+  Clear all messages
+</button>
   </div>
+
+  <h3>Choose a message background</h3>
+
+<div class="message-bg-picker">
+  <button class="message-bg-choice" type="button" data-bg="imgs/background1.gif">
+    <img src="imgs/background1.gif" alt="Background 1" />
+  </button>
+
+  <button class="message-bg-choice" type="button" data-bg="imgs/background2.gif">
+    <img src="imgs/background2.gif" alt="Background 2" />
+  </button>
+
+  <button class="message-bg-choice" type="button" data-bg="imgs/background3.gif">
+    <img src="imgs/background3.gif" alt="Background 3" />
+  </button>
+
+  <button class="message-bg-choice" type="button" data-bg="imgs/background4.gif">
+    <img src="imgs/background4.gif" alt="Background 4" />
+  </button>
+
+  <button class="message-bg-choice" type="button" data-bg="imgs/background5.gif">
+    <img src="imgs/background5.gif" alt="Background 5" />
+  </button>
+
+  <button class="message-bg-choice" type="button" data-bg="imgs/background6.gif">
+    <img src="imgs/background6.gif" alt="Background 6" />
+  </button>
+
+  <button class="message-bg-choice" type="button" data-bg="imgs/background7.gif">
+    <img src="imgs/background7.gif" alt="Background 7" />
+  </button>
+
+  <button class="message-bg-choice" type="button" data-bg="imgs/background8.gif">
+    <img src="imgs/background8.gif" alt="Background 8" />
+  </button>
+</div>
 </section>
 
       <!-- POP UP BOX -->

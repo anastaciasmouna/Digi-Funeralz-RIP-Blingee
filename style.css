@@ -1179,3 +1179,156 @@ html.entered-funeral-state .funeral-page {
     left: 0;
   }
 }
+/* ===================================================== */
+/* MESSAGE BACKGROUND PICKER */
+/* ===================================================== */
+
+.message-bg-picker {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 14px !important;
+  margin: 18px auto 24px auto !important;
+  max-width: 620px !important;
+  justify-items: center !important;
+}
+
+.message-bg-choice {
+  width: 150px !important;
+  height: 125px !important;
+
+  border: 2px solid #333 !important;
+  background: #fff8d8 !important;
+  padding: 10px !important;
+  cursor: pointer !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 10px rgba(255, 255, 255, 0.8) !important;
+}
+
+.message-bg-choice img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.message-bg-choice.selected {
+  background: #ff00bf !important;
+  box-shadow:
+    0 0 12px white,
+    0 0 24px #ff00bf,
+    0 0 38px #ffcc00 !important;
+
+  transform: scale(1.05) !important;
+}
+
+/* ===================================================== */
+/* DRAGGABLE / RESIZABLE GIF PREVIEW */
+/* ===================================================== */
+
+.memory-preview-card {
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+
+  background-image: var(--message-bg, none);
+  background-size: cover;
+  background-position: center;
+}
+
+.gif-transform-box {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+
+  width: 90px;
+  height: 90px;
+
+  transform: translateX(-50%);
+  z-index: 3;
+
+  cursor: move;
+  border: 1px dashed rgba(0, 0, 0, 0.45);
+}
+
+.chosen-message-gif-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  pointer-events: none !important;
+}
+
+.gif-resize-handle {
+  position: absolute;
+  right: -7px;
+  bottom: -7px;
+
+  width: 14px;
+  height: 14px;
+
+  background: #ff00bf;
+  border: 2px solid white;
+  box-shadow: 0 0 6px black;
+
+  cursor: nwse-resize;
+  z-index: 5;
+}
+
+.clear-memory-button {
+  margin-top: 12px;
+  padding: 8px 18px;
+
+  border: 2px solid #333;
+  background: #fff8d8;
+  color: #201018;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.clear-memory-button:hover {
+  background: #ff00bf;
+  color: white;
+}
+
+/* posted notes with gif backgrounds */
+.memory-note {
+  background-image: var(--saved-message-bg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.memory-note::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 248, 216, 0.55);
+  z-index: 0;
+}
+
+.memory-note-visual,
+.memory-note p {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 800px) {
+  .message-bg-picker {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .message-bg-choice {
+    width: 130px !important;
+    height: 115px !important;
+  }
+}
