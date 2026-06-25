@@ -86,6 +86,10 @@ window.addEventListener("DOMContentLoaded", () => {
 // BLINGEE MEMORY MESSAGE STATION
 // Saves messages on this browser/computer using localStorage
 // =====================================================
+// =====================================================
+// BLINGEE MEMORY MESSAGE STATION
+// Saves messages on this browser/computer using localStorage
+// =====================================================
 
 window.addEventListener("DOMContentLoaded", () => {
   const candleButtons = document.querySelectorAll(".candle-choice");
@@ -94,6 +98,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const chosenCandleImg = document.querySelector(".chosen-candle-img");
   const chosenMessageGifImg = document.querySelector(".chosen-message-gif-img");
+
+  const gifXControl = document.querySelector(".gif-x-control");
+  const gifYControl = document.querySelector(".gif-y-control");
+  const gifScaleControl = document.querySelector(".gif-scale-control");
+  const gifRotateControl = document.querySelector(".gif-rotate-control");
 
   const messageInput = document.querySelector(".memory-message-input");
   const postButton = document.querySelector(".post-memory-button");
@@ -107,6 +116,10 @@ window.addEventListener("DOMContentLoaded", () => {
     !fontButtons.length ||
     !chosenCandleImg ||
     !chosenMessageGifImg ||
+    !gifXControl ||
+    !gifYControl ||
+    !gifScaleControl ||
+    !gifRotateControl ||
     !messageInput ||
     !postButton ||
     !memoryWallLeft ||
@@ -118,6 +131,11 @@ window.addEventListener("DOMContentLoaded", () => {
   let selectedCandle = "imgs/candle1.png";
   let selectedMessageGif = "imgs/messagegif1.gif";
   let selectedFont = "'Apple Chancery', cursive";
+
+  let gifX = 0;
+  let gifY = 0;
+  let gifScale = 1;
+  let gifRotate = 0;
 
   const colours = [
     "#fff8d8",
@@ -148,6 +166,14 @@ window.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("blingeeMemoryMessages", JSON.stringify(messages));
   }
 
+  function updatePreviewTransform() {
+    chosenMessageGifImg.style.transform = `
+      translate(calc(-50% + ${gifX}px), ${gifY}px)
+      scale(${gifScale})
+      rotate(${gifRotate}deg)
+    `;
+  }
+
   function renderMessages() {
     const messages = getSavedMessages();
 
@@ -172,6 +198,17 @@ window.addEventListener("DOMContentLoaded", () => {
       messageGif.className = "memory-note-gif";
       messageGif.src = message.messageGif;
       messageGif.alt = "";
+
+      const savedX = message.gifX || 0;
+      const savedY = message.gifY || 0;
+      const savedScale = message.gifScale || 1;
+      const savedRotate = message.gifRotate || 0;
+
+      messageGif.style.transform = `
+        translate(calc(-50% + ${savedX}px), ${savedY}px)
+        scale(${savedScale})
+        rotate(${savedRotate}deg)
+      `;
 
       const text = document.createElement("p");
       text.textContent = message.text;
@@ -216,8 +253,29 @@ window.addEventListener("DOMContentLoaded", () => {
 
       button.classList.add("selected");
       selectedFont = button.dataset.font;
-      messageInput.style.fontFamily = selectedFont;
+
+      messageInput.style.setProperty("font-family", selectedFont, "important");
     });
+  });
+
+  gifXControl.addEventListener("input", () => {
+    gifX = Number(gifXControl.value);
+    updatePreviewTransform();
+  });
+
+  gifYControl.addEventListener("input", () => {
+    gifY = Number(gifYControl.value);
+    updatePreviewTransform();
+  });
+
+  gifScaleControl.addEventListener("input", () => {
+    gifScale = Number(gifScaleControl.value) / 100;
+    updatePreviewTransform();
+  });
+
+  gifRotateControl.addEventListener("input", () => {
+    gifRotate = Number(gifRotateControl.value);
+    updatePreviewTransform();
   });
 
   postButton.addEventListener("click", () => {
@@ -235,6 +293,10 @@ window.addEventListener("DOMContentLoaded", () => {
       candle: selectedCandle,
       messageGif: selectedMessageGif,
       font: selectedFont,
+      gifX,
+      gifY,
+      gifScale,
+      gifRotate,
       colour: colours[messages.length % colours.length],
     });
 
@@ -248,7 +310,8 @@ window.addEventListener("DOMContentLoaded", () => {
   messageGifButtons[0].classList.add("selected");
   fontButtons[0].classList.add("selected");
 
-  messageInput.style.fontFamily = selectedFont;
+  messageInput.style.setProperty("font-family", selectedFont, "important");
 
+  updatePreviewTransform();
   renderMessages();
 });

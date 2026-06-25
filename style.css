@@ -25,7 +25,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 /* ===================================================== */
 /* 2. LANDING PAGE */
 /* ===================================================== */
@@ -50,7 +49,6 @@ body.entered-funeral .landing-page,
 html.entered-funeral-state .landing-page {
   display: none;
 }
-
 
 /* ===================================================== */
 /* 3. LANDING PAY RESPECTS BUTTON */
@@ -98,7 +96,6 @@ html.entered-funeral-state .landing-page {
   outline: none;
 }
 
-
 /* ===================================================== */
 /* 4. P5 CANVAS */
 /* ===================================================== */
@@ -117,7 +114,6 @@ body > canvas {
 body.entered-funeral > canvas {
   display: none !important;
 }
-
 
 /* ===================================================== */
 /* 5. WARNING SCREEN */
@@ -202,7 +198,6 @@ body.entered-funeral > canvas {
   top: 60%;
 }
 
-
 /* ===================================================== */
 /* 6. FUNERAL PAGE */
 /* ===================================================== */
@@ -212,7 +207,7 @@ body.entered-funeral > canvas {
   position: relative;
   width: 100vw;
 
-  min-height: 790vh;
+  min-height: 830vh;
   overflow: hidden;
 
   background-image: url("imgs/stars3.gif");
@@ -228,7 +223,6 @@ body.entered-funeral .funeral-page,
 html.entered-funeral-state .funeral-page {
   display: block;
 }
-
 
 /* ===================================================== */
 /* 7. MAIN HERO IMAGE LAYERS */
@@ -287,7 +281,6 @@ html.entered-funeral-state .funeral-page {
   opacity: 0.9;
   pointer-events: none;
 }
-
 
 /* ===================================================== */
 /* 8. PEARL BORDER */
@@ -356,7 +349,6 @@ html.entered-funeral-state .funeral-page {
   gap: clamp(18px, 1.8vw, 28px);
 }
 
-
 /* ===================================================== */
 /* 9. CORNER HEARTS */
 /* ===================================================== */
@@ -394,10 +386,8 @@ html.entered-funeral-state .funeral-page {
   transform: rotate(135deg);
 }
 
-
 /* ===================================================== */
 /* 10. SIDE GIF COLUMNS */
-/* This matches the current HTML names */
 /* ===================================================== */
 
 .gif-side {
@@ -440,11 +430,6 @@ html.entered-funeral-state .funeral-page {
     drop-shadow(0 0 12px rgba(255, 0, 191, 0.45));
 }
 
-
-/* ===================================================== */
-/* 11. LEFT GIF COLUMN */
-/* ===================================================== */
-
 .gif-left img:nth-child(odd) {
   align-self: flex-start;
   transform: rotate(-8deg);
@@ -455,11 +440,6 @@ html.entered-funeral-state .funeral-page {
   transform: rotate(8deg);
 }
 
-
-/* ===================================================== */
-/* 12. RIGHT GIF COLUMN */
-/* ===================================================== */
-
 .gif-right img:nth-child(odd) {
   align-self: flex-end;
   transform: rotate(8deg);
@@ -469,11 +449,6 @@ html.entered-funeral-state .funeral-page {
   align-self: flex-start;
   transform: rotate(-8deg);
 }
-
-
-/* ===================================================== */
-/* 13. GIF SIZE TWEAKS */
-/* ===================================================== */
 
 .left-gif-1,
 .left-gif-2,
@@ -536,15 +511,15 @@ html.entered-funeral-state .funeral-page {
   display: none !important;
 }
 
-
 /* ===================================================== */
-/* 14. PINK TEXT BOXES */
+/* 11. PINK TEXT BOXES */
 /* ===================================================== */
 
 .eulogy-box,
 .diagram-section,
 .gif-gallery-section,
-.mia-section {
+.mia-section,
+.memory-section {
   position: relative;
   z-index: 230;
 
@@ -554,6 +529,10 @@ html.entered-funeral-state .funeral-page {
   text-align: center;
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   color: #201018;
+
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.7),
+    0 0 22px rgba(255, 0, 191, 0.45);
 }
 
 .eulogy-box {
@@ -581,10 +560,18 @@ html.entered-funeral-state .funeral-page {
   padding: 28px;
 }
 
+.memory-section {
+  z-index: 260;
+  width: clamp(360px, 62vw, 900px);
+  margin: 24vh auto 0 auto;
+  padding: clamp(24px, 3vw, 42px);
+}
+
 .eulogy-box p,
 .diagram-section p,
 .gif-gallery-section p,
-.mia-section p {
+.mia-section p,
+.memory-section p {
   color: #201018;
   font-size: clamp(15px, 1.15vw, 22px);
   line-height: 1.2;
@@ -595,16 +582,27 @@ html.entered-funeral-state .funeral-page {
 .eulogy-box h3,
 .diagram-section h2,
 .gif-gallery-section h2,
-.mia-section h2 {
+.mia-section h2,
+.memory-section h2 {
   font-size: clamp(24px, 2.4vw, 48px);
   line-height: 1;
   margin-bottom: 14px;
   color: #201018;
 }
 
+.memory-section h2 {
+  font-size: clamp(32px, 4vw, 68px);
+}
+
+.memory-section h3 {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: clamp(18px, 1.8vw, 30px);
+  margin: 26px 0 12px 0;
+  color: #201018;
+}
 
 /* ===================================================== */
-/* 15. EXAMPLE IMAGE */
+/* 12. EXAMPLE IMAGE */
 /* ===================================================== */
 
 .example1 {
@@ -622,9 +620,8 @@ html.entered-funeral-state .funeral-page {
   display: block;
 }
 
-
 /* ===================================================== */
-/* 16. VIDEO FRAMES */
+/* 13. VIDEO FRAMES */
 /* ===================================================== */
 
 .video-frame {
@@ -644,9 +641,8 @@ html.entered-funeral-state .funeral-page {
   object-fit: cover;
 }
 
-
 /* ===================================================== */
-/* 17. BLINGEE GALLERY */
+/* 14. BLINGEE GALLERY */
 /* ===================================================== */
 
 .gif-gallery {
@@ -682,9 +678,319 @@ html.entered-funeral-state .funeral-page {
   text-align: left;
 }
 
+/* ===================================================== */
+/* 15. MEMORY MESSAGE STATION */
+/* ===================================================== */
+
+.candle-picker,
+.message-gif-picker {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 14px !important;
+  margin: 18px auto 24px auto !important;
+  max-width: 620px !important;
+  justify-items: center !important;
+}
+
+.candle-choice,
+.message-gif-choice {
+  width: 150px !important;
+  height: 125px !important;
+
+  border: 2px solid #333 !important;
+  background: #fff8d8 !important;
+  padding: 10px !important;
+  cursor: pointer !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 10px rgba(255, 255, 255, 0.8) !important;
+}
+
+.candle-choice img,
+.message-gif-choice img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.candle-choice.selected,
+.message-gif-choice.selected,
+.font-choice.selected {
+  background: #ff00bf !important;
+  color: #fff8d8 !important;
+
+  box-shadow:
+    0 0 12px white,
+    0 0 24px #ff00bf,
+    0 0 38px #ffcc00 !important;
+
+  transform: scale(1.05) !important;
+}
+
+.font-picker {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  margin: 18px auto 24px auto !important;
+}
+
+.font-choice {
+  border: 2px solid #333 !important;
+  background: #fff8d8 !important;
+  padding: 8px 14px !important;
+  cursor: pointer !important;
+
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #201018 !important;
+}
+
+.font-choice:nth-child(1) {
+  font-family: "Apple Chancery", cursive !important;
+}
+
+.font-choice:nth-child(2) {
+  font-family: "Comic Sans MS", "Comic Sans", cursive !important;
+}
+
+.font-choice:nth-child(3) {
+  font-family: "Brush Script MT", "Apple Chancery", cursive !important;
+}
 
 /* ===================================================== */
-/* 18. POP UP AD AT THE END */
+/* 16. GIF MOVE / SCALE CONTROLS */
+/* ===================================================== */
+
+.gif-controls {
+  width: min(90%, 520px);
+  margin: 12px auto 24px auto;
+  padding: 16px;
+
+  background: #fff8d8;
+  border: 2px solid #333;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 18px;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-weight: 700;
+  color: #201018;
+}
+
+.gif-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gif-controls input {
+  width: 100%;
+}
+
+/* ===================================================== */
+/* 17. MEMORY PREVIEW */
+/* ===================================================== */
+
+.message-form {
+  margin-top: 24px;
+}
+
+.selected-memory-preview {
+  margin-bottom: 14px;
+}
+
+.selected-memory-preview p {
+  margin-bottom: 8px;
+}
+
+.memory-preview-card {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+
+  background: #fff8d8;
+  border: 2px solid #333;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px rgba(255, 0, 191, 0.7);
+}
+
+.chosen-candle-img {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.chosen-message-gif-img {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===================================================== */
+/* 18. MEMORY TEXT INPUT */
+/* ===================================================== */
+
+.memory-message-input {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+
+  padding: 16px;
+
+  background: #fff8d8;
+  border: 2px solid #333;
+
+  font-family: "Apple Chancery", "Brush Script MT", cursive !important;
+  font-size: 24px;
+  color: #201018;
+}
+
+.post-memory-button {
+  margin-top: 16px;
+  padding: 12px 28px;
+
+  border: 2px solid #7a3c18;
+  background: #ff00bf;
+  color: #fff8d8;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+
+  text-shadow:
+    0 0 3px #7a3c18,
+    0 0 8px #7a3c18;
+
+  box-shadow:
+    0 0 10px white,
+    0 0 22px #ff00bf,
+    0 0 38px #ffcc00;
+}
+
+.post-memory-button:hover {
+  transform: scale(1.05);
+}
+
+/* ===================================================== */
+/* 19. MEMORY WALL NOTES ON SIDES */
+/* ===================================================== */
+
+.memory-wall {
+  position: absolute;
+  top: 120vh;
+  width: clamp(130px, 15vw, 240px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+
+  pointer-events: none;
+  z-index: 255;
+}
+
+.memory-wall-left {
+  left: clamp(12px, 2vw, 36px);
+}
+
+.memory-wall-right {
+  right: clamp(12px, 2vw, 36px);
+}
+
+.memory-note {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  min-height: 170px;
+  padding: 12px;
+
+  background: #fff8d8;
+  border: 2px solid #333;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: #201018;
+  font-size: clamp(12px, 1vw, 16px);
+  line-height: 1.15;
+  font-weight: 700;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px rgba(255, 0, 191, 0.7);
+
+  transform: rotate(-4deg);
+}
+
+.memory-wall-right .memory-note {
+  transform: rotate(4deg);
+}
+
+.memory-note-visual {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 8px auto;
+}
+
+.memory-note-candle {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.memory-note-gif {
+  position: absolute;
+  left: 50%;
+  top: 0;
+
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.memory-note p {
+  position: relative;
+  z-index: 3;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* ===================================================== */
+/* 20. POP UP AD AT THE END */
 /* ===================================================== */
 
 .cu-popup {
@@ -738,14 +1044,13 @@ html.entered-funeral-state .funeral-page {
   filter: brightness(1.12);
 }
 
-
 /* ===================================================== */
-/* 19. TABLET RESPONSIVE */
+/* 21. TABLET RESPONSIVE */
 /* ===================================================== */
 
 @media (max-width: 1100px) {
   .funeral-page {
-    min-height: 760vh;
+    min-height: 800vh;
   }
 
   .hero-stack {
@@ -771,16 +1076,21 @@ html.entered-funeral-state .funeral-page {
   .gif-side img {
     width: clamp(60px, 7vw, 105px);
   }
+
+  .candle-choice,
+  .message-gif-choice {
+    width: 130px !important;
+    height: 115px !important;
+  }
 }
 
-
 /* ===================================================== */
-/* 20. MOBILE RESPONSIVE */
+/* 22. MOBILE RESPONSIVE */
 /* ===================================================== */
 
 @media (max-width: 800px) {
   .funeral-page {
-    min-height: 720vh;
+    min-height: 760vh;
     padding-top: 60vh;
     padding-bottom: 120vh;
   }
@@ -822,7 +1132,8 @@ html.entered-funeral-state .funeral-page {
   .eulogy-box,
   .diagram-section,
   .gif-gallery-section,
-  .mia-section {
+  .mia-section,
+  .memory-section {
     width: 82vw;
     min-width: 0;
     padding: 24px;
@@ -831,7 +1142,8 @@ html.entered-funeral-state .funeral-page {
   .eulogy-box p,
   .diagram-section p,
   .gif-gallery-section p,
-  .mia-section p {
+  .mia-section p,
+  .memory-section p {
     font-size: 17px;
   }
 
@@ -839,8 +1151,24 @@ html.entered-funeral-state .funeral-page {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .gif-side {
+  .gif-side,
+  .memory-wall {
     display: none !important;
+  }
+
+  .candle-picker,
+  .message-gif-picker {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .candle-choice,
+  .message-gif-choice {
+    width: 130px !important;
+    height: 115px !important;
+  }
+
+  .gif-controls {
+    grid-template-columns: 1fr;
   }
 
   .example1 {
@@ -849,366 +1177,5 @@ html.entered-funeral-state .funeral-page {
 
   .cu-popup {
     left: 0;
-  }
-}
-/* ===================================================== */
-/* MEMORY MESSAGE SECTION */
-/* ===================================================== */
-
-.memory-section {
-  position: relative;
-  z-index: 260;
-
-  width: clamp(360px, 62vw, 900px);
-  margin: 24vh auto 0 auto;
-  padding: clamp(24px, 3vw, 42px);
-
-  background: #e56ad1;
-  border: 2px solid #333;
-
-  text-align: center;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  color: #201018;
-
-  box-shadow:
-    0 0 12px white,
-    0 0 28px rgba(255, 0, 191, 0.8);
-}
-
-.memory-section h2 {
-  font-size: clamp(26px, 3vw, 54px);
-  line-height: 0.95;
-  margin-bottom: 16px;
-}
-
-.memory-section p {
-  font-size: clamp(15px, 1.2vw, 22px);
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 22px;
-}
-
-.candle-picker {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin: 24px auto;
-  max-width: 620px;
-}
-
-.candle-choice {
-  border: 2px solid #333;
-  background: #fff8d8;
-  padding: 10px;
-  cursor: pointer;
-
-  box-shadow:
-    inset 0 0 8px rgba(255, 255, 255, 0.9),
-    0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-.candle-choice img {
-  width: 100%;
-  max-width: 90px;
-  height: 90px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-.candle-choice.selected {
-  background: #ff00bf;
-  box-shadow:
-    0 0 12px white,
-    0 0 24px #ff00bf,
-    0 0 38px #ffcc00;
-  transform: scale(1.05);
-}
-
-.message-form {
-  margin-top: 24px;
-}
-
-.selected-candle-preview {
-  margin-bottom: 14px;
-}
-
-.selected-candle-preview p {
-  margin-bottom: 8px;
-}
-
-.chosen-candle-img {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-}
-
-.memory-message-input {
-  width: 100%;
-  min-height: 120px;
-  resize: vertical;
-
-  padding: 16px;
-
-  background: #fff8d8;
-  border: 2px solid #333;
-
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: 18px;
-  color: #201018;
-}
-
-.post-memory-button {
-  margin-top: 16px;
-  padding: 12px 28px;
-
-  border: 2px solid #7a3c18;
-  background: #ff00bf;
-  color: #fff8d8;
-
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: 22px;
-  font-weight: 700;
-  cursor: pointer;
-
-  text-shadow:
-    0 0 3px #7a3c18,
-    0 0 8px #7a3c18;
-
-  box-shadow:
-    0 0 10px white,
-    0 0 22px #ff00bf,
-    0 0 38px #ffcc00;
-}
-
-.post-memory-button:hover {
-  transform: scale(1.05);
-}
-
-/* ===================================================== */
-/* MEMORY MESSAGES ON SIDES */
-/* ===================================================== */
-
-.memory-wall {
-  position: absolute;
-  top: 120vh;
-  width: clamp(130px, 15vw, 240px);
-
-  display: flex;
-  flex-direction: column;
-  gap: 120px;
-
-  pointer-events: none;
-  z-index: 255;
-}
-
-.memory-wall-left {
-  left: clamp(12px, 2vw, 36px);
-}
-
-.memory-wall-right {
-  right: clamp(12px, 2vw, 36px);
-}
-
-.memory-note {
-  width: 100%;
-  padding: 12px;
-
-  background: #fff8d8;
-  border: 2px solid #333;
-
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  color: #201018;
-  font-size: clamp(12px, 1vw, 16px);
-  line-height: 1.15;
-  font-weight: 700;
-
-  box-shadow:
-    0 0 8px white,
-    0 0 18px rgba(255, 0, 191, 0.7);
-
-  transform: rotate(-4deg);
-}
-
-.memory-wall-right .memory-note {
-  transform: rotate(4deg);
-}
-
-.memory-note img {
-  width: 52px;
-  height: 52px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 8px auto;
-}
-
-.memory-note p {
-  margin: 0;
-  word-break: break-word;
-}
-
-/* hide memory wall on tiny screens */
-@media (max-width: 800px) {
-  .memory-wall {
-    display: none;
-  }
-
-  .candle-picker {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ===================================================== */
-/* MESSAGE GIF + FONT PICKER ADDITIONS */
-/* ===================================================== */
-
-.memory-section h3 {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: clamp(18px, 1.8vw, 30px);
-  margin: 26px 0 12px 0;
-  color: #201018;
-}
-
-.message-gif-picker,
-.font-picker {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  margin: 18px auto 24px auto;
-  max-width: 620px;
-}
-
-.message-gif-choice,
-.font-choice {
-  border: 2px solid #333;
-  background: #fff8d8;
-  padding: 10px;
-  cursor: pointer;
-
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: 16px;
-  font-weight: 700;
-  color: #201018;
-
-  box-shadow:
-    inset 0 0 8px rgba(255, 255, 255, 0.9),
-    0 0 10px rgba(255, 255, 255, 0.8);
-}
-
-.message-gif-choice img {
-  width: 100%;
-  max-width: 90px;
-  height: 90px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-.message-gif-choice.selected,
-.font-choice.selected {
-  background: #ff00bf;
-  color: #fff8d8;
-
-  box-shadow:
-    0 0 12px white,
-    0 0 24px #ff00bf,
-    0 0 38px #ffcc00;
-
-  transform: scale(1.05);
-}
-
-.selected-memory-preview {
-  margin-bottom: 14px;
-}
-
-.selected-memory-preview p {
-  margin-bottom: 8px;
-}
-
-.memory-preview-card {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  margin: 0 auto;
-
-  background: #fff8d8;
-  border: 2px solid #333;
-
-  box-shadow:
-    0 0 8px white,
-    0 0 18px rgba(255, 0, 191, 0.7);
-}
-
-.chosen-candle-img {
-  position: absolute;
-  left: 50%;
-  bottom: 8px;
-  transform: translateX(-50%);
-
-  width: 86px;
-  height: 86px;
-  object-fit: contain;
-  z-index: 1;
-}
-
-.chosen-message-gif-img {
-  position: absolute;
-  left: 50%;
-  top: 8px;
-  transform: translateX(-50%);
-
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.memory-note {
-  position: relative;
-  overflow: hidden;
-  min-height: 150px;
-}
-
-.memory-note-visual {
-  position: relative;
-  width: 90px;
-  height: 90px;
-  margin: 0 auto 8px auto;
-}
-
-.memory-note-candle {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-
-  width: 62px;
-  height: 62px;
-  object-fit: contain;
-  z-index: 1;
-}
-
-.memory-note-gif {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  z-index: 2;
-}
-
-.memory-note p {
-  position: relative;
-  z-index: 3;
-}
-
-@media (max-width: 800px) {
-  .message-gif-picker,
-  .font-picker {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
