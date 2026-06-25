@@ -1,0 +1,1417 @@
+/* ===================================================== */
+/* 1. RESET */
+/* ===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: white;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===================================================== */
+/* 2. LANDING PAGE */
+/* ===================================================== */
+
+.landing-page {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: white;
+  overflow: hidden;
+}
+
+.landing-page > img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+body.entered-funeral .landing-page {
+  display: none;
+}
+
+/* ===================================================== */
+/* 3. LANDING PAY RESPECTS BUTTON */
+/* ===================================================== */
+
+.landing-pay-respects {
+  position: fixed;
+
+  left: 50%;
+  bottom: 60px;
+  transform: translateX(-50%);
+
+  z-index: 30;
+
+  width: 360px;
+  max-width: 40vw;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.landing-pay-respects img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.landing-pay-respects .hover {
+  display: none;
+}
+
+.landing-pay-respects:hover .normal {
+  display: none;
+}
+
+.landing-pay-respects:hover .hover {
+  display: block;
+}
+
+.landing-pay-respects:hover {
+  transform: translateX(-50%) scale(1.04);
+}
+
+.landing-pay-respects:focus {
+  outline: none;
+}
+
+/* ===================================================== */
+/* 4. P5 CANVAS */
+/* ===================================================== */
+
+canvas {
+  display: block;
+}
+
+body > canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 100 !important;
+}
+
+body.entered-funeral > canvas {
+  display: none !important;
+}
+
+/* ===================================================== */
+/* 5. WARNING SCREEN */
+/* ===================================================== */
+
+.warning-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(42, 1, 36, 0.792);
+}
+
+.warning-screen.show {
+  display: block;
+}
+
+.warning-box {
+  position: absolute;
+  width: min(90vw, 1530px);
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.warning-img {
+  width: 100%;
+  display: block;
+}
+
+.warning-button {
+  position: absolute;
+  width: 150px;
+  text-align: center;
+
+  border: 2px solid #7a3c18;
+  background: rgba(229, 106, 209, 0.85);
+  cursor: pointer;
+
+  padding: 10px 22px 14px 22px;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1;
+
+  color: #fff8d8;
+
+  text-shadow:
+    0 0 3px #7a3c18,
+    0 0 8px #7a3c18,
+    0 0 14px #ffcc00;
+
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 18px rgba(229, 106, 209, 0.9),
+    0 0 32px rgba(255, 214, 120, 0.8);
+
+  z-index: 520;
+
+  transform: translate(-50%, -50%);
+}
+
+.warning-button:hover {
+  color: white;
+  background: rgba(255, 0, 191, 0.95);
+
+  box-shadow:
+    0 0 10px white,
+    0 0 22px #ff00bf,
+    0 0 38px #ffcc00;
+
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.warning-leave {
+  left: calc(50% - 100px);
+  top: 60%;
+}
+
+.warning-continue {
+  left: calc(50% + 120px);
+  top: 60%;
+}
+
+/* ===================================================== */
+/* 6. FUNERAL PAGE */
+/* ===================================================== */
+
+.funeral-page {
+  display: none;
+  position: relative;
+  width: 100vw;
+  min-height: 660vh;
+  overflow: hidden;
+
+  background-image: url("imgs/stars3.gif");
+  background-repeat: repeat;
+  background-size: auto;
+  background-position: top left;
+
+  padding-top: 67vh;
+  padding-bottom: 130vh;
+}
+
+body.entered-funeral .funeral-page {
+  display: block;
+}
+
+/* ===================================================== */
+/* 7. MAIN PAGE IMAGE LAYERS */
+/* ===================================================== */
+
+.hero-stack {
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(78vw, 1300px);
+  aspect-ratio: 1300 / 720;
+
+  z-index: 220;
+  pointer-events: none;
+}
+
+.rainbow-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  width: 120%;
+  height: auto;
+
+  transform: translateX(-50%);
+  z-index: 220;
+  pointer-events: none;
+}
+
+.coffin {
+  position: absolute;
+  top: 170px;
+  left: 50%;
+
+  width: 62%;
+  height: auto;
+
+  transform: translateX(-50%);
+  z-index: 230;
+  pointer-events: none;
+}
+
+.subtitle {
+  position: absolute;
+  top: 540px;
+  left: 50%;
+
+  width: 46%;
+  max-width: 760px;
+  height: auto;
+
+  transform: translateX(-50%);
+  z-index: 240;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* ===================================================== */
+/* 8. PEARL BORDER */
+/* ===================================================== */
+
+.pearl-border {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  overflow: hidden;
+}
+
+.pearl-border img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+/* top row */
+.pearl-border-top {
+  top: 20px;
+  left: 70px;
+  width: calc(100% - 140px);
+  height: 60px;
+
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+/* bottom row */
+.pearl-border-bottom {
+  bottom: 20px;
+  left: 70px;
+  width: calc(100% - 140px);
+  height: 60px;
+
+  overflow: hidden;
+
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+
+/* left side */
+.pearl-border-left {
+  top: 100px;
+  left: 20px;
+  width: 60px;
+  height: calc(100% - 180px);
+
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 28px;
+}
+
+/* right side */
+.pearl-border-right {
+  top: 100px;
+  right: 20px;
+  width: 60px;
+  height: calc(100% - 180px);
+
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 28px;
+}
+
+/* ===================================================== */
+/* 9. CORNER HEARTS */
+/* ===================================================== */
+
+.corner-heart {
+  position: absolute;
+  width: 75px;
+  height: auto;
+  z-index: 270;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
+
+.corner-heart-top-left {
+  top: 18px;
+  left: 18px;
+  transform: rotate(-45deg);
+}
+
+.corner-heart-top-right {
+  top: 18px;
+  right: 18px;
+  transform: rotate(45deg);
+}
+
+.corner-heart-bottom-left {
+  bottom: 18px;
+  left: 18px;
+  transform: rotate(-135deg);
+}
+
+.corner-heart-bottom-right {
+  bottom: 18px;
+  right: 18px;
+  transform: rotate(135deg);
+}
+
+/* ===================================================== */
+/* 10. LEFT AND RIGHT GIF GROUPS */
+/* ===================================================== */
+
+/* Keeps the HTML organised without breaking your existing absolute positions */
+.gif-side {
+  display: contents;
+}
+
+/* ===================================================== */
+/* 11. SIDE SCATTERED GIFS PACKED EDGES */
+/* ===================================================== */
+
+.side-scattered-gifs {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  z-index: 244;
+}
+
+.side-blingee {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 244;
+
+  filter:
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 12px rgba(255, 0, 191, 0.45));
+}
+
+/* LEFT SIDE, OUTER EDGE */
+
+.side-blingee-1 {
+  top: 76vh;
+  left: 2vw;
+  width: 125px;
+  transform: rotate(-8deg);
+}
+
+.side-blingee-2 {
+  top: 98vh;
+  left: 7vw;
+  width: 95px;
+  transform: rotate(10deg);
+}
+
+.side-blingee-3 {
+  top: 122vh;
+  left: 2.5vw;
+  width: 135px;
+  transform: rotate(-4deg);
+}
+
+.side-blingee-4 {
+  top: 148vh;
+  left: 8vw;
+  width: 95px;
+  transform: rotate(12deg);
+}
+
+.side-blingee-5 {
+  top: 174vh;
+  left: 2vw;
+  width: 130px;
+  transform: rotate(-12deg);
+}
+
+.side-blingee-6 {
+  top: 200vh;
+  left: 8.5vw;
+  width: 105px;
+  transform: rotate(6deg);
+}
+
+.side-blingee-7 {
+  top: 226vh;
+  left: 2.5vw;
+  width: 130px;
+  transform: rotate(-9deg);
+}
+
+.side-blingee-8 {
+  top: 252vh;
+  left: 8vw;
+  width: 95px;
+  transform: rotate(14deg);
+}
+
+.side-blingee-9 {
+  top: 278vh;
+  left: 2vw;
+  width: 120px;
+  transform: rotate(-5deg);
+}
+
+.side-blingee-10 {
+  top: 304vh;
+  left: 8.5vw;
+  width: 90px;
+  transform: rotate(8deg);
+}
+
+.side-blingee-11 {
+  top: 330vh;
+  left: 2.5vw;
+  width: 125px;
+  transform: rotate(-10deg);
+}
+
+.side-blingee-12 {
+  top: 356vh;
+  left: 8vw;
+  width: 100px;
+  transform: rotate(11deg);
+}
+
+.side-blingee-13 {
+  top: 382vh;
+  left: 2vw;
+  width: 120px;
+  transform: rotate(-6deg);
+}
+
+.side-blingee-14 {
+  top: 408vh;
+  left: 8.5vw;
+  width: 95px;
+  transform: rotate(13deg);
+}
+
+.side-blingee-15 {
+  top: 434vh;
+  left: 2vw;
+  width: 125px;
+  transform: rotate(-11deg);
+}
+
+/* RIGHT SIDE, OUTER EDGE */
+
+.side-blingee-16 {
+  top: 84vh;
+  right: 2vw;
+  width: 125px;
+  transform: rotate(8deg);
+}
+
+.side-blingee-17 {
+  top: 110vh;
+  right: 8vw;
+  width: 95px;
+  transform: rotate(-12deg);
+}
+
+.side-blingee-18 {
+  top: 136vh;
+  right: 2.5vw;
+  width: 135px;
+  transform: rotate(5deg);
+}
+
+.side-blingee-19 {
+  top: 162vh;
+  right: 8.5vw;
+  width: 90px;
+  transform: rotate(-9deg);
+}
+
+.side-blingee-20 {
+  top: 188vh;
+  right: 2vw;
+  width: 120px;
+  transform: rotate(11deg);
+}
+
+.side-blingee-21 {
+  top: 214vh;
+  right: 8vw;
+  width: 105px;
+  transform: rotate(-7deg);
+}
+
+.side-blingee-22 {
+  top: 240vh;
+  right: 2vw;
+  width: 135px;
+  transform: rotate(10deg);
+}
+
+.side-blingee-23 {
+  top: 266vh;
+  right: 8.5vw;
+  width: 95px;
+  transform: rotate(-13deg);
+}
+
+.side-blingee-24 {
+  top: 292vh;
+  right: 2.5vw;
+  width: 120px;
+  transform: rotate(6deg);
+}
+
+.side-blingee-25 {
+  top: 318vh;
+  right: 8vw;
+  width: 90px;
+  transform: rotate(-10deg);
+}
+
+.side-blingee-26 {
+  top: 344vh;
+  right: 2vw;
+  width: 130px;
+  transform: rotate(12deg);
+}
+
+.side-blingee-27 {
+  top: 370vh;
+  right: 8.5vw;
+  width: 100px;
+  transform: rotate(-8deg);
+}
+
+.side-blingee-28 {
+  top: 396vh;
+  right: 2.5vw;
+  width: 120px;
+  transform: rotate(9deg);
+}
+
+.side-blingee-29 {
+  top: 422vh;
+  right: 8vw;
+  width: 95px;
+  transform: rotate(-12deg);
+}
+
+.side-blingee-30 {
+  top: 448vh;
+  right: 2vw;
+  width: 130px;
+  transform: rotate(7deg);
+}
+
+/* LEFT SIDE, INNER EDGE */
+
+.side-blingee-31 {
+  top: 90vh;
+  left: 13vw;
+  width: 90px;
+  transform: rotate(7deg);
+}
+
+.side-blingee-32 {
+  top: 118vh;
+  left: 15vw;
+  width: 110px;
+  transform: rotate(-10deg);
+}
+
+.side-blingee-33 {
+  top: 146vh;
+  left: 12vw;
+  width: 85px;
+  transform: rotate(13deg);
+}
+
+.side-blingee-34 {
+  top: 176vh;
+  left: 14.5vw;
+  width: 115px;
+  transform: rotate(-6deg);
+}
+
+.side-blingee-35 {
+  top: 206vh;
+  left: 13vw;
+  width: 90px;
+  transform: rotate(9deg);
+}
+
+.side-blingee-36 {
+  top: 236vh;
+  left: 15vw;
+  width: 110px;
+  transform: rotate(-12deg);
+}
+
+.side-blingee-37 {
+  top: 266vh;
+  left: 12vw;
+  width: 95px;
+  transform: rotate(5deg);
+}
+
+.side-blingee-38 {
+  top: 296vh;
+  left: 15vw;
+  width: 115px;
+  transform: rotate(-8deg);
+}
+
+.side-blingee-39 {
+  top: 326vh;
+  left: 13vw;
+  width: 90px;
+  transform: rotate(11deg);
+}
+
+.side-blingee-40 {
+  top: 356vh;
+  left: 15vw;
+  width: 105px;
+  transform: rotate(-7deg);
+}
+
+.side-blingee-41 {
+  top: 386vh;
+  left: 12.5vw;
+  width: 95px;
+  transform: rotate(10deg);
+}
+
+.side-blingee-42 {
+  top: 416vh;
+  left: 14.5vw;
+  width: 115px;
+  transform: rotate(-11deg);
+}
+
+.side-blingee-43 {
+  top: 446vh;
+  left: 13vw;
+  width: 90px;
+  transform: rotate(6deg);
+}
+
+.side-blingee-44 {
+  top: 476vh;
+  left: 15vw;
+  width: 105px;
+  transform: rotate(-9deg);
+}
+
+.side-blingee-45 {
+  top: 506vh;
+  left: 12.5vw;
+  width: 100px;
+  transform: rotate(12deg);
+}
+
+/* RIGHT SIDE, INNER EDGE */
+
+.side-blingee-46 {
+  top: 96vh;
+  right: 13vw;
+  width: 95px;
+  transform: rotate(-7deg);
+}
+
+.side-blingee-47 {
+  top: 124vh;
+  right: 15vw;
+  width: 110px;
+  transform: rotate(10deg);
+}
+
+.side-blingee-48 {
+  top: 154vh;
+  right: 12vw;
+  width: 90px;
+  transform: rotate(-13deg);
+}
+
+.side-blingee-49 {
+  top: 184vh;
+  right: 14.5vw;
+  width: 115px;
+  transform: rotate(6deg);
+}
+
+.side-blingee-50 {
+  top: 214vh;
+  right: 13vw;
+  width: 95px;
+  transform: rotate(-9deg);
+}
+
+.side-blingee-51 {
+  top: 244vh;
+  right: 15vw;
+  width: 110px;
+  transform: rotate(12deg);
+}
+
+.side-blingee-52 {
+  top: 274vh;
+  right: 12.5vw;
+  width: 90px;
+  transform: rotate(-5deg);
+}
+
+.side-blingee-53 {
+  top: 304vh;
+  right: 15vw;
+  width: 115px;
+  transform: rotate(8deg);
+}
+
+.side-blingee-54 {
+  top: 334vh;
+  right: 13vw;
+  width: 95px;
+  transform: rotate(-11deg);
+}
+
+.side-blingee-55 {
+  top: 364vh;
+  right: 15vw;
+  width: 105px;
+  transform: rotate(7deg);
+}
+
+.side-blingee-56 {
+  top: 394vh;
+  right: 12.5vw;
+  width: 95px;
+  transform: rotate(-10deg);
+}
+
+.side-blingee-57 {
+  top: 424vh;
+  right: 14.5vw;
+  width: 115px;
+  transform: rotate(11deg);
+}
+
+.side-blingee-58 {
+  top: 454vh;
+  right: 13vw;
+  width: 90px;
+  transform: rotate(-6deg);
+}
+
+.side-blingee-59 {
+  top: 484vh;
+  right: 15vw;
+  width: 105px;
+  transform: rotate(9deg);
+}
+
+.side-blingee-60 {
+  top: 514vh;
+  right: 12.5vw;
+  width: 100px;
+  transform: rotate(-12deg);
+}
+
+/* ===================================================== */
+/* 12. MAIN SCATTERED GIFS */
+/* ===================================================== */
+
+.kari-scatter {
+  position: absolute;
+  z-index: 245;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.45));
+}
+
+.kari-butterfly {
+  width: 90px;
+  top: 40vh;
+  right: 10vw;
+  transform: rotate(12deg);
+}
+
+.kari-butterfly2 {
+  width: 100px;
+  top: 118vh;
+  left: 8vw;
+  transform: rotate(-9deg);
+}
+
+.kari-butterfly3 {
+  width: 110px;
+  top: 205vh;
+  right: 7vw;
+  transform: rotate(8deg);
+}
+
+.kari-candle {
+  width: 140px;
+  top: 160vh;
+  right: 14vw;
+}
+
+.kari-hello {
+  width: 350px;
+  top: 700px;
+  left: 300px;
+}
+
+.kari-kitty {
+  width: 125px;
+  top: 168vh;
+  right: 14vw;
+  transform: rotate(6deg);
+}
+
+.kari-music {
+  width: 140px;
+  top: 155vh;
+  left: 10vw;
+}
+
+.kari-music2 {
+  width: 90px;
+  top: 180vh;
+  right: 12vw;
+}
+
+.kari-rigs {
+  width: 245px;
+  height: 618px;
+  top: 673.5vh;
+  left: 8vw;
+}
+
+.kari-rigs1 {
+  width: 245px;
+  height: 618px;
+  top: 673.5vh;
+  left: 73vw;
+}
+
+.kari-flower2 {
+  width: 190px;
+  top: 105vh;
+  left: 7vw;
+}
+
+.kari-flower3 {
+  width: 150px;
+  top: 135vh;
+  right: 7vw;
+  transform: rotate(8deg);
+}
+
+.kari-flower4 {
+  width: 130px;
+  top: 300vh;
+  left: 14vw;
+}
+
+.kari-flower5 {
+  width: 240px;
+  top: 330vh;
+  right: 9vw;
+  opacity: 0.85;
+}
+
+.kari-heart2 {
+  width: 160px;
+  top: 365vh;
+  right: 12vw;
+}
+
+.kari-horse {
+  width: 120px;
+  top: 395vh;
+  left: 12vw;
+}
+
+.kari-trebble {
+  width: 150px;
+  top: 430vh;
+  left: 8vw;
+}
+
+.kari-trebble2 {
+  width: 85px;
+  top: 450vh;
+  right: 8vw;
+}
+
+.kari-pyramid {
+  width: 130px;
+  top: 470vh;
+  left: 10vw;
+  transform: rotate(10deg);
+}
+
+/* ===================================================== */
+/* 13. MEMORIAL GIFS */
+/* ===================================================== */
+
+.memorial-gif {
+  position: absolute;
+  pointer-events: none;
+  z-index: 246;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.65));
+}
+
+.memorial-angel1 {
+  width: 180px;
+  top: 80vh;
+  left: 4vw;
+  transform: rotate(-6deg);
+}
+
+.memorial-angel2 {
+  width: 170px;
+  top: 108vh;
+  right: 5vw;
+  transform: rotate(7deg);
+}
+
+.memorial-candle2 {
+  width: 130px;
+  top: 178vh;
+  left: 10vw;
+  transform: rotate(4deg);
+}
+
+.memorial-candle3 {
+  width: 120px;
+  top: 210vh;
+  right: 9vw;
+  transform: rotate(-5deg);
+}
+
+.memorial-dove2 {
+  width: 180px;
+  top: 250vh;
+  left: 7vw;
+  transform: rotate(-8deg);
+}
+
+.memorial-dove3 {
+  width: 170px;
+  top: 280vh;
+  right: 7vw;
+  transform: rotate(8deg);
+}
+
+.memorial-flower7 {
+  width: 130px;
+  top: 315vh;
+  left: 13vw;
+  transform: rotate(6deg);
+}
+
+.memorial-goldheart {
+  width: 110px;
+  top: 338vh;
+  right: 13vw;
+  transform: rotate(-7deg);
+}
+
+.memorial-heart3 {
+  width: 130px;
+  top: 365vh;
+  left: 7vw;
+}
+
+.memorial-heart4 {
+  width: 170px;
+  top: 395vh;
+  right: 8vw;
+  transform: rotate(5deg);
+}
+
+.memorial-heart5 {
+  width: 160px;
+  top: 425vh;
+  left: 12vw;
+  transform: rotate(-4deg);
+}
+
+.memorial-heart6 {
+  width: 150px;
+  top: 455vh;
+  right: 12vw;
+  transform: rotate(7deg);
+}
+
+.memorial-loveyou1 {
+  width: 170px;
+  top: 485vh;
+  left: 5vw;
+  transform: rotate(-5deg);
+}
+
+.memorial-loveyou2 {
+  width: 180px;
+  top: 512vh;
+  right: 6vw;
+  transform: rotate(4deg);
+}
+
+.memorial-missyou1 {
+  width: 160px;
+  top: 540vh;
+  left: 9vw;
+  transform: rotate(6deg);
+}
+
+.memorial-missyou2 {
+  width: 160px;
+  top: 552vh;
+  left: 9vw;
+  transform: rotate(6deg);
+}
+
+.memorial-missyou3 {
+  width: 165px;
+  top: 565vh;
+  right: 9vw;
+  transform: rotate(-6deg);
+}
+
+.memorial-missyou4 {
+  width: 150px;
+  top: 590vh;
+  left: 14vw;
+  transform: rotate(-4deg);
+}
+
+.memorial-missyou5 {
+  width: 165px;
+  top: 615vh;
+  right: 12vw;
+  transform: rotate(5deg);
+}
+
+.memorial-missyou6 {
+  width: 170px;
+  top: 640vh;
+  left: 7vw;
+  transform: rotate(7deg);
+}
+
+.memorial-missyou7 {
+  width: 170px;
+  top: 650vh;
+  right: 7vw;
+  transform: rotate(-7deg);
+}
+
+/* ===================================================== */
+/* 14. PINK TEXT BOXES */
+/* ===================================================== */
+
+.eulogy-box,
+.diagram-section,
+.gif-gallery-section,
+.mia-section {
+  position: relative;
+  z-index: 230;
+
+  background: #e56ad1;
+  border: 2px solid #333;
+
+  text-align: center;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: #201018;
+}
+
+.eulogy-box {
+  margin: 28vh auto 0 auto;
+  width: 50vw;
+  max-width: 520px;
+  min-width: 420px;
+  padding: 32px 36px;
+  top: 45px;
+}
+
+.diagram-section {
+  margin: 32vh auto 0 auto;
+  width: 5vw;
+  max-width: 820px;
+  min-width: 420px;
+  padding: 28px;
+}
+
+.gif-gallery-section {
+  margin: 18vh auto 0 auto;
+  width: 72vw;
+  max-width: 980px;
+  min-width: 420px;
+  padding: 32px;
+}
+
+.mia-section {
+  margin: 18vh auto 0 auto;
+  width: 46vw;
+  max-width: 760px;
+  min-width: 420px;
+  padding: 28px;
+}
+
+.eulogy-box p,
+.diagram-section p,
+.gif-gallery-section p,
+.mia-section p {
+  color: #201018;
+  font-size: clamp(15px, 1.15vw, 22px);
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.eulogy-box h3,
+.diagram-section h2,
+.gif-gallery-section h2,
+.mia-section h2 {
+  font-size: clamp(24px, 2.4vw, 48px);
+  line-height: 1;
+  margin-bottom: 14px;
+  color: #201018;
+}
+
+/* ===================================================== */
+/* 15. EXAMPLE IMAGE */
+/* ===================================================== */
+
+.example1 {
+  width: 300px;
+  position: relative;
+  left: 625px;
+  top: 150px;
+  z-index: 231;
+}
+
+.example1 img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===================================================== */
+/* 16. VIDEO FRAMES */
+/* ===================================================== */
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 2px solid #333;
+  background: black;
+  overflow: hidden;
+  border-radius: 2%;
+  margin: 18px 0;
+}
+
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===================================================== */
+/* 17. BLINGEE GALLERY */
+/* ===================================================== */
+
+.gif-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 28px;
+}
+
+.gif-gallery figure {
+  width: 100%;
+}
+
+.gif-gallery img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border: 2px solid #333;
+  background: white;
+  display: block;
+  margin: 0 auto;
+}
+
+.gif-gallery figcaption {
+  max-width: 260px;
+  margin: 8px auto 0 auto;
+  color: #201018;
+  font-size: 12px;
+  line-height: 1.15;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* ===================================================== */
+/* 18. POP UP AD AT THE END */
+/* ===================================================== */
+
+.cu-popup {
+  position: relative;
+  width: 1065px;
+  max-width: 90vw;
+
+  margin: 60px auto 0 auto;
+
+  left: 160px;
+}
+
+.cu {
+  width: 70%;
+  display: block;
+}
+
+.cuok {
+  position: absolute;
+  left: 22%;
+  top: 67%;
+
+  display: block;
+  width: 260px;
+  max-width: 28%;
+  cursor: pointer;
+}
+
+.cuok img {
+  width: 100%;
+  display: block;
+}
+
+.cuok:hover {
+  filter: brightness(1.12);
+}
+
+.X {
+  position: absolute;
+  left: 65.5%;
+  top: 2.5%;
+
+  display: block;
+  width: 40px;
+  cursor: pointer;
+}
+
+.X img {
+  width: 100%;
+  display: block;
+}
+
+.X:hover {
+  filter: brightness(1.12);
+}
+
+/* ===================================================== */
+/* 19. RESPONSIVE */
+/* ===================================================== */
+
+@media (max-width: 900px) {
+  .funeral-page {
+    min-height: 720vh;
+    padding-bottom: 120vh;
+  }
+
+  .hero-stack {
+    width: 95vw;
+    top: 60px;
+  }
+
+  .rainbow-title {
+    width: 135%;
+  }
+
+  .coffin {
+    top: 150px;
+    width: 75%;
+  }
+
+  .subtitle {
+    top: 480px;
+    width: 60%;
+  }
+
+  .eulogy-box,
+  .diagram-section,
+  .gif-gallery-section,
+  .mia-section {
+    width: 80vw;
+    min-width: 0;
+    padding: 24px;
+  }
+
+  .eulogy-box p,
+  .diagram-section p,
+  .gif-gallery-section p,
+  .mia-section p {
+    font-size: 18px;
+  }
+
+  .gif-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .side-blingee,
+  .kari-scatter,
+  .memorial-gif {
+    display: none;
+  }
+
+  .example1 {
+    width: 220px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .cu-popup {
+    left: 0;
+  }
+}

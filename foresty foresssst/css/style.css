@@ -1,0 +1,201 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background-image: url("../imgs/waterfall.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+}
+
+#border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so it doesn't block clicks */
+  z-index: 10; /* sits on top of everything */
+}
+
+.casa {
+  position: absolute; /* or fixed if you want it locked to the screen */
+  width: 315px; /* or use % like 15% for responsive sizing */
+  top: 5%; /* distance from the top */
+  left: 70%; /* distance from the left */
+}
+.butterfly {
+  position: absolute;
+  width: 90px;
+  top: 40%;
+  left: 80%;
+}
+.winna {
+  position: absolute;
+  width: 736px;
+  height: 110px;
+  top: -3%;
+  left: 20%;
+  border: 4px solid rgb(8, 181, 16);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+.rigs {
+  position: absolute;
+  width: 90px;
+  top: 64%;
+  left: 72%;
+}
+.starz {
+  position: absolute;
+  width: 650px;
+  top: 14%;
+  left: 25%;
+  opacity: 80%;
+}
+.crow {
+  position: absolute;
+  width: 90px;
+  top: 74%;
+  left: 78%;
+}
+.moneyz {
+  position: absolute;
+  width: 170px;
+  top: 70%;
+  left: 15%;
+}
+.trevos {
+  position: fixed;
+  top: 23%; /* change this to move it up/down */
+  left: 20%; /* change this to move it left/right */
+  width: 180px;
+  height: 90px;
+  border: 2px solid rgb(66, 23, 254);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.settee {
+  position: fixed;
+  top: 38%; /* change this to move it up/down */
+  left: 20%; /* change this to move it left/right */
+  width: 180px;
+  height: 90px;
+  border: 3px solid rgb(66, 23, 254);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.seat {
+  position: fixed;
+  top: 53%; /* change this to move it up/down */
+  left: 20%; /* change this to move it left/right */
+  width: 180px;
+  height: 90px;
+  border: 3px solid rgb(0, 30, 255);
+  /* fully circular (if image is square) */
+  /* border-radius: 50%; */
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.faux {
+  position: fixed;
+  top: 23%;
+  left: 64%;
+  width: 180px;
+  height: 90px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(66, 23, 254);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.sofas {
+  position: fixed;
+  top: 38%; /* change this to move it up/down */
+  left: 64%; /* change this to move it left/right */
+  width: 180px;
+  height: 90px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(66, 23, 254);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.fur {
+  position: fixed;
+  top: 53%; /* change this to move it up/down */
+  left: 64%; /* change this to move it left/right */
+  width: 180px;
+  height: 90px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(66, 23, 254);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.sphynx {
+  position: fixed;
+  top: 46%; /* change this to move it up/down */
+  left: 0%; /* change this to move it left/right */
+  width: 180px;
+  height: 190px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(0, 128, 234);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+.fro {
+  position: fixed;
+  top: 17%; /* change this to move it up/down */
+  left: 0%; /* change this to move it left/right */
+  width: 50px;
+  height: 130px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(0, 128, 234);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+.books {
+  position: fixed;
+  top: 0%; /* change this to move it up/down */
+  left: 0%; /* change this to move it left/right */
+  width: 170px;
+  height: 102px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(0, 128, 234);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+h1 {
+  color: white;
+  font-size: 4rem;
+  text-align: center;
+  padding-top: 2rem;
+  font-family: "Verdana", Geneva, Tahoma, sans-serif;
+}
+h2 {
+  position: relative;
+  z-index: 5; /* below border (10), adjust if needed */
+}
+h3 {
+  color: white;
+  font-size: 20px;
+  font-family: "Verdana", Geneva, Tahoma, sans-serif;
+  position: fixed;
+  top: 39%;
+  left: 0%;
+
+  background: rgb(0, 128, 234); /* black, half transparent */
+  padding: 10px 10px; /* space between text and box edge */
+}
+h4 {
+  color: white;
+  font-size: 11px;
+  font-family: "Verdana", Geneva, Tahoma, sans-serif;
+  position: fixed;
+  top: 78%;
+  left: 0%;
+
+  background: rgb(0, 128, 234); /* black, half transparent */
+  padding: 10px 12.5px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8); /* space between text and box edge */
+}

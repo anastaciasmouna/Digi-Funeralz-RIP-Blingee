@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digi Funeralz: RIP Blingee</title>
+
+    <script>
+      if (
+        window.location.hash === "#funeral" ||
+        localStorage.getItem("enteredFuneral") === "true"
+      ) {
+        document.documentElement.classList.add("entered-funeral-state");
+      }
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@2.2.2/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.2.0/dist/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+    <!-- LANDING PAGE -->
+    <div class="landing-page">
+      <img src="imgs/landing_page.png" alt="Digi Funeralz landing page" />
+
+      <button class="landing-pay-respects" type="button">
+        <img
+          class="normal"
+          src="imgs/pay_respects_brown.png"
+          alt="Pay your respects"
+        />
+        <img
+          class="hover"
+          src="imgs/pay_respects_pink.png"
+          alt="Pay your respects"
+        />
+      </button>
+    </div>
+
+    <!-- WARNING SCREEN -->
+    <div class="warning-screen">
+      <div class="warning-box">
+        <img class="warning-img" src="imgs/warning.png" alt="Warning" />
+
+        <button class="warning-button warning-continue" type="button">
+          Continue
+        </button>
+
+        <button class="warning-button warning-leave" type="button">
+          No thanks
+        </button>
+      </div>
+    </div>
+
+    <!-- FUNERAL PAGE -->
+    <main class="funeral-page">
+      <!-- MAIN TITLE LAYERS -->
+      <div class="hero-stack">
+        <img class="rainbow-title" src="imgs/rainbow_title.png" alt="" />
+        <img class="coffin" src="imgs/coffin.png" alt="" />
+        <img class="subtitle" src="imgs/subtitle.png" alt="" />
+      </div>
+
+      <!-- PEARL BORDER -->
+      <div class="pearl-border pearl-border-top"></div>
+      <div class="pearl-border pearl-border-bottom"></div>
+      <div class="pearl-border pearl-border-left"></div>
+      <div class="pearl-border pearl-border-right"></div>
+
+      <!-- CORNER HEARTS -->
+      <img
+        class="corner-heart corner-heart-top-left"
+        src="imgs/cornerheart.gif"
+        alt=""
+      />
+      <img
+        class="corner-heart corner-heart-top-right"
+        src="imgs/cornerheart.gif"
+        alt=""
+      />
+      <img
+        class="corner-heart corner-heart-bottom-left"
+        src="imgs/cornerheart.gif"
+        alt=""
+      />
+      <img
+        class="corner-heart corner-heart-bottom-right"
+        src="imgs/cornerheart.gif"
+        alt=""
+      />
+
+      <!-- LEFT SIDE GIF GROUP -->
+      <div class="gif-side gif-left" aria-hidden="true">
+        <img class="side-blingee left-gif-1" src="imgs/gif1.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-2" src="imgs/gif2.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-3" src="imgs/gif3.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-4" src="imgs/gif4.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-5" src="imgs/gif5.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-6" src="imgs/gif6.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-7" src="imgs/gif7.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-8" src="imgs/gif8.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-9" src="imgs/gif9.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-10" src="imgs/gif10.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-11" src="imgs/gif11.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-12" src="imgs/gif12.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-13" src="imgs/gif13.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-14" src="imgs/gif14.gif" loading="lazy" alt="" />
+        <img class="side-blingee left-gif-15" src="imgs/gif15.gif" loading="lazy" alt="" />
+
+        <img class="kari-scatter kari-butterfly2" src="imgs/butterfly2.gif" alt="" />
+        <img class="kari-scatter kari-hello" src="imgs/hello.gif" alt="" />
+        <img class="kari-scatter kari-music" src="imgs/music.gif" alt="" />
+        <img class="kari-scatter kari-rigs" src="imgs/rigs.gif" alt="" />
+        <img class="kari-scatter kari-flower2" src="imgs/flower2.gif" alt="" />
+        <img class="kari-scatter kari-flower4" src="imgs/flower4.gif" alt="" />
+        <img class="kari-scatter kari-horse" src="imgs/horse.gif" alt="" />
+        <img class="kari-scatter kari-trebble" src="imgs/trebble.gif" alt="" />
+        <img class="kari-scatter kari-pyramid" src="imgs/pyramid.gif" alt="" />
+
+        <img class="memorial-gif memorial-angel1" src="imgs/angel1.gif" alt="" />
+        <img class="memorial-gif memorial-candle2" src="imgs/candle2.gif" alt="" />
+        <img class="memorial-gif memorial-dove2" src="imgs/dove2.gif" alt="" />
+        <img class="memorial-gif memorial-flower7" src="imgs/flower7.gif" alt="" />
+        <img class="memorial-gif memorial-heart3" src="imgs/heart3.gif" alt="" />
+        <img class="memorial-gif memorial-heart5" src="imgs/heart5.gif" alt="" />
+        <img class="memorial-gif memorial-loveyou1" src="imgs/loveyou1.gif" alt="" />
+        <img class="memorial-gif memorial-missyou1" src="imgs/missyou.gif" alt="" />
+        <img class="memorial-gif memorial-missyou2" src="imgs/missyou2.gif" alt="" />
+        <img class="memorial-gif memorial-missyou4" src="imgs/missyou4.gif" alt="" />
+        <img class="memorial-gif memorial-missyou6" src="imgs/missyou6.gif" alt="" />
+      </div>
+
+      <!-- RIGHT SIDE GIF GROUP -->
+      <div class="gif-side gif-right" aria-hidden="true">
+        <img class="side-blingee right-gif-1" src="imgs/gif16.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-2" src="imgs/gif17.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-3" src="imgs/gif18.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-4" src="imgs/gif19.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-5" src="imgs/gif20.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-6" src="imgs/gif21.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-7" src="imgs/gif22.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-8" src="imgs/gif23.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-9" src="imgs/gif24.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-10" src="imgs/gif25.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-11" src="imgs/gif26.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-12" src="imgs/gif27.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-13" src="imgs/gif28.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-14" src="imgs/gif29.gif" loading="lazy" alt="" />
+        <img class="side-blingee right-gif-15" src="imgs/gif30.gif" loading="lazy" alt="" />
+
+        <img class="kari-scatter kari-butterfly" src="imgs/butterfly.gif" alt="" />
+        <img class="kari-scatter kari-butterfly3" src="imgs/butterfly3.gif" alt="" />
+        <img class="kari-scatter kari-candle" src="imgs/candle.gif" alt="" />
+        <img class="kari-scatter kari-kitty" src="imgs/kitty.png" alt="" />
+        <img class="kari-scatter kari-music2" src="imgs/music2.gif" alt="" />
+        <img class="kari-scatter kari-rigs1" src="imgs/rigs1.gif" alt="rigs1" />
+        <img class="kari-scatter kari-flower3" src="imgs/flower3.gif" alt="" />
+        <img class="kari-scatter kari-flower5" src="imgs/flower5.gif" alt="" />
+        <img class="kari-scatter kari-heart2" src="imgs/heart2.gif" alt="" />
+        <img class="kari-scatter kari-trebble2" src="imgs/trebble2.gif" alt="" />
+
+        <img class="memorial-gif memorial-angel2" src="imgs/angel2.gif" alt="" />
+        <img class="memorial-gif memorial-candle3" src="imgs/candle3.gif" alt="" />
+        <img class="memorial-gif memorial-dove3" src="imgs/dove3.gif" alt="" />
+        <img class="memorial-gif memorial-goldheart" src="imgs/goldheart.gif" alt="" />
+        <img class="memorial-gif memorial-heart4" src="imgs/heart4.gif" alt="" />
+        <img class="memorial-gif memorial-heart6" src="imgs/heart6.gif" alt="" />
+        <img class="memorial-gif memorial-loveyou2" src="imgs/loveyou2.gif" alt="" />
+        <img class="memorial-gif memorial-missyou3" src="imgs/missyou3.gif" alt="" />
+        <img class="memorial-gif memorial-missyou5" src="imgs/missyou5.gif" alt="" />
+        <img class="memorial-gif memorial-missyou7" src="imgs/missyou7.jpg" alt="" />
+      </div>
+
+      <!-- WHO WAS BLINGEE -->
+      <section class="eulogy-box">
+        <p>
+          Today we gather to remember celebrate and remember the life of
+          Blingee.com (2006-2021).
+        </p>
+
+        <p>
+          Known as "Blingee" by their friends, Blingee was a website that
+          allowed users to digitally decorate and personalise their images, then
+          share them with friends.
+        </p>
+      </section>
+
+      <!-- HOW DID YOU MAKE A BLINGEE -->
+      <div class="example1">
+        <img src="imgs/example1.gif" alt="" />
+      </div>
+
+      <section class="eulogy-box">
+        <h3>How did Blingee work?</h3>
+
+        <p>
+          Blingee was created in 2006 by Bauer Teen Network, at this time Adobe
+          Flash Player was used by a lot to make websites inte
+        </p>
+
+        <p>
+          To make a blingee, users uploaded their own images in the editor, and
+          added "stamps" (animated transparent GIFs) from their own library
+          aswell as uploads from Blingee's other users
+        </p>
+
+        <div class="video-frame">
+          <video controls loop muted playsinline>
+            <source src="imgs/diaagram.mp4" type="video/mp4" />
+            <source src="imgs/videos/diaagram.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <p>This diagram attempts to map workflow of creating a "blingee".</p>
+
+        <p>
+          Many stamps were made and exchanged among users for them to be used
+          again, so each Blingee was often built from shared graphic material.
+          Blingee loved bringing people together.
+          <br />
+          <br />
+          Blingee loved family!
+        </p>
+      </section>
+
+      <section class="eulogy-box">
+        <h3>Some say Blingee was "Stupid"</h3>
+
+        <p>
+          In Olia Lialina's blog, "One Terabyte of Kilobyte Age", she describes
+          Blingee as a “stupid” tool, borrowing from the idea of “stupid
+          networks”: systems that stay open, simple and not overly controlling.
+        </p>
+
+        <p>
+          Lialina writes "Blingee did not restrict what a stamp could be. It did
+          not have to be glitter, and it did not have to be animated. Although
+          Blingee started as a tool for decorating photos, users could also use
+          it as image-processing software, a collage tool, or a way to work with
+          layers".
+        </p>
+
+        <p>
+          This kind of stupidity feels increasingly rare in 2026. It is
+          important we remember Blingee for trusting users with their own
+          images.
+        </p>
+      </section>
+
+      <!-- BLINGEE GALLERY -->
+      <section class="gif-gallery-section">
+        <h2>Real Blingees by Real People</h2>
+
+        <p>
+          Before we continue, we pause to look at Blingees made by real users.
+          These are not just decorative examples. They are traces of people
+          using the web as a place to make images feel alive.
+        </p>
+
+        <div class="gif-gallery">
+          <figure>
+            <img src="imgs/blingee/sad1.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad2.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad3.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad4.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad5.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad6.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad7.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad8.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad9.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad10.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+
+          <figure>
+            <img src="imgs/blingee/sad11.gif" alt="Blingee artwork" />
+            <figcaption>Credit: original Blingee user / archive link</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- MIA SECTION -->
+      <section class="mia-section">
+        <h2>Fond Memories of Blingee</h2>
+
+        <p>
+          M.I.A.’s 2010 music video for <em>XXXO</em> lives close to Blingee’s
+          visual world.
+        </p>
+
+        <p>
+          The lyrics “If you like what you see, you can download and install”
+          and “you want me to be somebody who I’m really not” feel especially
+          interesting alongside the blingy, internet-heavy imagery.
+        </p>
+
+        <p>
+          The diamante frames, swans-swimming gifs, and moving hearts bejwel her
+          footage. Perhaps a comment of the transformation media undergoes in an
+          agae where can really download and install.
+        </p>
+
+        <div class="video-frame">
+          <video controls playsinline>
+            <source src="imgs/videos/xxxo.mp4" type="video/mp4" />
+            <source src="imgs/xxxo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      <!-- POP UP BOX -->
+      <div class="cu-popup">
+        <img class="cu" src="imgs/cu.png" alt="warning" />
+
+        <a class="cuok" href="foresty foresssst/index.html">
+          <img src="imgs/cuok.png" alt="ok button" />
+        </a>
+
+        <a class="X" href="imgs/pou.jpg">
+          <img src="imgs/X.png" alt="X button" />
+        </a>
+      </div>
+    </main>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
