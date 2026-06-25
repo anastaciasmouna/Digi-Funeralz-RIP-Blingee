@@ -1439,3 +1439,85 @@ body.entered-funeral .funeral-page {
 .memory-section {
   z-index: 230 !important;
 }
+/* ===================================================== */
+/* HARD FIX: FORCE FIRST TEXT BELOW HERO */
+/* ===================================================== */
+
+/* hero floats visually at the top */
+.hero-stack {
+  position: absolute !important;
+  top: 75px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  width: min(78vw, 1300px) !important;
+  aspect-ratio: 1300 / 720 !important;
+
+  z-index: 260 !important;
+  pointer-events: none !important;
+}
+
+/* this is the actual physical space before the first eulogy */
+.hero-clear-space {
+  display: block !important;
+  height: 155vh !important;
+  width: 100% !important;
+  pointer-events: none !important;
+}
+
+/* first eulogy must start after spacer */
+.hero-clear-space + .eulogy-box {
+  margin-top: 0 !important;
+}
+
+/* remove fake positioning that may be pulling the box upward */
+.content-flow {
+  padding-top: 0 !important;
+}
+
+.eulogy-box:first-of-type {
+  margin-top: 0 !important;
+}
+
+/* example comes after first eulogy with proper space */
+.example1 {
+  position: relative !important;
+  top: auto !important;
+  margin-top: 24vh !important;
+  margin-bottom: 24vh !important;
+}
+
+/* keep the hero image layers in place */
+.rainbow-title {
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  width: 120% !important;
+  transform: translateX(-50%) !important;
+}
+
+.coffin {
+  position: absolute !important;
+  top: 24% !important;
+  left: 50% !important;
+  width: 62% !important;
+  transform: translateX(-50%) !important;
+}
+
+.subtitle {
+  position: absolute !important;
+  top: 69% !important;
+  left: 50% !important;
+  width: 46% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* make sure the pink boxes are not behind the hero */
+.eulogy-box,
+.example1,
+.gif-gallery-section,
+.mia-section,
+.memory-section {
+  position: relative !important;
+  z-index: 300 !important;
+}
