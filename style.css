@@ -1332,3 +1332,194 @@ html.entered-funeral-state .funeral-page {
     height: 115px !important;
   }
 }
+
+/* ===================================================== */
+/* BACK BUTTON */
+/* ===================================================== */
+
+.back-to-landing {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  z-index: 9999;
+
+  padding: 8px 16px;
+
+  border: 2px solid #7a3c18;
+  background: #e56ad1;
+  color: #fff8d8;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 18px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  text-shadow:
+    0 0 3px #7a3c18,
+    0 0 8px #7a3c18;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px #ff00bf,
+    0 0 28px #ffcc00;
+}
+
+.back-to-landing:hover {
+  transform: scale(1.08);
+  background: #ff00bf;
+}
+
+/* ===================================================== */
+/* FINAL MEMORY STATION OVERRIDES */
+/* horizontal scroll menus + real message background */
+/* ===================================================== */
+
+/* move subtitle up slightly */
+.subtitle {
+  top: 70% !important;
+}
+
+/* horizontal scroll for candle, gif, and background menus */
+.candle-picker,
+.message-gif-picker,
+.message-bg-picker {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 14px !important;
+
+  width: 100% !important;
+  max-width: 720px !important;
+
+  margin: 18px auto 24px auto !important;
+  padding: 12px !important;
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+
+  scroll-snap-type: x mandatory !important;
+
+  background: rgba(255, 248, 216, 0.35) !important;
+  border: 2px solid #333 !important;
+}
+
+/* make every choice box same size */
+.candle-choice,
+.message-gif-choice,
+.message-bg-choice {
+  flex: 0 0 150px !important;
+  width: 150px !important;
+  height: 125px !important;
+
+  scroll-snap-align: center !important;
+
+  border: 2px solid #333 !important;
+  background: #fff8d8 !important;
+  padding: 10px !important;
+  cursor: pointer !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.9),
+    0 0 10px rgba(255, 255, 255, 0.8) !important;
+}
+
+.candle-choice img,
+.message-gif-choice img,
+.message-bg-choice img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 95px !important;
+  max-height: 95px !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* backgrounds should fill their little boxes more like swatches */
+.message-bg-choice img {
+  max-width: 120px !important;
+  max-height: 100px !important;
+  object-fit: cover !important;
+}
+
+.candle-choice.selected,
+.message-gif-choice.selected,
+.message-bg-choice.selected,
+.font-choice.selected {
+  background: #ff00bf !important;
+  color: #fff8d8 !important;
+
+  box-shadow:
+    0 0 12px white,
+    0 0 24px #ff00bf,
+    0 0 38px #ffcc00 !important;
+
+  transform: scale(1.05) !important;
+}
+
+/* preview card background */
+.memory-preview-card {
+  background-image: var(--message-bg, none) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  overflow: hidden !important;
+}
+
+/* textarea/message writing box background also changes */
+.memory-message-input {
+  background-image: var(--message-bg, none) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-color: #fff8d8 !important;
+
+  color: #201018 !important;
+  text-shadow:
+    0 0 2px white,
+    0 0 4px white !important;
+}
+
+/* posted memory notes keep the chosen background */
+.memory-note {
+  background-image: var(--saved-message-bg, none) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+/* soft readable overlay on posted notes */
+.memory-note::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 248, 216, 0.55);
+  z-index: 0;
+}
+
+.memory-note-visual,
+.memory-note p {
+  position: relative;
+  z-index: 2;
+}
+
+/* make font buttons feel like a proper row too */
+.font-picker {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  margin: 18px auto 24px auto !important;
+}
+
+/* mobile */
+@media (max-width: 800px) {
+  .candle-choice,
+  .message-gif-choice,
+  .message-bg-choice {
+    flex: 0 0 130px !important;
+    width: 130px !important;
+    height: 115px !important;
+  }
+}

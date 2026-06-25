@@ -4,6 +4,7 @@
 // =====================================================
 
 window.addEventListener("DOMContentLoaded", () => {
+  const backToLandingBtn = document.querySelector(".back-to-landing");
   const landingPayRespectsBtn = document.querySelector(".landing-pay-respects");
   const warningScreen = document.querySelector(".warning-screen");
   const warningContinueBtn = document.querySelector(".warning-continue");
@@ -64,6 +65,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
     sessionStorage.removeItem("enteredFuneral");
   });
+
+  if (backToLandingBtn) {
+  backToLandingBtn.addEventListener("click", () => {
+    localStorage.removeItem("enteredFuneral");
+    window.history.pushState("", document.title, window.location.pathname);
+
+    document.documentElement.classList.remove("entered-funeral-state");
+    document.body.classList.remove("entered-funeral");
+
+    window.scrollTo(0, 0);
+  });
+}
 
   // =====================================================
   // PEARL BORDER GENERATOR
@@ -247,15 +260,17 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  bgButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      bgButtons.forEach((btn) => btn.classList.remove("selected"));
+bgButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    bgButtons.forEach((btn) => btn.classList.remove("selected"));
 
-      button.classList.add("selected");
-      selectedBg = button.dataset.bg;
-      previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
-    });
+    button.classList.add("selected");
+    selectedBg = button.dataset.bg;
+
+    previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
+    messageInput.style.setProperty("--message-bg", `url("${selectedBg}")`);
   });
+});
 
   fontButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -376,6 +391,7 @@ window.addEventListener("DOMContentLoaded", () => {
   fontButtons[0].classList.add("selected");
 
   previewCard.style.setProperty("--message-bg", `url("${selectedBg}")`);
+  messageInput.style.setProperty("--message-bg", `url("${selectedBg}")`);
   messageInput.style.setProperty("font-family", selectedFont, "important");
 
   updateTransformBox();
