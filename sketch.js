@@ -1,14 +1,14 @@
 // =====================================================
 // DIGI FUNERALZ INTERACTION
-// Landing page → funeral page → warning → continue
+// Always starts on landing page when refreshed
 // =====================================================
 
 window.addEventListener("DOMContentLoaded", () => {
-  const backToLandingBtn = document.querySelector(".back-to-landing");
   const landingPayRespectsBtn = document.querySelector(".landing-pay-respects");
   const warningScreen = document.querySelector(".warning-screen");
   const warningContinueBtn = document.querySelector(".warning-continue");
   const warningLeaveBtn = document.querySelector(".warning-leave");
+  const backToLandingBtn = document.querySelector(".back-to-landing");
 
   if (
     !landingPayRespectsBtn ||
@@ -16,25 +16,22 @@ window.addEventListener("DOMContentLoaded", () => {
     !warningContinueBtn ||
     !warningLeaveBtn
   ) {
-    console.error("Missing HTML element. Check your class names:", {
-      landingPayRespectsBtn,
-      warningScreen,
-      warningContinueBtn,
-      warningLeaveBtn,
-    });
+    console.error("Missing HTML element. Check your class names.");
     return;
   }
 
-  // If Live Server refreshes, remember that we were already inside the funeral page
-  if (sessionStorage.getItem("enteredFuneral") === "true") {
-    document.body.classList.add("entered-funeral");
-    warningScreen.classList.remove("show");
-  } else {
-    document.body.classList.remove("entered-funeral");
-    warningScreen.classList.remove("show");
+  // Always start from landing page on refresh/load
+  localStorage.removeItem("enteredFuneral");
+  document.documentElement.classList.remove("entered-funeral-state");
+  document.body.classList.remove("entered-funeral");
+  warningScreen.classList.remove("show");
+
+  // Clear #funeral from URL if it is there
+  if (window.location.hash === "#funeral") {
+    window.history.replaceState("", document.title, window.location.pathname);
   }
 
-  // Click Pay Your Respects on landing page
+  // Click Pay Your Respects
   landingPayRespectsBtn.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -42,41 +39,40 @@ window.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("entered-funeral");
     warningScreen.classList.add("show");
 
-    sessionStorage.setItem("enteredFuneral", "true");
+    window.scrollTo(0, 0);
   });
 
-  // Click Continue on warning
+  // Click Continue
   warningContinueBtn.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     warningScreen.classList.remove("show");
-
-    sessionStorage.setItem("enteredFuneral", "true");
+    document.body.classList.add("entered-funeral");
   });
 
-  // Click No thanks on warning
+  // Click No thanks
   warningLeaveBtn.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     warningScreen.classList.remove("show");
     document.body.classList.remove("entered-funeral");
-
-    sessionStorage.removeItem("enteredFuneral");
-  });
-
-  if (backToLandingBtn) {
-  backToLandingBtn.addEventListener("click", () => {
-    localStorage.removeItem("enteredFuneral");
-    window.history.pushState("", document.title, window.location.pathname);
-
-    document.documentElement.classList.remove("entered-funeral-state");
-    document.body.classList.remove("entered-funeral");
-
     window.scrollTo(0, 0);
   });
-}
+
+  // Back button
+  if (backToLandingBtn) {
+    backToLandingBtn.addEventListener("click", () => {
+      warningScreen.classList.remove("show");
+      document.body.classList.remove("entered-funeral");
+      document.documentElement.classList.remove("entered-funeral-state");
+      localStorage.removeItem("enteredFuneral");
+
+      window.history.replaceState("", document.title, window.location.pathname);
+      window.scrollTo(0, 0);
+    });
+  }
 
   // =====================================================
   // PEARL BORDER GENERATOR
@@ -95,6 +91,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+  
 // =====================================================
 // BLINGEE MEMORY MESSAGE STATION
 // Saves messages on this browser/computer using localStorage
