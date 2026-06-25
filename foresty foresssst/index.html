@@ -37,8 +37,8 @@
         display: grid;
         place-items: center;
 
-        min-width: 100px;
-        min-height: 70px;
+        min-width: 300px;
+        min-height: 170px;
         padding: 12px;
 
         border: 4px outset #eeeeee;
@@ -68,7 +68,7 @@
 
   <body>
     <h1></h1>
-
+    <script src="script.js"></script>
     <img src="imgs/greenborder.gif" id="border" alt="" />
 
     <img class="books" src="imgs/books.jpg" alt="bookz" />
@@ -101,7 +101,6 @@
     <div class="ad" id="firstAd">YOU WON!!!</div>
 
     <script src="sketch.js"></script>
-    <script src="script.js"></script>
 
     <!-- pop up add section -->
 
@@ -141,8 +140,8 @@
 
         ad.className = "ad";
 
-        const width = randomBetween(170, 420);
-        const height = randomBetween(130, 320);
+        const width = randomBetween(250, 420);
+        const height = randomBetween(210, 320);
 
         ad.style.width = `${width}px`;
         ad.style.height = `${height}px`;
@@ -159,8 +158,7 @@
         const adCount = document.querySelectorAll(".ad").length;
 
         if (adCount >= 10) {
-          window.location.href =
-            "../../../sleepy chatbot/index.html";
+          window.location.href = "../../../sleepy chatbot/index.html";
           return;
         }
 
@@ -193,8 +191,8 @@
       function followCursor() {
         const position = keepInsideScreen(
           firstAd,
-          mouseX - firstAd.offsetWidth / 2,
-          mouseY - firstAd.offsetHeight / 2,
+          mouseX - firstAd.offsetWidth / 4,
+          mouseY - firstAd.offsetHeight / 4,
         );
 
         firstAd.style.left = `${position.x}px`;
