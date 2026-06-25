@@ -1455,3 +1455,68 @@ body.entered-funeral .funeral-page {
 .cu-popup {
   margin-top: -40vh !important;
 }
+/* ===================================================== */
+/* SCROLL MENU SIDE BUTTONS */
+/* ===================================================== */
+
+.scroll-menu-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 18px auto 24px auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scroll-menu-wrap .candle-picker,
+.scroll-menu-wrap .message-gif-picker,
+.scroll-menu-wrap .message-bg-picker {
+  margin: 0 !important;
+  flex: 1 1 auto !important;
+}
+
+.scroll-menu-button {
+  flex: 0 0 auto;
+
+  width: 44px;
+  height: 44px;
+
+  border: 2px solid #333;
+  background: #ff00bf;
+  color: #fff8d8;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 26px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px #ff00bf,
+    0 0 28px #ffcc00;
+
+  z-index: 5;
+}
+
+.scroll-menu-button:hover {
+  transform: scale(1.08);
+  background: #e56ad1;
+}
+
+.scroll-menu-button:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 800px) {
+  .scroll-menu-button {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+  }
+}

@@ -448,3 +448,51 @@ window.addEventListener("DOMContentLoaded", () => {
   updateTransformBox();
   renderMessages();
 });
+// =====================================================
+// ADD LEFT / RIGHT BUTTONS TO SCROLL MENUS
+// =====================================================
+
+window.addEventListener("DOMContentLoaded", () => {
+  const menus = document.querySelectorAll(
+    ".candle-picker, .message-gif-picker, .message-bg-picker"
+  );
+
+  menus.forEach((menu) => {
+    // stop it adding buttons twice
+    if (menu.parentElement && menu.parentElement.classList.contains("scroll-menu-wrap")) {
+      return;
+    }
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "scroll-menu-wrap";
+
+    const leftButton = document.createElement("button");
+    leftButton.className = "scroll-menu-button scroll-menu-button-left";
+    leftButton.type = "button";
+    leftButton.textContent = "‹";
+
+    const rightButton = document.createElement("button");
+    rightButton.className = "scroll-menu-button scroll-menu-button-right";
+    rightButton.type = "button";
+    rightButton.textContent = "›";
+
+    menu.parentNode.insertBefore(wrapper, menu);
+    wrapper.appendChild(leftButton);
+    wrapper.appendChild(menu);
+    wrapper.appendChild(rightButton);
+
+    leftButton.addEventListener("click", () => {
+      menu.scrollBy({
+        left: -260,
+        behavior: "smooth",
+      });
+    });
+
+    rightButton.addEventListener("click", () => {
+      menu.scrollBy({
+        left: 260,
+        behavior: "smooth",
+      });
+    });
+  });
+});
