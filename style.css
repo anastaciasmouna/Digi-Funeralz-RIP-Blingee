@@ -1361,3 +1361,81 @@ body.entered-funeral .funeral-page {
     left: 0;
   }
 }
+
+/* ===================================================== */
+/* ACTUAL FIX: HERO TAKES UP REAL SPACE */
+/* ===================================================== */
+
+/* stop the hero floating over the content */
+.hero-stack {
+  position: relative !important;
+  top: auto !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  width: min(78vw, 1300px) !important;
+  aspect-ratio: 1300 / 720 !important;
+
+  margin-top: 75px !important;
+  margin-bottom: 22vh !important;
+
+  z-index: 260 !important;
+  pointer-events: none !important;
+}
+
+/* content no longer needs fake huge padding */
+.content-flow {
+  padding-top: 0 !important;
+}
+
+/* first eulogy box now comes AFTER hero */
+.content-flow > .eulogy-box:first-child {
+  margin-top: 0 !important;
+}
+
+/* fallback in case content-flow is missing */
+.funeral-page > .eulogy-box:first-of-type {
+  margin-top: 135vh !important;
+}
+
+/* example sits underneath first eulogy */
+.example1 {
+  position: relative !important;
+  top: auto !important;
+  margin-top: 24vh !important;
+  margin-bottom: 24vh !important;
+}
+
+/* keep title layers normal inside hero */
+.rainbow-title {
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  width: 120% !important;
+  transform: translateX(-50%) !important;
+}
+
+.coffin {
+  position: absolute !important;
+  top: 24% !important;
+  left: 50% !important;
+  width: 62% !important;
+  transform: translateX(-50%) !important;
+}
+
+.subtitle {
+  position: absolute !important;
+  top: 69% !important;
+  left: 50% !important;
+  width: 46% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* make sure boxes are visually below the hero */
+.eulogy-box,
+.example1,
+.gif-gallery-section,
+.mia-section,
+.memory-section {
+  z-index: 230 !important;
+}
