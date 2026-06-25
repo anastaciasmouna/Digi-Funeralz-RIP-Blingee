@@ -537,6 +537,7 @@ body.entered-funeral .funeral-page {
 .gif-gallery-section,
 .mia-section {
   position: relative;
+  top: 300px;
   z-index: 230;
 
   background: #e56ad1;
