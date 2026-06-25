@@ -1520,3 +1520,72 @@ body.entered-funeral .funeral-page {
     font-size: 22px;
   }
 }
+/* ===================================================== */
+/* FIX MEMORY SECTION CLICKING */
+/* forces memory station to be clickable */
+/* ===================================================== */
+
+/* all decorative stuff must NOT block clicks */
+.pearl-border,
+.pearl-border *,
+.corner-heart,
+.hero-stack,
+.hero-stack *,
+.rainbow-title,
+.coffin,
+.subtitle,
+.gif-side,
+.gif-side *,
+.memory-wall,
+.memory-wall *,
+body.entered-funeral > canvas {
+  pointer-events: none !important;
+}
+
+/* memory station must sit above decorative layers and accept clicks */
+.memory-section {
+  position: relative !important;
+  z-index: 9990 !important;
+  pointer-events: auto !important;
+}
+
+/* everything inside the memory station must be clickable */
+.memory-section *,
+.scroll-menu-wrap,
+.scroll-menu-wrap *,
+.candle-picker,
+.candle-picker *,
+.message-gif-picker,
+.message-gif-picker *,
+.message-bg-picker,
+.message-bg-picker *,
+.font-picker,
+.font-picker *,
+.layer-controls,
+.layer-controls *,
+.message-form,
+.message-form *,
+.memory-preview-card,
+.memory-preview-card *,
+.memory-message-input,
+.post-memory-button,
+.clear-memory-button {
+  pointer-events: auto !important;
+}
+
+/* except the actual preview gif image, so dragging grabs the box not the image */
+.chosen-message-gif-img {
+  pointer-events: none !important;
+}
+
+/* make sure draggable box and handles are above the preview */
+.gif-transform-box {
+  z-index: 9995 !important;
+  pointer-events: auto !important;
+}
+
+.gif-resize-handle,
+.gif-rotate-handle {
+  z-index: 9996 !important;
+  pointer-events: auto !important;
+}
