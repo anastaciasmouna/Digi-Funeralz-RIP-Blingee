@@ -1415,3 +1415,129 @@ body.entered-funeral .funeral-page {
     left: 0;
   }
 }
+
+/* ===================================================== */
+/* FIX SIDE GIFS - SPREAD DOWN LEFT AND RIGHT SIDE */
+/* Paste this at the VERY BOTTOM of style.css */
+/* ===================================================== */
+
+.gif-side {
+  display: contents;
+}
+
+.side-blingee,
+.kari-scatter,
+.memorial-gif {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 245;
+
+  filter:
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 12px rgba(255, 0, 191, 0.45));
+}
+
+/* LEFT SIDE MAIN GIFS */
+
+.left-gif-1  { top: 88vh;  left: 2vw;  width: 120px; transform: rotate(-8deg); }
+.left-gif-2  { top: 125vh; left: 11vw; width: 95px;  transform: rotate(10deg); }
+.left-gif-3  { top: 162vh; left: 3vw;  width: 120px; transform: rotate(-4deg); }
+.left-gif-4  { top: 199vh; left: 12vw; width: 90px;  transform: rotate(12deg); }
+.left-gif-5  { top: 236vh; left: 2vw;  width: 115px; transform: rotate(-12deg); }
+.left-gif-6  { top: 273vh; left: 11vw; width: 100px; transform: rotate(6deg); }
+.left-gif-7  { top: 310vh; left: 3vw;  width: 120px; transform: rotate(-9deg); }
+.left-gif-8  { top: 347vh; left: 12vw; width: 90px;  transform: rotate(14deg); }
+.left-gif-9  { top: 384vh; left: 2vw;  width: 110px; transform: rotate(-5deg); }
+.left-gif-10 { top: 421vh; left: 11vw; width: 95px;  transform: rotate(8deg); }
+.left-gif-11 { top: 458vh; left: 3vw;  width: 115px; transform: rotate(-10deg); }
+.left-gif-12 { top: 495vh; left: 12vw; width: 100px; transform: rotate(11deg); }
+.left-gif-13 { top: 532vh; left: 2vw;  width: 110px; transform: rotate(-6deg); }
+.left-gif-14 { top: 569vh; left: 11vw; width: 95px;  transform: rotate(13deg); }
+.left-gif-15 { top: 606vh; left: 3vw;  width: 115px; transform: rotate(-11deg); }
+
+/* RIGHT SIDE MAIN GIFS */
+
+.right-gif-1  { top: 105vh; right: 2vw;  width: 120px; transform: rotate(8deg); }
+.right-gif-2  { top: 142vh; right: 11vw; width: 95px;  transform: rotate(-12deg); }
+.right-gif-3  { top: 179vh; right: 3vw;  width: 120px; transform: rotate(5deg); }
+.right-gif-4  { top: 216vh; right: 12vw; width: 90px;  transform: rotate(-9deg); }
+.right-gif-5  { top: 253vh; right: 2vw;  width: 115px; transform: rotate(11deg); }
+.right-gif-6  { top: 290vh; right: 11vw; width: 100px; transform: rotate(-7deg); }
+.right-gif-7  { top: 327vh; right: 3vw;  width: 120px; transform: rotate(10deg); }
+.right-gif-8  { top: 364vh; right: 12vw; width: 95px;  transform: rotate(-13deg); }
+.right-gif-9  { top: 401vh; right: 2vw;  width: 110px; transform: rotate(6deg); }
+.right-gif-10 { top: 438vh; right: 11vw; width: 90px;  transform: rotate(-10deg); }
+.right-gif-11 { top: 475vh; right: 3vw;  width: 115px; transform: rotate(12deg); }
+.right-gif-12 { top: 512vh; right: 12vw; width: 100px; transform: rotate(-8deg); }
+.right-gif-13 { top: 549vh; right: 2vw;  width: 110px; transform: rotate(9deg); }
+.right-gif-14 { top: 586vh; right: 11vw; width: 95px;  transform: rotate(-12deg); }
+.right-gif-15 { top: 623vh; right: 3vw;  width: 115px; transform: rotate(7deg); }
+
+/* KARI GIFS - ALSO SPREAD OUT */
+
+.kari-butterfly2 { top: 120vh; left: 5vw;  width: 90px;  transform: rotate(-9deg); }
+.kari-hello      { top: 150vh; left: 8vw;  width: 150px; transform: rotate(4deg); }
+.kari-music      { top: 185vh; left: 5vw;  width: 120px; transform: rotate(-6deg); }
+.kari-flower2    { top: 225vh; left: 9vw;  width: 120px; transform: rotate(8deg); }
+.kari-horse      { top: 270vh; left: 5vw;  width: 110px; transform: rotate(-5deg); }
+.kari-trebble    { top: 315vh; left: 10vw; width: 100px; transform: rotate(7deg); }
+.kari-pyramid    { top: 360vh; left: 5vw;  width: 110px; transform: rotate(-8deg); }
+.kari-flower4    { top: 405vh; left: 10vw; width: 115px; transform: rotate(6deg); }
+
+.kari-butterfly  { top: 135vh; right: 5vw;  width: 90px;  transform: rotate(10deg); }
+.kari-butterfly3 { top: 170vh; right: 10vw; width: 95px;  transform: rotate(-8deg); }
+.kari-candle     { top: 210vh; right: 5vw;  width: 110px; transform: rotate(5deg); }
+.kari-kitty      { top: 250vh; right: 10vw; width: 105px; transform: rotate(-6deg); }
+.kari-music2     { top: 295vh; right: 5vw;  width: 95px;  transform: rotate(9deg); }
+.kari-flower3    { top: 340vh; right: 10vw; width: 110px; transform: rotate(-7deg); }
+.kari-heart2     { top: 385vh; right: 5vw;  width: 120px; transform: rotate(6deg); }
+.kari-trebble2   { top: 430vh; right: 10vw; width: 90px;  transform: rotate(-9deg); }
+.kari-flower5    { top: 475vh; right: 5vw;  width: 120px; transform: rotate(8deg); }
+
+/* HUGE RIGS LOWER DOWN SO THEY DON'T SIT ON TOP */
+
+.kari-rigs {
+  top: 650vh;
+  left: 5vw;
+  width: 180px;
+  height: auto;
+}
+
+.kari-rigs1 {
+  top: 650vh;
+  right: 5vw;
+  left: auto;
+  width: 180px;
+  height: auto;
+}
+
+/* MEMORIAL GIFS - SPACED OUT */
+
+.memorial-angel1   { top: 110vh; left: 15vw; width: 130px; transform: rotate(-6deg); }
+.memorial-candle2  { top: 200vh; left: 15vw; width: 100px; transform: rotate(4deg); }
+.memorial-dove2    { top: 290vh; left: 15vw; width: 130px; transform: rotate(-8deg); }
+.memorial-flower7  { top: 380vh; left: 15vw; width: 110px; transform: rotate(6deg); }
+.memorial-heart3   { top: 470vh; left: 15vw; width: 110px; transform: rotate(-4deg); }
+.memorial-heart5   { top: 560vh; left: 15vw; width: 115px; transform: rotate(5deg); }
+.memorial-loveyou1 { top: 635vh; left: 12vw; width: 130px; transform: rotate(-5deg); }
+
+.memorial-angel2    { top: 125vh; right: 15vw; width: 130px; transform: rotate(7deg); }
+.memorial-candle3   { top: 215vh; right: 15vw; width: 100px; transform: rotate(-5deg); }
+.memorial-dove3     { top: 305vh; right: 15vw; width: 130px; transform: rotate(8deg); }
+.memorial-goldheart { top: 395vh; right: 15vw; width: 100px; transform: rotate(-7deg); }
+.memorial-heart4    { top: 485vh; right: 15vw; width: 115px; transform: rotate(5deg); }
+.memorial-heart6    { top: 575vh; right: 15vw; width: 115px; transform: rotate(7deg); }
+.memorial-loveyou2  { top: 635vh; right: 12vw; width: 130px; transform: rotate(4deg); }
+
+/* HIDE SOME IF THEY CROWD THE VERY BOTTOM */
+.memorial-missyou1,
+.memorial-missyou2,
+.memorial-missyou3,
+.memorial-missyou4,
+.memorial-missyou5,
+.memorial-missyou6,
+.memorial-missyou7 {
+  display: none;
+}
