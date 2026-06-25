@@ -1521,3 +1521,35 @@ body.entered-funeral .funeral-page {
   position: relative !important;
   z-index: 300 !important;
 }
+
+/* ===================================================== */
+/* REDUCE HERO / CONTENT SPACING */
+/* ===================================================== */
+
+/* bring first eulogy box closer to hero */
+.content-flow {
+  padding-top: 115vh !important;
+}
+
+/* bring example1 closer to the first eulogy */
+.example1 {
+  margin-top: 10vh !important;
+  margin-bottom: 12vh !important;
+}
+
+/* bring second eulogy closer to example1 */
+.example1 + .eulogy-box {
+  margin-top: 0 !important;
+}
+
+/* reduce general spacing between sections */
+.gif-gallery-section,
+.mia-section,
+.memory-section {
+  margin-top: 12vh !important;
+}
+
+/* make popup not too far away at the end */
+.cu-popup {
+  margin-top: 4vh !important;
+}
