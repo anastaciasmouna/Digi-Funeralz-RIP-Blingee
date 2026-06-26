@@ -8,20 +8,17 @@ body {
   min-height: 100%;
 }
 
-
-
 body {
   overflow: auto;
 }
 
 #scene {
   position: relative;
-  width: 1265px;
-  height: 1400px;
-  margin: 0 auto;
-  overflow: hidden;
+  width: 100vw;
+  min-height: 1400px;
+  margin: 0;
+  overflow: visible;
 }
-
 
 #scene img {
   position: absolute;
@@ -36,6 +33,68 @@ canvas {
 body img {
   z-index: 2;
 }
+.back-to-landing {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  z-index: 9999;
+
+  padding: 8px 16px;
+
+  border: 2px solid #7a3c18;
+  background: #e56ad1;
+  color: #fff8d8;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 18px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  text-shadow:
+    0 0 3px #7a3c18,
+    0 0 8px #7a3c18;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px #ff00bf,
+    0 0 28px #ffcc00;
+}
+
+.back-to-landing {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  z-index: 9999;
+
+  display: inline-block;
+  padding: 8px 16px;
+
+  border: 2px solid #7a3c18;
+  background: #e56ad1;
+  color: #fff8d8;
+
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  text-shadow:
+    0 0 3px #7a3c18,
+    0 0 8px #7a3c18;
+
+  box-shadow:
+    0 0 8px white,
+    0 0 18px #ff00bf,
+    0 0 28px #ffcc00;
+}
+
+.back-to-landing:hover {
+  transform: scale(1.08);
+  background: #ff00bf;
+}
 
 #border {
   position: fixed;
@@ -48,18 +107,17 @@ body img {
 }
 
 .angel {
-  position: absolute;
-  width: 350px;
-  height: 700px;
-  top: 140px;
-  left: 10px;
-}
-.asa {
-  position: absolute;
   width: 450px;
-  height: 350px;
-  top: 900px;
-  left: 200px;
+  height: 800px;
+  top: 140px;
+  left: 1px;
+}
+.eeep {
+  position: absolute;
+  width: 1850px;
+  height: 270px;
+  top: 1500px;
+  left: 0px;
 }
 .musical {
   position: absolute;
@@ -70,10 +128,11 @@ body img {
 }
 .sanidade {
   position: absolute;
-  width: 250px;
-  height: 250px;
+  width: 400px;
+  height: 400px;
   top: 50px;
-  left: 900px;
+  left: 1350px;
+  z-index: 1;
 }
 .piano {
   position: absolute;
@@ -84,32 +143,46 @@ body img {
 }
 .fishz {
   position: absolute;
+  width: 450px;
+  height: 420px;
+  top: 1050px;
+  left: 180px;
+}
+.cati {
+  position: absolute;
   width: 250px;
   height: 220px;
-  top: 1150px;
-  left: 80px;
+  top: 950px;
+  left: 210px;
+}
+.asa {
+  position: absolute;
+  width: 450px;
+  height: 350px;
+  top: 1300px;
+  left: 580px;
 }
 .lilies {
   position: absolute;
-  width: 695px;
-  height: 610px;
-  top: 215px;
-  left: 490px;
+  width: 795px;
+  height: 710px;
+  top: 315px;
+  left: 900px;
   opacity: 0.8;
 }
 .hors {
   position: absolute;
-  width: 395px;
-  height: 310px;
+  width: 495px;
+  height: 410px;
   top: 855px;
-  left: 790px;
+  left: 850px;
 }
 .ponyclock {
   position: absolute;
-  width: 395px;
-  height: 310px;
+  width: 595px;
+  height: 510px;
   top: 55px;
-  left: 470px;
+  left: 590px;
 }
 /* .innitial-WOrds p {
     margin: 20;
@@ -120,15 +193,15 @@ body img {
 
 } */
 #h1 {
-  position: absolute ;
-  top: 60px;
-  left: 100px;
-  width: 410px;
+  position: absolute;
+  top: 20px;
+  left: 150px;
+  width: 430px;
   margin: 0;
 
   color: white;
-  font-family:arial, sans-serif;
-  font-size: 20px;
+  font-family: arial, sans-serif;
+  font-size: 25px;
   text-align: center;
 
   z-index: 20;
