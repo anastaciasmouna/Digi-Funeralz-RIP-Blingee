@@ -38,7 +38,7 @@ function setup() {
   c4 = color(random(100), random(255), random(255));
 
   greeting = createElement("h2", "");
-  greeting.position(20, 5);
+  greeting.position(160, 5);
   greeting.style("z-index", "20");
 
   nameInput = createInput();
