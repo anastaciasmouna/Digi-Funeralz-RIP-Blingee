@@ -1,210 +1,229 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <title>foresty foresssst</title>
+html {
+  background: rgb(0, 255, 13);
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background-image: url("../imgs/waterfall.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+}
 
-    <!--
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
-      rel="stylesheet"
-    />
-    -->
+#border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* so it doesn't block clicks */
+  z-index: 10; /* sits on top of everything */
+}
 
-    <link rel="stylesheet" href="css/style.css" />
+.back-to-landing {
+  position: fixed;
+  top: 22px;
+  left: 22px;
+  z-index: 9999;
 
-    <script src="https://cdn.jsdelivr.net/npm/p5@2.2.2/lib/p5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5.sound@0.2.0/dist/p5.sound.min.js"></script>
+  padding: 8px 16px;
 
-    <style>
-      * {
-        box-sizing: border-box;
-      }
+  border: 2px solid #7a3c18;
+  background: #e56ad1;
+  color: #fff8d8;
 
-      body {
-        margin: 0;
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 18px;
+  font-weight: 700;
 
-      .ad {
-        position: fixed;
-        z-index: 9999;
+  cursor: pointer;
 
-        display: grid;
-        place-items: center;
+  text-shadow:
+    0 0 3px #7a3c18,
+    0 0 8px #7a3c18;
 
-        min-width: 300px;
-        min-height: 170px;
-        padding: 12px;
+  box-shadow:
+    0 0 8px white,
+    0 0 18px #ff00bf,
+    0 0 28px #ffcc00;
+}
 
-        border: 4px outset #eeeeee;
-        background-color: yellow;
-        color: red;
+.back-to-landing:hover {
+  transform: scale(1.08);
+  background: #ff00bf;
+}
+.casa {
+  position: absolute; /* or fixed if you want it locked to the screen */
+  width: 315px; /* or use % like 15% for responsive sizing */
+  top: 5%; /* distance from the top */
+  left: 70%; /* distance from the left */
+}
+.butterfly {
+  position: absolute;
+  width: 90px;
+  top: 40%;
+  left: 80%;
+}
+.winna {
+  position: absolute;
+  width: 736px;
+  height: 190px;
+  top: 0%;
+  left: 30%;
+  border: 4px solid rgb(8, 181, 16);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+}
+.rigs {
+  position: absolute;
+  width: 90px;
+  top: 64%;
+  left: 72%;
+}
+.starz {
+  position: absolute;
+  width: 650px;
+  top: 14%;
+  left: 25%;
+  opacity: 80%;
+}
+.crow {
+  position: absolute;
+  width: 90px;
+  top: 74%;
+  left: 78%;
+}
+.moneyz {
+  position: absolute;
+  width: 170px;
+  top: 70%;
+  left: 15%;
+}
+.trevos {
+  position: fixed;
+  top: 23%; /* change this to move it up/down */
+  left: 20%; /* change this to move it left/right */
+  width: 240px;
+  height: 190px;
+  border: 2px solid rgb(66, 23, 254);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.settee {
+  position: fixed;
+  top: 46%; /* change this to move it up/down */
+  left: 20%; /* change this to move it left/right */
+  width: 240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.seat {
+  position: fixed;
+  top: 69.5%;
+  left: 20%;
+  width: 240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.faux {
+  position: fixed;
+  top: 23%;
+  left: 64%;
+  width: 240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.sofas {
+  position: fixed;
+  top: 46%; /* change this to move it up/down */
+  left: 64%; /* change this to move it left/right */
+  width: 240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.fur {
+  position: fixed;
+  top: 69.5%; /* change this to move it up/down */
+  left: 64%; /* change this to move it left/right */
+  width: 240px;
+  height: 190px;
+  border: 6px solid rgb(66, 23, 254);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.sphynx {
+  position: fixed;
+  top: 46%; /* change this to move it up/down */
+  left: 0%; /* change this to move it left/right */
+  width: 180px;
+  height: 190px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(0, 128, 234);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+.fro {
+  position: fixed;
+  top: 21.2%; /* change this to move it up/down */
+  left: 0%; /* change this to move it left/right */
+  width: 100px;
+  height: 230px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(0, 128, 234);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+.books {
+  position: fixed;
+  top: 0%; /* change this to move it up/down */
+  left: 0%; /* change this to move it left/right */
+  width: 270px;
+  height: 202px; /* different ratio to the original = stretched */
+  border: 3px solid rgb(0, 128, 234);
+  /* soft glow instead of hard border */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+h1 {
+  color: white;
+  font-size: 4rem;
+  text-align: center;
+  padding-top: 2rem;
+  font-family: "Verdana", Geneva, Tahoma, sans-serif;
+}
+h2 {
+  position: relative;
+  z-index: 5; /* below border (10), adjust if needed */
+}
+h3 {
+  color: white;
+  font-size: 20px;
+  font-family: "Verdana", Geneva, Tahoma, sans-serif;
+  position: fixed;
+  top: 42%;
+  left: 0%;
 
-        font-family: Arial, sans-serif;
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
+  background: rgb(0, 128, 234); /* black, half transparent */
+  padding: 10px 10px; /* space between text and box edge */
+}
+h4 {
+  color: white;
+  font-size: 11px;
+  font-family: "Verdana", Geneva, Tahoma, sans-serif;
+  position: fixed;
+  top: 66%;
+  left: 0%;
 
-        cursor: pointer;
-        user-select: none;
-
-        box-shadow: 5px 5px 0 rgb(0 0 0 / 50%);
-      }
-
-      .ad::after {
-        content: "click here!!!";
-        display: block;
-
-        color: blue;
-        font-size: 12px;
-      }
-    </style>
-  </head>
-
-  <body>
-       <button class="back-to-landing" type="button">
-        ← Back
-      </button>
-    <h1></h1>
-    <script src="script.js"></script>
-    <img src="imgs/greenborder.gif" id="border" alt="" />
-
-    <img class="books" src="imgs/books.jpg" alt="bookz" />
-
-    <br />
-
-    <div>
-      <img class="casa" src="imgs/casa.png" alt="casa" />
-    </div>
-
-    <img class="winna" src="imgs/winna1.gif" alt="lucky winna" />
-    <img class="moneyz" src="imgs/moneyz.png" alt="moneyz" />
-    <img class="starz" src="imgs/starz.gif" alt="stars" />
-    <img class="moni" src="imgs/moneyz.png" alt="moni" />
-    <img class="settee" src="imgs/settee.jpg" alt="settee" />
-    <img class="trevos" src="imgs/trevos.jpg" alt="trevos" />
-    <img class="seat" src="imgs/loveSeat.jpg" alt="luvseat" />
-    <img class="faux" src="imgs/fauxfur.jpg" alt="faux" />
-    <img class="sofas" src="imgs/sofas.jpg" alt="sofas" />
-    <img class="fur" src="imgs/fur.jpg" alt="fur" />
-    <img class="rigs" src="imgs/rigs.gif" alt="rigs" />
-    <img class="butterfly" src="imgs/butterfly.gif" alt="butterfly" />
-    <img class="crow" src="imgs/crow.gif" alt="crow" />
-    <img class="sphynx" src="imgs/sphynx.gif" alt="sphynx" />
-    <img class="fro" src="imgs/fro.jpg" alt="fro" />
-
-    <h3>top 5 miracles</h3>
-    <h4>you wouldn't believe this</h4>
-
-    <div class="ad" id="firstAd">YOU WON!!!</div>
-
-    <script src="sketch.js"></script>
-
-    <!-- pop up add section -->
-
-    <script>
-      const firstAd = document.querySelector("#firstAd");
-
-      let mouseX = window.innerWidth / 2;
-      let mouseY = window.innerHeight / 2;
-
-      const messages = [
-        "YOU WON!!!",
-        "FREE MONEY",
-        "CLICK MEEE sTINCKY:P",
-        "1,000,001st VISITOR",
-        "YOUR COMPUTER IS SLOW BOO tomato",
-        "MY MATE PAUL BET ON HORSES NOW HE'S A MILLIONAIRE ",
-        "CLAIM YOUR PRIZE TODAY YEA",
-      ];
-
-      function randomBetween(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      function keepInsideScreen(element, x, y) {
-        const maxX = Math.max(0, window.innerWidth - element.offsetWidth);
-
-        const maxY = Math.max(0, window.innerHeight - element.offsetHeight);
-
-        return {
-          x: Math.max(0, Math.min(x, maxX)),
-          y: Math.max(0, Math.min(y, maxY)),
-        };
-      }
-
-      function createAd() {
-        const ad = document.createElement("div");
-
-        ad.className = "ad";
-
-        const width = randomBetween(250, 420);
-        const height = randomBetween(210, 320);
-
-        ad.style.width = `${width}px`;
-        ad.style.height = `${height}px`;
-        ad.style.fontSize = `${randomBetween(14, 32)}px`;
-
-        ad.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
-
-        ad.style.transform = `rotate(${randomBetween(-8, 8)}deg)`;
-
-        ad.textContent = messages[Math.floor(Math.random() * messages.length)];
-
-        document.body.appendChild(ad);
-
-        const adCount = document.querySelectorAll(".ad").length;
-
-        if (adCount >= 10) {
-          window.location.href = "../sleepy chatbot/index.html";
-          return;
-        }
-
-        const position = keepInsideScreen(
-          ad,
-          randomBetween(0, window.innerWidth - width),
-          randomBetween(0, window.innerHeight - height),
-        );
-
-        ad.style.left = `${position.x}px`;
-        ad.style.top = `${position.y}px`;
-      }
-
-      function multiplyAds() {
-        createAd();
-        createAd();
-      }
-
-      document.addEventListener("click", (event) => {
-        if (event.target.closest(".ad")) {
-          multiplyAds();
-        }
-      });
-
-      document.addEventListener("mousemove", (event) => {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-      });
-
-      function followCursor() {
-        const position = keepInsideScreen(
-          firstAd,
-          mouseX - firstAd.offsetWidth / 4,
-          mouseY - firstAd.offsetHeight / 4,
-        );
-
-        firstAd.style.left = `${position.x}px`;
-        firstAd.style.top = `${position.y}px`;
-
-        requestAnimationFrame(followCursor);
-      }
-
-      followCursor();
-    </script>
-  </body>
-</html>
+  background: rgb(0, 128, 234); /* black, half transparent */
+  padding: 10px 12.5px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8); /* space between text and box edge */
+}
