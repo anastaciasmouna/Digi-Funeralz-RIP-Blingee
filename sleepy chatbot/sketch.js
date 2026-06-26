@@ -42,11 +42,11 @@ function setup() {
   greeting.style("z-index", "20");
 
   nameInput = createInput();
-  nameInput.position(595, 265);
+  nameInput.position(785, 420);
   nameInput.style("z-index", "20");
 
   button = createButton("submit");
-  button.position(490 + nameInput.width, 246);
+  button.position(670 + nameInput.width, 400);
   button.style("z-index", "20");
 
   button.mousePressed(greet);
@@ -130,9 +130,9 @@ async function saveMessage(message) {
     const response = await fetch("/api/save-message", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message })
+      body: JSON.stringify({ message }),
     });
 
     if (!response.ok) {
@@ -142,4 +142,3 @@ async function saveMessage(message) {
     console.error(error);
   }
 }
-
